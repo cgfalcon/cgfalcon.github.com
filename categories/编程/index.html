@@ -69,7 +69,7 @@
   
   <div id="header-sub" class="header-sub header-inner">
     <div class="outer">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/编程/">编程</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/数据库/">数据库</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程/">编程</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/职业生涯/">职业生涯</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
   
@@ -86,11 +86,11 @@
   	</div>
     <div class="article-info profile-block">
       <div class="article-info-block">
-        2
+        8
         <span>文章</span>
       </div>
       <div class="article-info-block">
-        2
+        11
         <span>标签</span>
       </div>
     </div>
@@ -121,15 +121,15 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2015/05/22/scala-startups/">scala-startups</a>
+      <a class="article-title" href="/2014/06/22/scala-startups/">scala-startups</a>
     </h1>
   
 
         <div class="article-meta">
           <div class="article-date">
   <i class="fa fa-calendar"></i>
-  <a href="/2015/05/22/scala-startups/">
-    <time datetime="2015-05-22T01:10:24.000Z" itemprop="datePublished">2015-05-22</time>
+  <a href="/2014/06/22/scala-startups/">
+    <time datetime="2014-06-22T01:10:24.000Z" itemprop="datePublished">2014-06-22</time>
   </a>
 </div>
           
@@ -152,18 +152,269 @@
 <p>So the approach of attempting to provide<br>everything in one language doesn’t scale very well. Instead, Scala allows<br>users to grow and adapt the language in the directions they need by defining<br>easy-to-use libraries that feel like native language support.</p>
         
           <p class="article-more-link">
-            <a href="/2015/05/22/scala-startups/#more">阅读全文</a>
+            <a href="/2014/06/22/scala-startups/#more">阅读全文</a>
           </p>
         
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hellofalcon.com/2015/05/22/scala-startups/" data-id="cia37elj80003d8hhpodpe634" class="article-share-link">分享到</a>
+      <a data-url="http://hellofalcon.com/2014/06/22/scala-startups/" data-id="cia3hqngl000dqchhh1et4cme" class="article-share-link">分享到</a>
       
-        <a href="http://hellofalcon.com/2015/05/22/scala-startups/#disqus_thread" class="article-comment-link">评论</a>
+        <a href="http://hellofalcon.com/2014/06/22/scala-startups/#ds-thread" class="article-comment-link">评论</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Scala/">Scala</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/函数式编程/">函数式编程</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-JUnit和它的设计模式" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/03/29/JUnit和它的设计模式/">JUnit和它的设计模式</a>
+    </h1>
+  
+
+        <div class="article-meta">
+          <div class="article-date">
+  <i class="fa fa-calendar"></i>
+  <a href="/2014/03/29/JUnit和它的设计模式/">
+    <time datetime="2014-03-29T01:10:24.000Z" itemprop="datePublished">2014-03-29</time>
+  </a>
+</div>
+          
+  <div class="article-category">
+  	<i class="fa fa-folder"></i>
+    <a class="article-category-link" href="/categories/编程/">编程</a>
+  </div>
+
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="JUnit设计原则">JUnit设计原则</h3><p>先来说说单元测试框架应当遵循什么原则：</p>
+<ol>
+<li>Each unit test should run independently of all other unit tests.</li>
+<li>The framework should detect and report errors test by test.</li>
+<li>It should be easy to define which unit tests will run.</li>
+</ol>
+<p>JUnit 设计目标：</p>
+<ol>
+<li>The framework must help us write useful tests.</li>
+<li>The framework must help us create tests that retain their value over time.</li>
+<li>The framework must help us lower the cost of writing tests by reusing code.</li>
+</ol>
+<p>Junit是如何实现单元测试框架应当遵循的原则的：</p>
+<ol>
+<li>Separate test class instances and class loaders for each unit test to avoid side effects （目标1）</li>
+<li>JUnit annotations to provide resource initialization and reclamation methods: @Before, @BeforeClass, @After, and @AfterClass （目标3）</li>
+</ol>
+        
+          <p class="article-more-link">
+            <a href="/2014/03/29/JUnit和它的设计模式/#more">阅读全文</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hellofalcon.com/2014/03/29/JUnit和它的设计模式/" data-id="cia3hqnhi000xqchhdj6icsn1" class="article-share-link">分享到</a>
+      
+        <a href="http://hellofalcon.com/2014/03/29/JUnit和它的设计模式/#ds-thread" class="article-comment-link">评论</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Junit/">Junit</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-自制编程语言" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/01/21/自制编程语言/">自制编程语言</a>
+    </h1>
+  
+
+        <div class="article-meta">
+          <div class="article-date">
+  <i class="fa fa-calendar"></i>
+  <a href="/2014/01/21/自制编程语言/">
+    <time datetime="2014-01-21T01:10:24.000Z" itemprop="datePublished">2014-01-21</time>
+  </a>
+</div>
+          
+  <div class="article-category">
+  	<i class="fa fa-folder"></i>
+    <a class="article-category-link" href="/categories/编程/">编程</a>
+  </div>
+
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="编程语言开发札记">编程语言开发札记</h2><blockquote>
+<p>以下文字用于记录我在开发自己JVM语言过程中的学习历程，一是为了记录自己的成长，而是如果能够帮助有这方面需求的人，那就再好不过了     - Falcon</p>
+</blockquote>
+<h3 id="2013/12/24_平安夜">2013/12/24 平安夜</h3><p>我的目标是制作JVM语言。目前搜集一些资料，但是JVM生成字节码方面的资料很少。</p>
+<p>目前看了的资料有 </p>
+<p> <a href="http://stackoverflow.com/questions/3380498/create-a-jvm-programming-language">http://stackoverflow.com/questions/3380498/create-a-jvm-programming-language</a></p>
+        
+          <p class="article-more-link">
+            <a href="/2014/01/21/自制编程语言/#more">阅读全文</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hellofalcon.com/2014/01/21/自制编程语言/" data-id="cia3hqng90007qchh3qvarhwm" class="article-share-link">分享到</a>
+      
+        <a href="http://hellofalcon.com/2014/01/21/自制编程语言/#ds-thread" class="article-comment-link">评论</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JVM/">JVM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程语言/">编程语言</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-java_annotation" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2013/11/03/java_annotation/">Java注解</a>
+    </h1>
+  
+
+        <div class="article-meta">
+          <div class="article-date">
+  <i class="fa fa-calendar"></i>
+  <a href="/2013/11/03/java_annotation/">
+    <time datetime="2013-11-03T01:10:24.000Z" itemprop="datePublished">2013-11-03</time>
+  </a>
+</div>
+          
+  <div class="article-category">
+  	<i class="fa fa-folder"></i>
+    <a class="article-category-link" href="/categories/编程/">编程</a>
+  </div>
+
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Note_to_Java_Annotation">Note to Java Annotation</h2><blockquote>
+<p>本文是对 Java Annotation 基本知识的总结和梳理 </p>
+</blockquote>
+<p>Java annotation 官方说明</p>
+<blockquote>
+<p>Annotations, a form of metadata ( “meta data” 我的理解是编程时就能确切知道的能够提供给运行时的信息), provide data about a program that is not part of the program itself. Annotations have no direct effect on the operation of the code they annotate. </p>
+</blockquote>
+<p>从上面定义的话大概体会是这么个意思：</p>
+<p>Annotaion 是对目标代码的标签性注释，或者叫说明，用来给Annotation所标记的对象打上标签，就好比人的名字，某种意义来说就是标签。比如某场活动中要找出所有叫 “张三” 的人，这个时候 “张三” 这个标签就起到标识的作用了。</p>
+<p>比如Spring 提供的 Annotation， <code>@Autowired</code>, <code>@Transaction</code> 等表明了注解标注的对象在<strong>某种场景</strong>下会具有标识性。</p>
+        
+          <p class="article-more-link">
+            <a href="/2013/11/03/java_annotation/#more">阅读全文</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hellofalcon.com/2013/11/03/java_annotation/" data-id="cia3hqngu000jqchhn62su0fl" class="article-share-link">分享到</a>
+      
+        <a href="http://hellofalcon.com/2013/11/03/java_annotation/#ds-thread" class="article-comment-link">评论</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/annotation/">annotation</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-读《重构-改善既有代码的设计》的感悟" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2013/05/18/读《重构-改善既有代码的设计》的感悟/">scala-startups</a>
+    </h1>
+  
+
+        <div class="article-meta">
+          <div class="article-date">
+  <i class="fa fa-calendar"></i>
+  <a href="/2013/05/18/读《重构-改善既有代码的设计》的感悟/">
+    <time datetime="2013-05-18T15:10:24.000Z" itemprop="datePublished">2013-05-18</time>
+  </a>
+</div>
+          
+  <div class="article-category">
+  	<i class="fa fa-folder"></i>
+    <a class="article-category-link" href="/categories/编程/">编程</a>
+  </div>
+
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近一段时间读了几本不错的书：</p>
+<p><strong>《黑客与画家》</strong></p>
+<p><strong>《代码大全》</strong></p>
+<p><strong>《重构-改善既有代码的设计》</strong></p>
+<p>收获良多。不知不觉中自己曾经困惑的问题渐渐被解决了。困惑通常就像散列的点，散落在我们的知识网络中，没有一条线将他们连接起来。我不知道到底自己应该选择怎样的方向，所以选择多读书，多扩展知识面，这样的话说不定在读书过程中就能过无意的将两个散落的困惑连上线，从而将困惑解开，然后突然间或豁然开朗的感觉，这也许就是读书最美的地方，有点类似连连看的的感觉呢。</p>
+<p>接下来说说看《重构》一书中收获的东西。</p>
+<blockquote>
+<p>钻石要在阳光下才会闪耀</p>
+</blockquote>
+<p>知识要在合适的时候出现，才会显现出其价值。当知识、阅历尚浅的时候如果直接告诉我们一个终极道理，我们是理解不了的。</p>
+        
+          <p class="article-more-link">
+            <a href="/2013/05/18/读《重构-改善既有代码的设计》的感悟/#more">阅读全文</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hellofalcon.com/2013/05/18/读《重构-改善既有代码的设计》的感悟/" data-id="cia3hqnfu0002qchhnflmqmdv" class="article-share-link">分享到</a>
+      
+        <a href="http://hellofalcon.com/2013/05/18/读《重构-改善既有代码的设计》的感悟/#ds-thread" class="article-comment-link">评论</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/重构/">重构</a></li></ul>
 
     </footer>
   </div>
@@ -186,7 +437,7 @@
           <li>
             
             <div class="item-thumbnail">
-              <a href="/2015/05/22/scala-startups/" class="thumbnail">
+              <a href="/2014/06/22/scala-startups/" class="thumbnail">
   
     <span style="background-image:url(/img/scalahierarchy.png
 )" alt="scala-startups" class="thumbnail-image"></span>
@@ -196,15 +447,15 @@
             
             <div class="item-inner">
               <p class="item-category"><a class="article-category-link" href="/categories/编程/">编程</a></p>
-              <p class="item-title"><a href="/2015/05/22/scala-startups/" class="title">scala-startups</a></p>
-              <p class="item-date"><time datetime="2015-05-22T01:10:24.000Z" itemprop="datePublished">2015-05-22</time></p>
+              <p class="item-title"><a href="/2014/06/22/scala-startups/" class="title">scala-startups</a></p>
+              <p class="item-date"><time datetime="2014-06-22T01:10:24.000Z" itemprop="datePublished">2014-06-22</time></p>
             </div>
           </li>
         
           <li>
             
             <div class="item-thumbnail">
-              <a href="/2015/05/22/helloworld/" class="thumbnail">
+              <a href="/2014/03/29/JUnit和它的设计模式/" class="thumbnail">
   
     <span class="thumbnail-image thumbnail-none"></span>
   
@@ -212,9 +463,63 @@
             </div>
             
             <div class="item-inner">
-              <p class="item-category"></p>
-              <p class="item-title"><a href="/2015/05/22/helloworld/" class="title">helloworld</a></p>
-              <p class="item-date"><time datetime="2015-05-22T00:52:41.000Z" itemprop="datePublished">2015-05-22</time></p>
+              <p class="item-category"><a class="article-category-link" href="/categories/编程/">编程</a></p>
+              <p class="item-title"><a href="/2014/03/29/JUnit和它的设计模式/" class="title">JUnit和它的设计模式</a></p>
+              <p class="item-date"><time datetime="2014-03-29T01:10:24.000Z" itemprop="datePublished">2014-03-29</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              <a href="/2014/01/21/自制编程语言/" class="thumbnail">
+  
+    <span style="background-image:url(/img/p_impl_language/alt.png
+)" alt="自制编程语言" class="thumbnail-image"></span>
+  
+</a>
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/编程/">编程</a></p>
+              <p class="item-title"><a href="/2014/01/21/自制编程语言/" class="title">自制编程语言</a></p>
+              <p class="item-date"><time datetime="2014-01-21T01:10:24.000Z" itemprop="datePublished">2014-01-21</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              <a href="/2014/01/01/2013简单回顾/" class="thumbnail">
+  
+    <span style="background-image:url(/img/p_review2013/haiou.jpg
+)" alt="2013简单回顾" class="thumbnail-image"></span>
+  
+</a>
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/职业生涯/">职业生涯</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/职业生涯/年度回顾/">年度回顾</a></p>
+              <p class="item-title"><a href="/2014/01/01/2013简单回顾/" class="title">2013简单回顾</a></p>
+              <p class="item-date"><time datetime="2014-01-01T01:10:24.000Z" itemprop="datePublished">2014-01-01</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              <a href="/2013/11/03/java_annotation/" class="thumbnail">
+  
+    <span style="background-image:url(http://cgfalcon-attachment.stor.sinaapp.com/87be6df591ac8efdb.png
+)" alt="Java注解" class="thumbnail-image"></span>
+  
+</a>
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/编程/">编程</a></p>
+              <p class="item-title"><a href="/2013/11/03/java_annotation/" class="title">Java注解</a></p>
+              <p class="item-date"><time datetime="2013-11-03T01:10:24.000Z" itemprop="datePublished">2013-11-03</time></p>
             </div>
           </li>
         
@@ -227,7 +532,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/编程/">编程</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/数据库/">数据库</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程/">编程</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/职业生涯/">职业生涯</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/职业生涯/年度回顾/">年度回顾</a><span class="category-list-count">1</span></li></ul></li></ul>
     </div>
   </div>
 
@@ -236,7 +541,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Scala/">Scala</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/函数式编程/">函数式编程</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/2013总结/">2013总结</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/">JVM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Junit/">Junit</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MongoDB/">MongoDB</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Scala/">Scala</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/annotation/">annotation</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/函数式编程/">函数式编程</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编程语言/">编程语言</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/重构/">重构</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -245,7 +550,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Scala/" style="font-size: 10px;">Scala</a> <a href="/tags/函数式编程/" style="font-size: 10px;">函数式编程</a>
+      <a href="/tags/2013总结/" style="font-size: 10px;">2013总结</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Junit/" style="font-size: 10px;">Junit</a> <a href="/tags/MongoDB/" style="font-size: 10px;">MongoDB</a> <a href="/tags/Scala/" style="font-size: 10px;">Scala</a> <a href="/tags/annotation/" style="font-size: 10px;">annotation</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/函数式编程/" style="font-size: 10px;">函数式编程</a> <a href="/tags/编程语言/" style="font-size: 10px;">编程语言</a> <a href="/tags/重构/" style="font-size: 10px;">重构</a>
     </div>
   </div>
 
@@ -254,7 +559,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">五月 2015</a><span class="archive-list-count">2</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06/">六月 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">三月 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/01/">一月 2014</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/11/">十一月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">七月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">五月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">三月 2013</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -274,14 +579,15 @@
 </footer>
     
 
-<script>
-  var disqus_shortname = 'hellofalcon';
-  (function(){
-    var dsq = document.createElement('script');
-    dsq.type = 'text/javascript';
-    dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"hellofalcon"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
   })();
 </script>
 

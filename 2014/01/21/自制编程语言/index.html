@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>自制编程语言 | Hellofalcon</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="编程语言开发札记
+以下文字用于记录我在开发自己JVM语言过程中的学习历程，一是为了记录自己的成长，而是如果能够帮助有这方面需求的人，那就再好不过了     - Falcon
+
+2013/12/24 平安夜我的目标是制作JVM语言。目前搜集一些资料，但是JVM生成字节码方面的资料很少。
+目前看了的资料有 
+ http://stackoverflow.com/questions/3380498/cre">
+<meta property="og:type" content="article">
+<meta property="og:title" content="自制编程语言">
+<meta property="og:url" content="http://hellofalcon.com/2014/01/21/自制编程语言/index.html">
+<meta property="og:site_name" content="Hellofalcon">
+<meta property="og:description" content="编程语言开发札记
+以下文字用于记录我在开发自己JVM语言过程中的学习历程，一是为了记录自己的成长，而是如果能够帮助有这方面需求的人，那就再好不过了     - Falcon
+
+2013/12/24 平安夜我的目标是制作JVM语言。目前搜集一些资料，但是JVM生成字节码方面的资料很少。
+目前看了的资料有 
+ http://stackoverflow.com/questions/3380498/cre">
+<meta property="og:image" content="http://hellofalcon.com/img/p_impl_language/alt.png">
+<meta property="og:image" content="http://hellofalcon.com/img/p_impl_language/optional.png">
+<meta property="og:image" content="http://hellofalcon.com/img/p_impl_language/one_or_more.png">
+<meta property="og:image" content="http://hellofalcon.com/img/p_impl_language/zero_or_more.png">
+<meta property="og:image" content="http://hellofalcon.com/img/p_impl_language/ast_opt_precendce.png">
+<meta property="og:image" content="http://hellofalcon.com/img/p_impl_language/symbol_nested_scopes.png">
+<meta property="og:updated_time" content="2015-05-25T05:47:13.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="自制编程语言">
+<meta name="twitter:description" content="编程语言开发札记
+以下文字用于记录我在开发自己JVM语言过程中的学习历程，一是为了记录自己的成长，而是如果能够帮助有这方面需求的人，那就再好不过了     - Falcon
+
+2013/12/24 平安夜我的目标是制作JVM语言。目前搜集一些资料，但是JVM生成字节码方面的资料很少。
+目前看了的资料有 
+ http://stackoverflow.com/questions/3380498/cre">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href='//fonts.useso.com/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
+  <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css" type="text/css">
+  
+
+</head>
+<body>
+  <div id="container">
+    <header id="header">
+  <div id="header-main" class="header-inner">
+    <div class="outer">
+      <a href="/" id="logo"><i class="logo"></i><span class="site-title">Hellofalcon</span></a>
+      <nav id="main-nav">
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        <div class="profile" id="profile-nav">
+          <a id="profile-anchor" href="javascript:;"><img class="avatar" src="/img/avatar.png"><i class="fa fa-caret-down"></i></a>
+        </div>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="http://hellofalcon.com"></form>
+      </div>
+    </div>
+  </div>
+  <div id="main-nav-mobile" class="header-sub header-inner">
+    <table class="menu outer">
+      <tr>
+      
+        <td><a class="main-nav-link" href="/">Home</a></td>
+      
+        <td><a class="main-nav-link" href="/archives">Archives</a></td>
+      
+        <td><a class="main-nav-link" href="/about">About</a></td>
+      
+      <td>
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://hellofalcon.com"></form>
+      </td>
+      </tr>
+    </table>
+  </div>
+  
+</header>
+    <div class="outer">
+      <aside id="profile">
+  <div class="inner profile-inner">
+  	<div class="base-info profile-block">
+		  <img id="avatar" src="/img/avatar.png">
+      <h2 id="name">Falcon Chu</h2>
+      <h3 id="title">Java程序猿@Alibaba</h3>
+      <span id="location"><i class="fa fa-map-marker"></i>HangZhou, China</span>
+      <a id="follow" href="http://weibo.com/cggogogo">关注我</a>
+  	</div>
+    <div class="article-info profile-block">
+      <div class="article-info-block">
+        8
+        <span>文章</span>
+      </div>
+      <div class="article-info-block">
+        11
+        <span>标签</span>
+      </div>
+    </div>
+    
+    <div class="contact-info profile-block">
+      <table class="contact-list">
+        <tr>
+        
+          <td><a href="https://github.com/cgfalcon" target="_blank" title="github"><i class="fa fa-github"></i></a></td>
+        
+          <td><a href="http://www.zhihu.com/people/cgfalcon" target="_blank" title="zhihu"><i class="fa fa-zhihu"></i></a></td>
+        
+          <td><a href="http://weibo.com/cggogogo" target="_blank" title="weibo"><i class="fa fa-weibo"></i></a></td>
+        
+        </tr>
+      </table>
+    </div>
+    
+  </div>
+</aside>
+      <section id="main"><article id="post-自制编程语言" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      自制编程语言
+    </h1>
+  
+
+        <div class="article-meta">
+          <div class="article-date">
+  <i class="fa fa-calendar"></i>
+  <a href="/2014/01/21/自制编程语言/">
+    <time datetime="2014-01-21T01:10:24.000Z" itemprop="datePublished">2014-01-21</time>
+  </a>
+</div>
+          
+  <div class="article-category">
+  	<i class="fa fa-folder"></i>
+    <a class="article-category-link" href="/categories/编程/">编程</a>
+  </div>
+
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="编程语言开发札记">编程语言开发札记</h2><blockquote>
+<p>以下文字用于记录我在开发自己JVM语言过程中的学习历程，一是为了记录自己的成长，而是如果能够帮助有这方面需求的人，那就再好不过了     - Falcon</p>
+</blockquote>
+<h3 id="2013/12/24_平安夜">2013/12/24 平安夜</h3><p>我的目标是制作JVM语言。目前搜集一些资料，但是JVM生成字节码方面的资料很少。</p>
+<p>目前看了的资料有 </p>
+<p> <a href="http://stackoverflow.com/questions/3380498/create-a-jvm-programming-language" target="_blank" rel="external">http://stackoverflow.com/questions/3380498/create-a-jvm-programming-language</a></p>
+ <a id="more"></a>
+<p>从里面整理了下生成JVM语言要做的事</p>
+<p>要制作JVM语言 目前考虑的 实现步骤:</p>
+<ol>
+<li>虚拟机规范 第四章，及第六章。 （其实虚拟机类似真实机器，所以目标首先是像 运用汇编一样运用字节码指令，实现简单的输出功能）</li>
+<li>程序语法定义 （使用ANTLR 生成词法和语法解析器，语法以精简为主，现阶段只实现 if, for, 和变量）</li>
+<li>抽象语法树生成</li>
+<li>解析语法树，生成字节码 （可以直接生成到内存， 也可以生成到 class 文件）</li>
+</ol>
+<p>其实相较而言的话，语法定义倒是问题不大。</p>
+<p>之前买了《自制编程语言》这本书。算是打开了我的兴趣之门，不过比较遗憾的是，书中采用C语言来描述。我想用Java来实现。</p>
+<p>针对一门语言的几个部分，词法和语法用 ANTLR4 完成， 但是 AST 的生成和解析目前不知道怎么做，看到 <a href="http://www.antlr.org/wiki/display/ANTLR3/LLVM" target="_blank" rel="external">http://www.antlr.org/wiki/display/ANTLR3/LLVM</a> 有介绍生成使用ANTLR3 生成 LLVM字节码的例子，不过同样遗憾的是没能完全满足我的要求。JVM字节码生成的话据说ASM可以实现，所以需要看看。</p>
+<p>看来还是没能找到现成的例子。</p>
+<p>除了上面的提到的网页，我还在看 《Language Implementation Patterns》一书。</p>
+<p>其中看到了 《Lua implementation》 一个小手册， 等有空看看。</p>
+<p>总而言之，主要任务有：</p>
+<ol>
+<li>先了解编译语言涉及到的知识</li>
+<li>看看如何生成字节码</li>
+<li>ANTLR4 语法熟悉</li>
+</ol>
+<h3 id="2013/12/25_圣诞">2013/12/25 圣诞</h3><p>早上起来迅速看了下 Lua 5.0 implementation， 大概了解下 Lua 编译器的一些设计。 Lua 是采用基于寄存器的执行模型（Lua 5.0 及以后，之前版本采用基于栈的模型）， Scanner 和 递归下降的Parser 都是手写，据说这样性能和效率会高一些，不明觉厉，不过从另一方面可以看出Lua确实小巧。Lua 编译器没有采用 中间表达(IR)，而是直接在解析程序的时候生成虚拟机指令。</p>
+<p>基于寄存器，虚拟机通常会设计两个问题： 编码大小（因为指令中含有操作码）和 解码的难度。 但是总体而言基于寄存器生成的指令数会更少（应为基于栈，对每个操作数都有入栈，弹栈的操作）</p>
+<p>对比Lua 前后 Stack-based Machine 和 Register-based Machine 的指令区别：</p>
+<p>这个是寄存器的：</p>
+<pre><code><span class="built_in">local</span> <span class="operator">a</span>,t,i     <span class="number">1</span>: LOADNIL <span class="number">0</span> <span class="number">2</span> <span class="number">0</span>
+<span class="operator">a</span>=<span class="operator">a</span>+i           <span class="number">2</span>: ADD <span class="number">0</span> <span class="number">0</span> <span class="number">2</span>
+<span class="operator">a</span>=<span class="operator">a</span>+<span class="number">1</span>           <span class="number">3</span>: ADD <span class="number">0</span> <span class="number">0</span> <span class="number">250</span> ; <span class="number">1</span>
+<span class="operator">a</span>=t[i]          <span class="number">4</span>: GETTABLE <span class="number">0</span> <span class="number">1</span> <span class="number">2</span>
+</code></pre><p>下面这个是栈的：</p>
+<pre><code>local a,t,i     1: PUSHNIL 3
+a=a+i           2: GETLOCAL 0 <span class="comment">; a</span>
+                3: GETLOCAL 2 <span class="comment">; i</span>
+                4: ADD
+                5: SETLOCAL 0 <span class="comment">; a</span>
+a=a+1           6: GETLOCAL 0 <span class="comment">; a</span>
+                7: ADDI 1
+                8: SETLOCAL 0 <span class="comment">; a</span>
+a=t[i]          9: GETLOCAL 1 <span class="comment">; t</span>
+                10: GETINDEXED 2 <span class="comment">; i</span>
+                11: SETLOCAL 0 <span class="comment">; a</span>
+</code></pre><p>看到最后 发现 Lua 只有 35个虚拟机指令，确实好少，对比下我大Java，都是泪啊，当然咱也没办法，两个是不同的虚拟机机制，╮(￣▽￣”)╭。</p>
+<p>a language is just a set of valid sentences</p>
+<h3 id="2013/12/27">2013/12/27</h3><p>《Language Implementation Patterns》确实适合新手看，概念结合代码，容易消化。</p>
+<p>按照书里提到的方法修改了之前做的一个 计算器Lexer，可读性提升很多。如果当时我直接采用书中方法，未必能体会其中好处。</p>
+<p>简笔记录一些概念</p>
+<p>LL(n)</p>
+<ul>
+<li>第一个L 的意思是 ： read the input from left to right</li>
+<li>第二个L 的意思是 :  descend into parse tree children from left to right</li>
+<li>(n) 的意思是:  表示 lookahead token 的数量， 就是往前多看n个token</li>
+</ul>
+<h4 id="一些语法和代码之间的关系">一些语法和代码之间的关系</h4><ol>
+<li><p>(alt1 | alt2 | … | altn)</p>
+<p><img src="/img/p_impl_language/alt.png" alt="alt.png" title="alt"></p>
+<p> 同时，这种可选结构对应的程序就是 if-else, 如果是LL(1)还可以使用switch-case</p>
+<pre><code><span class="keyword">if</span> ( ?lookahead-predicts-alt1 ? ) { ?<span class="keyword">match</span>-alt1 ? }
+<span class="keyword">else</span> <span class="keyword">if</span> ( ?lookahead-predicts-alt2 ? ) { ?<span class="keyword">match</span>-alt2 ? }
+...
+<span class="keyword">else</span> <span class="keyword">if</span> ( ?lookahead-predicts-altN ? ) { ?<span class="keyword">match</span>-altN ? }
+<span class="keyword">else</span> ?throw-<span class="keyword">exception</span> ?
+</code></pre></li>
+<li><p>(T)?</p>
+<p><img src="/img/p_impl_language/optional.png" alt="optional.png" title="optional"></p>
+<p>程序结构也就对应为</p>
+<pre><code><span class="keyword">if</span> <span class="comment">( &lt;lookahead-is-T )</span> { match<span class="comment">(T)</span>;}    
+</code></pre></li>
+<li><p>(T)+</p>
+<p><img src="/img/p_impl_language/one_or_more.png" alt="one_or_more.png" title="one_or_more"></p>
+<p>这种情况下使用 do-while 循环</p>
+<pre><code><span class="built_in">do</span> {
+    &lt;code-matching-alternatives&gt;
+} <span class="keyword">while</span> ( lookahead-predicts-<span class="operator">an</span>-alt-<span class="operator">of</span>-subrule&gt; )
+</code></pre></li>
+<li><p>(T)*</p>
+<p><img src="/img/p_impl_language/zero_or_more.png" alt="zero_or_more.png" title="zero_or_more"></p>
+<p>零个或多个，果断 while 循环</p>
+<pre><code><span class="keyword">while</span> ( lookahead-predicts-<span class="operator">an</span>-alt-<span class="operator">of</span>-subrule&gt; ) {
+    &lt;code-matching-alternatives&gt;
+}
+</code></pre></li>
+</ol>
+<p>根据书中的LL(1) Lexer 的思路写了个计算器Lexer 和 Parser。</p>
+<h3 id="2013/12/28">2013/12/28</h3><p>在实现Parser的时候遇到了点坎，不知道如何组织Token，都说语法分析最后要生成树，不过总是拿不定主意到底怎么做，难道一个语法中的每个规则都生成一个类？</p>
+<p>想不出来回头又参考了《自制变成语言》里面crowbar的实现，发现里面将不同的表达式(expression)和语句(statement) 分成了不同的类型，并没有生成很多类（虽然它是c语言实现的(-__-)b）。这么一看又勾起了我到底如何细致的区分 expression 和 statement 产生了疑问，遂google 之。</p>
+<p><strong>expression</strong> 通常会产生一个值。可以包含变量，操作符，以及方法调用。</p>
+<blockquote>
+<p>Mathematics a collection of symbols that jointly express a quantity : the expression for the circumference of a circle is 2πr.</p>
+</blockquote>
+<p><strong>statement</strong></p>
+<blockquote>
+<p>In computer programming a statement can be thought of as the smallest standalone element of an imperative programming language. A program is formed by a sequence of one or more statements. A statement will have internal components (e.g., expressions).</p>
+</blockquote>
+<p>statement 通常包含了 expression</p>
+<p>找到了Java里面的定义，借鉴之</p>
+<p><strong>expression</strong> -&gt; An expression is a construct made up of variables, operators, and method invocations, which are constructed according to the syntax of the language, that evaluates to a single value</p>
+<p><strong>statements</strong> -&gt; Statements are roughly equivalent to sentences in natural languages. A statement forms a complete unit of execution. The following types of expressions can be made into a statement by terminating the expression with a semicolon (;). 有些表达式本身可以作为语句(statement), 这些表达式称之为 expression statements. 下面几类就是</p>
+<ul>
+<li>Assignment expressions</li>
+<li>Any use of ++ or —</li>
+<li>Method invocations</li>
+<li>Object creation expressions</li>
+</ul>
+<p>例如</p>
+<pre><code>// assignment statement
+aValue = <span class="number">8933</span>.<span class="number">234</span>;
+// increment statement
+aValue++;
+// <span class="keyword">method</span> invocation statement
+<span class="type">System</span>.<span class="keyword">out</span>.println(<span class="string">"Hello World!"</span>);
+// <span class="keyword">object</span> creation statement
+<span class="type">Bicycle</span> myBike = new <span class="type">Bicycle</span>();
+</code></pre><p>除此之外还有两类statement: <strong>declaration statements</strong> and <strong>control flow statements</strong></p>
+<p>例如</p>
+<pre><code><span class="comment">// declaration statement</span>
+<span class="keyword">double</span> aValue = <span class="number">8933.234</span>;
+</code></pre><p><strong>block</strong> -&gt; A block is a group of zero or more statements between balanced braces and can be used anywhere a single statement is allowed.</p>
+<p>好，现在对statement 总结如下：</p>
+<pre><code>statements:
+    | ---  <span class="keyword">expression</span> statements
+    | ---  declaration statements
+    | ---  <span class="keyword">control</span> <span class="keyword">flow</span> statements
+                | ---  <span class="keyword">if</span>-<span class="keyword">else</span> statements
+                | ---  <span class="keyword">switch</span> statements
+                | ---  <span class="keyword">while</span> statements
+                | ---  <span class="keyword">do</span>-<span class="keyword">while</span> statements
+                | ---  <span class="keyword">for</span> statements
+                | ---  branching statements
+                           | --- <span class="keyword">break</span> statements
+                           | --- <span class="keyword">continue</span> statements
+                           | --- <span class="keyword">return</span> statements
+</code></pre><p>恩恩，思路清晰了。</p>
+<p>如果说Lexer产生的是Token的话，那么Parser产生的就是Statement, 不知道对不对，有待验证。。。</p>
+<p>从 《Language Implementation Pattern》书中看到，Parser是用来组织 Token之间结构或关系的</p>
+<blockquote>
+<p>LL(1) Recursive-Descent Parser</p>
+<p>This pattern analyzes the syntactic structure of the token sequence of a<br>phrase using a single lookahead token</p>
+</blockquote>
+<p>这里 <strong>1</strong> 的意思是在当前 rule 中只看一个token，但是LL(1) 对于有歧义的语法很无力，比如</p>
+<pre><code><span class="rule"><span class="attribute">expr</span>:<span class="value"> ID <span class="string">'++'</span>
+    | ID <span class="string">'--'</span></span></span>
+</code></pre><p>由于只看一个Token，所以在匹配expr时往前看一个Token- ID, 但是此时又两个分支可以选，要确定哪个分支需要看 ID 后面的符号才可以，所以这个时候就无法处理了。要么采用更复杂的 LL(k) 多看几个字符, 要么优化下像下面这样</p>
+<pre><code><span class="rule"><span class="attribute">expr</span>:<span class="value"> ID (<span class="string">'++'</span>|<span class="string">'--'</span>)</span></span>
+</code></pre><h3 id="2013/12/30">2013/12/30</h3><p>Calc Parser 做好了，之前思路不对，总是纠结于如何生成Statement，不过现在不纠结了，直接按照文法的样子进行匹配就可以了。从这样看的话确实编译前端的内容真是没什么，看来大头在后端。</p>
+<p>今天开始看LL(k) Parser的内容。 </p>
+<p>LL(k) Parser 顾名思义，通过分析后面的 k 个Token来进行语法分析。</p>
+<blockquote>
+<p>The strength of a recursive-descent parser depends entirely on the<br>strength of its lookahead decisions.</p>
+</blockquote>
+<p>不过LL(k) 也是固定的多看 k 个Token，另外有一种相似的模式 <strong>Backtracing Pattern</strong>, 可以往前看任意多个Token</p>
+<p>LL(k) Parser需要在 LL(1) Parser 的基础上对 lookahead token 做调整。将原来的token改造为数组，数组长度为k。consume() 的时候使用 <strong>%</strong> 操作保证下标不超过 k。<br>然后再有歧义文法的地方进行判断，比如如果要连续判断第二个Token才能决定采用哪种逻辑</p>
+<pre><code><span class="keyword">if</span><span class="params">(LA<span class="params">(<span class="number">1</span>)</span> == TokenType.xxx &amp;&amp; LA<span class="params">(<span class="number">2</span>)</span> == TokenType.yyy)</span> {
+    ...
+}
+</code></pre><h3 id="2014/1/1">2014/1/1</h3><p>新年第一天，同样将新年的第一行代码献给自制编程语言。这是我的一个小梦想，也是今年的第一个目标。</p>
+<p>在实现自制编程语言的过程中我将用 《Language Implementation Patterns》 作为学习指导。现在我来到的 <strong>Enhanced Parsing Pattern</strong> 一部分，里面将涉及到如何实现更强大的 Parser 的内容。</p>
+<p>主要涉及到三个 Parser：</p>
+<ul>
+<li><p>Backtracking Parser. </p>
+<p>we use backtracking parsers only when we need to distinguish between similar language constructs.</p>
+</li>
+<li>Memorizing Parser</li>
+<li>Predicated Parser</li>
+</ul>
+<p>The parsers we’re working with in this book recognize context-free languages. A context-free language is a language whose constructs don’t<br>depend on the presence of other constructs.</p>
+<h4 id="Backtraking_Parser">Backtraking Parser</h4><p>Syntactic predicates and speculative parsing are extremely useful when<br>parsing phrases that look the same from the left edge</p>
+<p><strong>Backtraking Parser</strong>: is to speculatively attempt the alternatives in order until we<br>find one that matches</p>
+<p>简而言之就是不断尝试各种分支，直到找到匹配的路径</p>
+<p>执行过程是这样：</p>
+<p>Upon success, the parser rewinds the input and<br>parses the alternative normally (we’ll see why we parse it twice when<br>we discuss actions). Upon failing to match an alternative, the parser<br>rewinds the input and tries the next one. If the parser can’t find any<br>matching alternative, it throws a “no viable alternative” exception</p>
+<h4 id="Memoizing_Parser">Memoizing Parser</h4><p>This pattern records partial parsing results during backtracking to<br>guarantee linear parsing performance, at the cost of a small amount of<br>memory.</p>
+<p>简而言之，这个 Parser 主要作用就是记录已经解析过的 Token， 当后面回溯的时候避免重复解析</p>
+<p>这个Parser没看完，(￣o￣) . z Z，看着困。打算跳过</p>
+<h4 id="Predicated_Parser">Predicated Parser</h4><p>This pattern augments any top-down parser with arbitrary boolean expressions that help make parsing decisions.<br>These boolean expressions are called semantic predicates and specify<br>the semantic applicability of an alternative. Predicates that evaluate to<br>false effectively “turn off” a parser decision path. From a grammar point<br>of view, false predicates make alternatives invisible.</p>
+<p>同样，这个先跳过</p>
+<h3 id="2014/1/2">2014/1/2</h3><p>接下来直接看语言分析的部分，包括AST等</p>
+<p>之前我们所做的工作都是检验语句语法，以及验证它们是对的。现在将更进一步学习如何分析语句的语法。</p>
+<p>为了能够方便的识别出输入流中的操作符和操作数，我们需要构建某种中间表达式（Intermediate Representation) IR。通常采用的是 AST， 在构建AST的过程中也就识别出了输入流中的语法结构。</p>
+<p>有些转换过程中不需要 IR， 这样的过程称为 Syntax-Directed。比如将 wiki 格式转化为 Html 格式，在转化过程中可以逐字符的翻译成Html对应编码。</p>
+<p>和 IR tree 相关的模式：</p>
+<ul>
+<li><p>Parse Tree. </p>
+<p>  Parse trees record how a parser recognizes an input sentence. The interior nodes are rule names, and the leaves are tokens. Although parse trees are less suitable than ASTs for most language applications, parsers can create them automatically.</p>
+</li>
+<li><p>Homogeneous AST.</p>
+<p>  all the nodes have the same type, we say that they are homogeneous. With a single node type, there can be no specialty fields to reference child subtrees. Nodes track children with lists of child pointers.</p>
+</li>
+<li><p>Normalized Heterogeneous AST.</p>
+<p>  Trees with a multitude of node types are called heterogeneous trees. Normalized heterogeneous trees use a normalized list of children like homogeneous trees.</p>
+</li>
+<li><p>Irregular Heterogeneous AST.</p>
+<p>  When we refer to an AST as heterogeneous, we also assume that the nodes have irregular children. Instead of a normalized child list, the nodes have named fields, one per child.</p>
+</li>
+</ul>
+<h4 id="编译中的树">编译中的树</h4><p>在开发编译器的过程中涉及到两个树，一个是 Parse Tree，另一个是 Abstract Syntax Tree</p>
+<p>设计IR Trees 的要点：<br>? Dense: No unnecessary nodes<br>? Convenient: Easy to walk<br>? Meaningful: Emphasize operators, operands, and the relationship<br>between them rather than artifacts from the grammar</p>
+<p>The first two points imply that it should be easy and fast to identify patterns in the tree. The last point implies that the tree structure should be insensitive to changes in the grammar (at least those unrelated to language syntax)</p>
+<h4 id="AST_如何实现操作符之间的优先级">AST 如何实现操作符之间的优先级</h4><p>To encode “x happens before y,” we make x lower than y in the tree. </p>
+<p>Operators with higher precedence appear lower in the AST. For example, in expression <code>3+4*5</code>, the <em> operator has higher precedence than +. The </em> subtree is a subtree of the + operator node. If we alter the precedence of the operators in the expression with parentheses, <code>(3+4)*5</code>, the + subtree becomes a child of the * node</p>
+<p><img src="/img/p_impl_language/ast_opt_precendce.png" alt="ast_opt_precendce.png" title="ast_opt_precendence"></p>
+<h4 id="Create_AST_for_nonexecutable_language_statements">Create AST for nonexecutable language statements</h4><p><strong>Representing Pseudo-operations in ASTs</strong></p>
+<p>有一些表达式并没有明显的操作符可以用来构建一颗树，这个时候可以使用一个虚拟token (imaginary token) 来充当AST的root.</p>
+<p>通常 function declarations, class declarations, formal argument declarations 都需要这种处理手法</p>
+<p><strong>Enforcing Tree Structure with the Type System</strong></p>
+<p>在AST中引入类型系统来保证类型的正确性</p>
+<h3 id="2014/1/4">2014/1/4</h3><p>按照书中的内容，到现在为止，因为已经了解了如何手写Lexer 和 Parser的话，那么就可以考虑使用自动生成Lexer 和 Parser的工具了。</p>
+<p>ANTLR4 年初的时候研究过一段时间，但是后来被别的事冲掉了。现在只能重新学一遍，recall 一下，果然学东西应该一次性学完，不然成本相当高( ▼-▼ )</p>
+<p>由于《Language Implementation Patterns》 采用的是Antlr3，所以看到 <strong>Constructing ASTs with ANTLR Grammars</strong> 的时候里面用Antlr3描述如何构建AST，心想难道又要断档了？又要重学Antlr3？因为Antlr4和有很多不同，4可以采用visitor和listener对grammar中需要的操作进行响应，保证了语法文件的干净。所以如果要回到3，就有点太那个了。。。</p>
+<p>不过还好，看到书后面作者又回到正规，采用正常的Java代码实现AST，所以顿时松了口气。</p>
+<p>总结下之前提到的IR，在构造IR的时候我们有两种选择：Parse Tree 和 AST Tree。而构造AST又有三种方法：Homogeneous(同质的) AST， Normalized Heterogeneous AST ， Irregular Heterogeneous(异质的，合成的) AST。这三者的侧重点都不同，所以需要根据需要进行选择</p>
+<p><strong>IR</strong></p>
+<ul>
+<li><p>Parser Trees</p>
+<pre><code>Pro<span class="variable">s:</span> Parser generators can automatically build these <span class="keyword">for</span> us. 
+Con<span class="variable">s:</span> Parse trees are full of noise (unnecessary nodes). They are sensitive <span class="keyword">to</span> <span class="keyword">changes</span> in  the grammar unrelated <span class="keyword">to</span> <span class="keyword">syntax</span>.
+</code></pre></li>
+<li><p>AST Trees</p>
+<ul>
+<li><p>Homogeneous AST</p>
+<pre><code>Pros: Homogeneous trees <span class="keyword">are</span> very simple.     
+Cons: It’s cumbersome to annotate AST nodes because the single node type has the union <span class="keyword">of</span> all needed fields. There <span class="keyword">is</span> no way to add methods specific to a particular <span class="keyword">kind</span> <span class="keyword">of</span> node.
+</code></pre><p>简而言之，Homogeneous AST 的结点将所有的类型混合到一起，这意味着所有的实质上不同的节点拥有相同的结构模型，所以也就无法对特别的节点施加独特的操作。</p>
+</li>
+<li><p>Normalized Heterogeneous AST</p>
+<pre><code>Pro<span class="variable">s:</span> It’<span class="keyword">s</span> easy <span class="keyword">to</span> <span class="built_in">add</span> operator <span class="built_in">or</span> operand-specific data <span class="built_in">and</span> methods. 
+Con<span class="variable">s:</span> Large grammars like Java’<span class="keyword">s</span> need about <span class="number">200</span> class definitions <span class="keyword">to</span> <span class="keyword">be</span> fully heterogeneous.
+</code></pre><p>  Normalized Heterogeneous AST 相当于添加了类型层次，对于不同的类型都为其建立对应的class，这样的话如果语法复杂，那么class将会急剧增长。</p>
+</li>
+<li><p>Irregular Heterogeneous AST</p>
+<pre><code>Pros: It’s easy <span class="keyword">to</span> <span class="keyword">add</span> <span class="keyword">operator</span>- <span class="keyword">or</span> operand-specific data <span class="keyword">and</span> methods. Building tree-walking methods <span class="keyword">for</span> a small <span class="keyword">set</span> <span class="keyword">of</span> heterogeneous nodes <span class="keyword">is</span> quick <span class="keyword">and</span> easy.
+Cons: <span class="keyword">As</span> <span class="keyword">with</span> Normalized Heterogeneous AST, there are lots <span class="keyword">of</span> AST classes <span class="keyword">to</span> <span class="keyword">read</span> <span class="keyword">and</span> <span class="keyword">write</span>. Having irregular children makes building <span class="keyword">external</span> visitors difficult.
+</code></pre></li>
+</ul>
+</li>
+</ul>
+<p>如果更关注树的结构那么选 Homogeneous AST 就可以了，如果需要区分结点类型，那么使用 Normalized Heterogeneous AST 就行。对于 Parse Tree，由于噪音字符比较多，所以不太采用。</p>
+<h4 id="Parse_Tree">Parse Tree</h4><p>Parse trees record the sequence of rules a parser applies as well as the tokens it matches. Parse trees describe sentence structure by grouping input symbols into subtrees.</p>
+<p>But parse trees are extremely inconvenient to walk and transform. Parse trees are full of noise because of all the interior rule nodes. </p>
+<p>Nonetheless, parse trees are still very useful as intermediate representations for some tools and applications. For example, development environments use parse trees to good effect for syntax highlighting and error-checking. 尽管前面说了这么多Parser 不好的地方，但是Parse Tree在 语法高亮和 错误检查等方面上市可以物尽其用的。因为我们可以对语句中的一部分内容进行操作。</p>
+<h4 id="AST">AST</h4><p>The key idea behind an AST is the operator-operand tree structure, not the node data type. (AST 关注操作符和操作数) An AST contains the essence of the input token stream and the relationships between operator and operand tokens. We don’t need to use the type system of our implementation language to distinguish between nodes. Nodes in any AST derive from tokens,<br>so we can use the token type to identify nodes.</p>
+<h4 id="Homogeneous_AST">Homogeneous AST</h4><p><strong>A homogeneous tree implements an abstract syntax tree (AST) using a<br>single node data type and a normalized child list representation</strong></p>
+<pre><code>public class AST {
+
+    private Token token;
+    private List&lt;AST&gt; <span class="built_in">children</span>;
+
+    public AST<span class="params">()</span> {
+
+    }
+
+    public AST<span class="params">(Token token)</span> {
+        this.token = token;
+    }
+
+    public void addChild<span class="params">(AST child)</span> {
+        <span class="keyword">if</span> <span class="params">(children == null)</span> {
+            <span class="built_in">children</span> = new ArrayList&lt;AST&gt;<span class="params">()</span>;
+        }
+        <span class="built_in">children</span>.add<span class="params">(child)</span>;
+    }
+
+
+    public boolean isNil<span class="params">()</span> {
+        return token == null;
+    }
+
+    public String toString<span class="params">()</span> {
+        return token == null ? <span class="string">"nil"</span> : token.toString<span class="params">()</span>;
+    }
+
+    public String toStringTree<span class="params">()</span> {
+        <span class="keyword">if</span> <span class="params">(children == null || children.size<span class="params">()</span> == <span class="number">0</span>)</span> {
+            return this.toString<span class="params">()</span>;
+        }
+        StringBuilder treeToString = new StringBuilder<span class="params">()</span>;
+        <span class="keyword">if</span> <span class="params">(!isNil<span class="params">()</span>)</span> {
+            treeToString.append<span class="params">(<span class="string">"( "</span>)</span>;
+            treeToString.append<span class="params">(toString<span class="params">()</span>)</span>;
+            treeToString.append<span class="params">(<span class="string">" "</span>)</span>;
+        }
+
+
+        <span class="keyword">for</span> <span class="params">(int i = <span class="number">0</span>; i &lt; children.size<span class="params">()</span>; i++)</span> {
+            AST subTree = <span class="built_in">children</span>.get<span class="params">(i)</span>;
+            <span class="keyword">if</span> <span class="params">(i &gt; <span class="number">0</span>)</span> {
+                treeToString.append<span class="params">(<span class="string">" "</span>)</span>;
+            }
+            treeToString.append<span class="params">(subTree.toStringTree<span class="params">()</span>)</span>;
+        }
+
+        <span class="keyword">if</span> <span class="params">(!isNil<span class="params">()</span>)</span> {
+
+            treeToString.append<span class="params">(<span class="string">" )"</span>)</span>;
+        }
+        return treeToString.toString<span class="params">()</span>;
+    }
+
+    public static void main<span class="params">(String[] args)</span> {
+        Token one = new Token<span class="params">(<span class="string">"1"</span>, TokenType.NUM)</span>;
+        Token two = new Token<span class="params">(<span class="string">"2"</span>, TokenType.NUM)</span>;
+        Token add = new Token<span class="params">(<span class="string">"+"</span>, TokenType.OP_ADD_TOKEN)</span>;
+
+        AST root = new AST<span class="params">(add)</span>;
+        root.addChild<span class="params">(new AST<span class="params">(one)</span>)</span>;
+        root.addChild<span class="params">(new AST<span class="params">(two)</span>)</span>;
+
+        System.out.println<span class="params">(<span class="string">"1 + 2: "</span> + root.toStringTree<span class="params">()</span>)</span>;
+
+        AST list= new AST<span class="params">()</span>;
+        list.addChild<span class="params">(new AST<span class="params">(one)</span>)</span>;
+        list.addChild<span class="params">(new AST<span class="params">(two)</span>)</span>;
+
+        System.out.println<span class="params">(<span class="string">"list: "</span> + list.toStringTree<span class="params">()</span>)</span>;
+
+    }
+}
+</code></pre><h4 id="Normalized_Heterogeneous_AST">Normalized Heterogeneous AST</h4><p><strong>This pattern implements an abstract syntax tree (AST) using more than a single node data type but with a normalized child list representation.</strong></p>
+<p>This pattern makes the most sense when we need to store node-specific<br>data and plan on using External Tree Visitor. The normalized child list makes it much easier to build external visitors.</p>
+<h4 id="Irregular_Heterogeneous_AST">Irregular Heterogeneous AST</h4><p><strong>This pattern implements an abstract syntax tree (AST) using more than a single node data type and with an irregular child list representation.</strong></p>
+<p>In the implementation of its child pointers. Instead of a uniform list of children, each node data type has specific (named) child fields. In this sense, the child pointers are irregular. In some cases, named fields lead to more readable code. For example, methods can refer to left and right instead of, say, <code>children[0]</code> and <code>children[1]</code>.</p>
+<p>在建树的过程中，大多数人都会选用这种模式，因为在不同类型的Class中添加不同的字段看上去总是那么正常。</p>
+<p>对运算符节点的左右子树严格区分，例如</p>
+<pre><code><span class="class"><span class="keyword">class</span> <span class="title">AddNode</span> <span class="keyword"><span class="keyword">extends</span></span> <span class="title">ExprNode</span> {</span>
+    <span class="type">ExprNode</span> left, right;
+    .....
+}
+</code></pre><p>而 Normalized Heterogenous AST 则是这样</p>
+<pre><code><span class="class"><span class="keyword">class</span> <span class="title">AddNode</span> <span class="keyword"><span class="keyword">extends</span></span> <span class="title">ExprNode</span> {</span>
+    <span class="type">List</span>&lt;<span class="type">AST</span>&gt; children;
+    ...
+}
+</code></pre><h3 id="2014/1/7">2014/1/7</h3><p>下面要开始看对 AST 的遍历了，在遍历过程中可能会对树中的节点进行修改和更新，例如进行常量折叠等</p>
+<h4 id="Tree_walking">Tree walking</h4><p>这里的树遍历可能要难于在数据结构课上学到的遍历方法，因为这里的树的状态不可能像数据结构课里那样单纯简单，它可能因为以下因素而不同</p>
+<ul>
+<li>whether we have the source codefor our tree nodes,</li>
+<li>whether the trees have normalized children, </li>
+<li>whether the trees are homogeneous or heterogeneous, </li>
+<li>whether we need to rewrite trees while walking, and </li>
+<li>even in which order we need to walk the nodes.</li>
+</ul>
+<p>这里需要学习的处理模式有</p>
+<ul>
+<li><p>Embedded Heterogeneous Tree Walker. </p>
+<p>  Heterogeneous AST node classes define walking methods that execute appropriate actions and walk any children. Tree walking code is distributed across potentially hundreds of class files.</p>
+<p>  也就是将遍历树中节点时处理逻辑写在各节点里</p>
+</li>
+<li><p>External Tree Visitor.</p>
+<p>  This pattern encapsulates tree walking code (for both homogeneous and heterogeneous ASTs) into a single class definition. It allows us to alter tree-walking behavior without altering AST node definitions. Both WALKING TREES AND VISITATION ORDER 117 the visitor and embedded walker pattern are straightforward but tedious to implement manually.</p>
+<p>  使用外部visitor 遍历Tree</p>
+</li>
+<li><p>Tree Grammar.</p>
+<p>  A tree grammar describes the structure of valid ASTs. Just as we can automate parser construction from grammars, we can automate tree visitor construction from tree grammars. Tree grammars work on homogeneous or heterogeneous trees because they rely on node token types rather than node types (like AddNode). Tree grammars explicitly dictate node visitation order like the embedded walker and visitor patterns.</p>
+</li>
+<li><p>Tree Pattern Matcher.</p>
+<p>  Instead of specifying an entire tree grammar, this pattern lets us focus on just those subtrees we care about. That’s useful because different phases of an application care about different parts of the tree. A tree pattern matcher also decouples the order in which we apply tree patterns from the tree patterns themselves.</p>
+<p>  用了Pattern就表示我们可能只关注全集中的一部分情况, 当然如果Pattern足够宽泛的话是能涵盖全集的</p>
+</li>
+</ul>
+<h4 id="Walking_Trees_and_Visitation_Order">Walking Trees and Visitation Order</h4><p><strong>Visit</strong></p>
+<p>visiting a tree, we mean executing some actions on the nodes of a tree.  The order in which we traverse the nodes is important because that affects the order in which we execute the actions. </p>
+<p>下面来回顾一下二叉树遍历的方法，对于表达式 1 + 2, 根据遍历方法的不同可以产生不同的序列</p>
+<ul>
+<li>前序遍历 (+ 1 2)，先访问父节点再访问子节点</li>
+<li>中序遍历 (1 + 2)，先访问子节点然后父节点，最后是剩下右子节点</li>
+<li>后续遍历 (1 2 +)，先遍历完子节点，然后才是访问父节点</li>
+</ul>
+<p>上面的遍历顺序都可以使用 <strong>深度优先遍历(depth-first)</strong> 实现</p>
+<p><strong>Walk</strong></p>
+<p><strong>Visiting a node means to execute an action somewhere between discovering and finishing that node.</strong> But, that same discovery sequence can generate three different tree traversals (node visitation sequences). It all depends on where we put actions in walk( ).</p>
+<p><strong>Difference between Tree Walking and Visiting</strong></p>
+<p>// Page 120  </p>
+<p>没看明白</p>
+<p><strong>Embedded Walker VS External Tree Visitor</strong></p>
+<p>Embedded Walker 需要在节点中添加动作，这样可也能会很明了的知道在遍历这个节点的时候做了些什么事，但是如果想基于树提供不同的一套动作，那是不是就得在源码里把所有节点都改一遍了？ <strong>长于观察，短于扩展</strong></p>
+<p>External Tree Visitor 将对树的遍历操作放到专门的visitor中，这样方便对同一个树提供不同的访问算法，但是正好和 Embedded 相反，访问逻辑放在节点外一定程度上增加了模糊性，多绕几次就晕了。 <strong>长于扩展, 短于观察</strong></p>
+<h4 id="Walking_Trees_and_Rewriting_Trees_使用的Patterns">Walking Trees and Rewriting Trees 使用的Patterns</h4><p>Waling Tree 和 Rewriting Tree 的目的都是对希望对树上的节点进行操作，所以也就有对所有节点的操作，也就有对部分节点的操作，因此需要Grammer或者Pattern来指定需要操作的节点的类型</p>
+<ul>
+<li><p><strong>Embedded Heterogeneous Tree Walker</strong></p>
+<p>  Embedding walking methods in tree nodes is the simplest mechanism for building a tree walker</p>
+</li>
+<li><p><strong>External Tree Visitor</strong></p>
+<p>   Visitors are useful for collecting information or doing some simple interpretation, such as expression evaluation. They are not well suited to tree pattern matching applications. Visitors simply walk the tree node by node.</p>
+<p>  Visitor 只能遍历树中节点，但是并不能完成 tree的 pattern match</p>
+</li>
+<li><p><strong>Tree Grammar</strong></p>
+<p>  Tree grammars specify the structure of entire trees. They are most effective when we need to execute actions in many or most rules. For example, tree-walking code generators typically need to emit code for every subtree.</p>
+</li>
+<li><p><strong>Tree Pattern Matcher</strong></p>
+<p>   To operate only on a specific subset of an AST structures, we can use a tree pattern matcher.</p>
+</li>
+</ul>
+<h4 id="Embeded_Heterogeneous_Tree_Walker">Embeded Heterogeneous Tree Walker</h4><p>在树中节点添加一些递归调用的方法。如前面所讲，这个方法在节点规模小的时候简单直观，不过要动态改变对树遍历的这些操作的话基本不可能。</p>
+<h4 id="External_Tree_Visitor">External Tree Visitor</h4><p>Visitors combine tree walking and action execution code outside the AST node definitions.we can change the functionality of the tree walker without having to change the AST class definitions and can even switch visitors on the fly. An external visitor can walk either heterogeneous or homogeneous AST nodes.</p>
+<p>实现的方法有两种：</p>
+<ol>
+<li>根据节点的类型来构建，这种是比较传统的Visitor Pattern</li>
+<li>根据Token的类型来构建</li>
+</ol>
+<p>先来看传统的Visior</p>
+<p><strong>根据节点类型的Visitor</strong></p>
+<blockquote>
+<p>Visitor Pattern: relies on a “double-dispatch” method within each AST node. The double-dispatch method redirects <code>visit( )</code> calls on a node to an appropriate method in a visitor servicing that node type. The visitor is like a set of callback methods. </p>
+</blockquote>
+<p>典型的visitor流程是这样的：</p>
+<pre><code><span class="keyword">for</span> <span class="tag">a</span> Node, use <span class="tag">a</span> visitor  ----&gt;  Node.<span class="function"><span class="title">visit</span><span class="params">(visitor)</span></span> --- dispatch to ---&gt; visitor.<span class="function"><span class="title">visit</span><span class="params">(Node)</span></span>
+</code></pre><p>书中例子</p>
+<pre><code>/
+**
+A generic heterogeneous tree node used in our vector math trees
+*
+/
+<span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">VecMathNode</span> <span class="keyword">extends</span> <span class="title">HeteroAST</span> </span>{
+    <span class="function"><span class="keyword">public</span> <span class="title">VecMathNode</span><span class="params">()</span> </span>{;}
+    <span class="function"><span class="keyword">public</span> <span class="title">VecMathNode</span><span class="params">(Token t)</span> </span>{ <span class="keyword">this</span>.token = t; }
+    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">visit</span><span class="params">(VecMathVisitor visitor)</span></span>; <span class="comment">// dispatcher</span>
+}
+
+然后要在所有节点加入
+
+<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">visit</span><span class="params">(VecMathVisitor visitor)</span> </span>{ visitor.visit(<span class="keyword">this</span>); }
+
+Visitor的定义
+
+<span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">VecMathVisitor</span> </span>{
+    <span class="function"><span class="keyword">void</span> <span class="title">visit</span><span class="params">(AssignNode n)</span></span>;
+    <span class="function"><span class="keyword">void</span> <span class="title">visit</span><span class="params">(PrintNode n)</span></span>;
+    <span class="function"><span class="keyword">void</span> <span class="title">visit</span><span class="params">(StatListNode n)</span></span>;
+    <span class="function"><span class="keyword">void</span> <span class="title">visit</span><span class="params">(VarNode n)</span></span>;
+    <span class="function"><span class="keyword">void</span> <span class="title">visit</span><span class="params">(AddNode n)</span></span>;
+    <span class="function"><span class="keyword">void</span> <span class="title">visit</span><span class="params">(DotProductNode n)</span></span>;
+    <span class="function"><span class="keyword">void</span> <span class="title">visit</span><span class="params">(IntNode n)</span></span>;
+    <span class="function"><span class="keyword">void</span> <span class="title">visit</span><span class="params">(MultNode n)</span></span>;
+    <span class="function"><span class="keyword">void</span> <span class="title">visit</span><span class="params">(VectorNode n)</span></span>;
+}
+</code></pre><p>不过这种方法需要在外部 Visitor 中利用多态的特性构造针对每种类型的 visit 方法。可想而知，如果节点类型很多的话，是多无聊的事，(-、-)。visitor 转来转去的也容易晕。</p>
+<p>这种方法同样无法完全将 visitor 和AST本身分开，因为需要侵入性的加入一个 <code>visit()</code> 到每个节点中</p>
+<p><strong>根据Token类型的Visitor</strong></p>
+<p>we can distinguish between tokens using the token type, we can also distinguish between AST nodes using the token type. By switching on the token type rather than the AST node type, we can avoid the <code>visit()</code> method in each AST node</p>
+<p>我们可以只在visitor中放一个visit方法即可，不需要侵入Node节点</p>
+<pre><code>public void <span class="keyword">print</span>(VecMathNode <span class="keyword">n</span>) {
+    switch ( <span class="keyword">n</span>.<span class="keyword">token</span>.<span class="keyword">type</span> ) {
+    case <span class="keyword">Token</span>.ID : <span class="keyword">print</span>((VarNode)<span class="keyword">n</span>); <span class="keyword">break</span>;
+    case <span class="keyword">Token</span>.ASSIGN : <span class="keyword">print</span>((AssignNode)<span class="keyword">n</span>); <span class="keyword">break</span>;
+    case <span class="keyword">Token</span>.<span class="keyword">PRINT</span> : <span class="keyword">print</span>((PrintNode)<span class="keyword">n</span>); <span class="keyword">break</span>;
+    case <span class="keyword">Token</span>.PLUS : <span class="keyword">print</span>((AddNode)<span class="keyword">n</span>); <span class="keyword">break</span>;
+    case <span class="keyword">Token</span>.MULT : <span class="keyword">print</span>((MultNode)<span class="keyword">n</span>); <span class="keyword">break</span>;
+    case <span class="keyword">Token</span>.DOT : <span class="keyword">print</span>((DotProductNode)<span class="keyword">n</span>); <span class="keyword">break</span>;
+    case <span class="keyword">Token</span>.INT : <span class="keyword">print</span>((IntNode)<span class="keyword">n</span>); <span class="keyword">break</span>;
+    case <span class="keyword">Token</span>.<span class="keyword">VEC</span> : <span class="keyword">print</span>((VectorNode)<span class="keyword">n</span>); <span class="keyword">break</span>;
+    case <span class="keyword">Token</span>.STAT_LIST : <span class="keyword">print</span>((StatListNode)<span class="keyword">n</span>); <span class="keyword">break</span>;
+    default :
+    <span class="comment">// catch unhandled node types</span>
+    throw new UnsupportedOperationException(<span class="string">"Node "</span> +
+    <span class="keyword">n</span>.getClass().getName()+ <span class="string">" not handled"</span> );
+    }
+}
+</code></pre><h4 id="Tree_Grammar">Tree Grammar</h4><p>Tree grammars are a terse and formal way of building an external visitor. Visitors generated from tree grammars are usually called tree parsers because they are the two-dimensional analog of conventional parsers.</p>
+<p>Tree grammars do not care about the implementation language<br>classes used to represent AST nodes (they work with both homogeneous and heterogeneous AST nodes). Instead, they rely on token type differences between AST node token payloads to distinguish different kinds of nodes</p>
+<p>Tree grammars 同样是可以借助生成工具来定义的</p>
+<p>书中借用ANTLR3 进行了实现，不过同样是容易看懂的，跳过</p>
+<h4 id="Tree_Pattern_Matcher">Tree Pattern Matcher</h4><p>This pattern walks trees, triggering actions or tree rewrites as it encounters tree patterns of interest. The process of matching and rewriting trees is formally called term rewriting.</p>
+<p>通过定义Pattern -&gt; action，在遍历树的时候，对于符合Pattern的就采用和Pattern对应的acion</p>
+<p>Tree Pattern Match 和 Tree Grammar 的不同之处：</p>
+<ol>
+<li>We have to specify patterns only for the subtrees we care about.</li>
+<li>We don’t need to direct the tree walk.</li>
+</ol>
+<p>A tree pattern matcher is analogous to text rewriting tools such as awk, sed, and perl.</p>
+<p>A tree grammar needs a pattern for each subtree. The grammar rules include traversal instructions just like a hand-built visitor </p>
+<p>我们感兴趣的是 <strong>输入的Pattern</strong> 以及 <strong>匹配时的动作</strong>。</p>
+<p>简而言之，Tree Grammar 关注整体每个subtree的结构，但是 Tree Pattern Matcher 关注局部及其操作动作。</p>
+<p>这一节关于Rewriting 的例子还是不错的，后面补上</p>
+<p>// TODO: Rewriting Examples</p>
+<h3 id="2014/1/13">2014/1/13</h3><p>前几天玩了下《信长之野望》，耽搁了些学习时间，罪过罪过。</p>
+<p>今天开始看 <strong>Tracking and Identifying Program Symbols</strong></p>
+<p>从这部分开始就涉及到语义分析(semantic analysis)的内容了.</p>
+<p>Semantic analysis is just a fancy way to say we’re “sniffing a program to see whether it makes sense.” The term semantics is synonymous with “meaning.”</p>
+<p>简单来说就是看程序是否正确，该出现的是否出现在其该出现的地方。在这一部分会讲到如何实现静态类型检查，不过要实现这个规则还需要一些基础建设要做，比如符号表。要完成语义分析，需要一个记录 symbol (A symbol is just a name for a program entity like a variable or method.) 的地方。</p>
+<p>computer language sentences can define and reference symbols in code blocks. At the end of the code block, the symbols go out of scope</p>
+<p>保存符号(symbol) 信息的数据结构叫做 symbol table</p>
+<h3 id="2014/1/14">2014/1/14</h3><p>这一部分涉及到的Pattern 有两个，一个讲单独作用域的，两一个讲多作用域的</p>
+<ul>
+<li><p>Symbol Table for Monolithic Scope</p>
+<p>  All symbols exist within a single scope (set of symbols). Simple property files and early BASIC are the best examples</p>
+</li>
+<li><p>Symbol Table for Nested Scopes</p>
+<p>  There are multiple scopes and scopes can nest inside other scopes. C is a typical language that has nested scopes. Scopes start and end at the start and end of language structures such as functions.</p>
+</li>
+</ul>
+<p>要完成上面两个Pattern首先需要了解： <strong>如何表示symbol</strong>, <strong>如何将symbol放入其所属的符号表</strong>, <strong>如何解析symbol的定义</strong></p>
+<p>看到这里，我就想明白Token和Symbol的区别，因为看上去都是某种操作的最小单位，现在理解是，它们两个尽管相似，但是属于不同的阶段。</p>
+<h4 id="如何组织程序中出现的符号">如何组织程序中出现的符号</h4><p>例如对于下面的程序</p>
+<pre><code><span class="keyword"><span class="keyword">class</span> <span class="title">T</span> { ... };</span> // <span class="keyword">define</span> <span class="keyword"><span class="keyword">class</span> <span class="title">T</span></span>
+<span class="constant">T</span> <span class="keyword">f() {</span> ... <span class="keyword">}</span> // <span class="keyword">define</span> function f returning <span class="built_in">type</span> <span class="constant">T</span>
+int x; // <span class="keyword">define</span> variable x of <span class="built_in">type</span> int 
+</code></pre><p>它可能需要用如下的symbol表示</p>
+<pre><code><span class="type">Type</span> c = new <span class="type">ClassSymbol</span>(<span class="string">"T"</span> ); // define class
+<span class="type">MethodSymbol</span> m = new <span class="type">MethodSymbol</span>(<span class="string">"f"</span> , c); // define <span class="keyword">method</span>
+<span class="type">Type</span> intType = new <span class="type">BuiltInTypeSymbol</span>(<span class="string">"int"</span> ); // define <span class="type">int</span> <span class="keyword">type</span>
+<span class="type">VariableSymbol</span> v = new <span class="type">VariableSymbol</span>(<span class="string">"x"</span> , intType); // define <span class="keyword">var</span> x
+</code></pre><p>Symbol的属性:</p>
+<ul>
+<li>Name: Symbols are usually identifiers like x, f, and T, but they can be operators too.</li>
+<li>Category: That is, what kind of thing the symbol is. Is it a class, method, variable, label, and so on.  例如需要判断只有在 method 的类型上才能进行方法调用</li>
+<li>Type: To validate operation x+y, for example, we need to know the<br>types of x and y. 动态语言（如Python)在运行时才知道变量类型，静态语言如 Java则是在编译的时候就知道变量类型</li>
+</ul>
+<h4 id="Symbol_Table_for_Monolithic_Scope">Symbol Table for Monolithic Scope</h4><p>This pattern builds a symbol table for a language with a single, flat scope. This pattern is suitable for simple programming languages (without functions), configuration files, small graphics languages, and other small DSLs.</p>
+<h4 id="Symbol_Table_for_Nested_Scopes">Symbol Table for Nested Scopes</h4><p>This pattern tracks symbols and builds a <strong>scope tree</strong> for languages with multiple, possibly nested scopes.</p>
+<p>Programming language functions are a good example of nested scopes.</p>
+<p>也就是说要实现function则必须使用这个模式</p>
+<p>看例程</p>
+<pre><code><span class="keyword">int</span> i = <span class="number">9</span>;
+<span class="function"><span class="keyword">float</span> <span class="title">f</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">float</span> y)</span>
+</span>{
+  <span class="keyword">float</span> i;
+  { <span class="keyword">float</span> z = x+y; i = z; }
+  { <span class="keyword">float</span> z = i+<span class="number">1</span>; i = z; }
+  <span class="keyword">return</span> i;
+}
+<span class="function"><span class="keyword">void</span> <span class="title">g</span><span class="params">()</span>
+</span>{
+  f(i,<span class="number">2</span>);
+}
+</code></pre><p>对于这个简单的程序，类层次是这样的</p>
+<p><img src="/img/p_impl_language/symbol_nested_scopes.png" alt="symbol_nested_scopes.png" title="symbo_nested_scopes"></p>
+<p>其中 MethodSymbol 同时既是Symbol 又是 Scope.</p>
+<p>Methods have two scopes actually: one for the parameters (the MethodSymbol itself) and one for its local variables (a LocalScope whose parent is the MethodSymbol).</p>
+<p>这一节终于看到整个语法的过程是怎么串联的了</p>
+<h3 id="2014/1/15">2014/1/15</h3><p>书中提到的push 和 pop 并不是有一个实际的操作栈，push是通过 new 一个新的Scope 然后将当前的scope提供给新的scope作为参数。pop则是返回当前scope的外层scope，类似弹栈，弹出的scope也就是当时构建scope传进去的参数</p>
+<p>// TODO: Antlr4 实现代码</p>
+<p>飞快的略过。</p>
+<p>下面就看 Manageing Symbol Table for Data Aggregates</p>
+<p>将要介绍的是 如何处理数据集合，例如Class， structs。 这一部分的后面主要讲静态类型检查的实现。看完这两部分就可以动手实现下到目前为止的内容，主要就是先把Tree构建出来，包括语义分析。</p>
+<p>对了，今天还了解到了如果程序要具备向前引用的能力的话，通常至少需要Pass 两遍。第一遍生成符号表，第二次语义分析的时候才能正确的引用前置定义的变量或方法</p>
+<h3 id="2014/1/17">2014/1/17</h3><p>昨天发布，累死了，没时间看。今天继续。</p>
+<p>静态类型检查先在书中折个脚，马上开始ANTLR 4 的学习，否则再继续看理论恐怕又要半途而非，(-__-)b</p>
+<p>重新看《The Definitely ANTLR 4 Reference》，因为之前加了很多基础知识的铺垫，看起来容易多了，学习东西果然还是要循序渐进啊，恩恩。</p>
+<p>不同于 ANTLR 3 的是， 4 的设计跟方便扩展，因为支持将对 Tree 的访问放到 Grammar 文件外面，保证了语法文件的干净，同时也方便扩展。当然为了向前兼容，4 还是支持在语法文件中使用代码段的。</p>
+<p>另外 4 的书里并没有讲解AST的内容，可能是书中内容侧重于语法讲解。不过现在看了第一章的概览，大致理解为可以讲Grammar文件里的代码片段或者Actions 放到Visitor中去。</p>
+<p>引用一段 递归下降(recursive-decent) 的解释</p>
+<blockquote>
+<p>descent: refers to the fact that parsing begins at the root of a parse tree and proceeds toward the leaves(tokens)</p>
+</blockquote>
+<h3 id="2014/1/18">2014/1/18</h3><p>到公司加班，有个新功能的开发考虑引入Antlr4，因为想要做一个简单的dsl来方便写一块易变的业务逻辑。</p>
+<p>Antlr4 概念中提到了 Listener 和 Visitor， 那么这两个到底有什么区别呢？首先从我自己的理解来讲，区别在于，Listener 是事件驱动，而 Visitor是类型驱动。因为Listener通常会和某个动作挂钩，比如<strong>进入节点</strong>,<strong>退出节点</strong> 等，而Visitor的话通常会涉及到不同类型的节点。</p>
+<p>Listener 通常适合完成一些翻译成另外一种语言或者解释执行</p>
+<p>Vistor 通常可以用来在Tree walker的过程中，可以完成表达式求值等过程</p>
+<p>It’s easy to build these kinds of extractors or translators<br>using  a  listener.</p>
+<h3 id="2014/1/21">2014/1/21</h3>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hellofalcon.com/2014/01/21/自制编程语言/" data-id="cia3hqng90007qchh3qvarhwm" class="article-share-link">分享到</a>
+      
+        <a href="http://hellofalcon.com/2014/01/21/自制编程语言/#ds-thread" class="article-comment-link">评论</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JVM/">JVM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程语言/">编程语言</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2014/03/29/JUnit和它的设计模式/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          JUnit和它的设计模式
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2014/01/01/2013简单回顾/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">2013简单回顾</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+  <section id="comments">
+    <div id="ds-thread" class="ds-thread" data-thread-key="http://hellofalcon.com/2014/01/21/自制编程语言/" data-title="自制编程语言" data-url="http://hellofalcon.com/2014/01/21/自制编程语言/">
+      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by DuoShuo.</a></noscript>
+      </div>
+  </section>
+</section>
+      
+        <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul id="recent-post" class="">
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              <a href="/2014/06/22/scala-startups/" class="thumbnail">
+  
+    <span style="background-image:url(/img/scalahierarchy.png
+)" alt="scala-startups" class="thumbnail-image"></span>
+  
+</a>
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/编程/">编程</a></p>
+              <p class="item-title"><a href="/2014/06/22/scala-startups/" class="title">scala-startups</a></p>
+              <p class="item-date"><time datetime="2014-06-22T01:10:24.000Z" itemprop="datePublished">2014-06-22</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              <a href="/2014/03/29/JUnit和它的设计模式/" class="thumbnail">
+  
+    <span class="thumbnail-image thumbnail-none"></span>
+  
+</a>
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/编程/">编程</a></p>
+              <p class="item-title"><a href="/2014/03/29/JUnit和它的设计模式/" class="title">JUnit和它的设计模式</a></p>
+              <p class="item-date"><time datetime="2014-03-29T01:10:24.000Z" itemprop="datePublished">2014-03-29</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              <a href="/2014/01/21/自制编程语言/" class="thumbnail">
+  
+    <span style="background-image:url(/img/p_impl_language/alt.png
+)" alt="自制编程语言" class="thumbnail-image"></span>
+  
+</a>
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/编程/">编程</a></p>
+              <p class="item-title"><a href="/2014/01/21/自制编程语言/" class="title">自制编程语言</a></p>
+              <p class="item-date"><time datetime="2014-01-21T01:10:24.000Z" itemprop="datePublished">2014-01-21</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              <a href="/2014/01/01/2013简单回顾/" class="thumbnail">
+  
+    <span style="background-image:url(/img/p_review2013/haiou.jpg
+)" alt="2013简单回顾" class="thumbnail-image"></span>
+  
+</a>
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/职业生涯/">职业生涯</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/职业生涯/年度回顾/">年度回顾</a></p>
+              <p class="item-title"><a href="/2014/01/01/2013简单回顾/" class="title">2013简单回顾</a></p>
+              <p class="item-date"><time datetime="2014-01-01T01:10:24.000Z" itemprop="datePublished">2014-01-01</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              <a href="/2013/11/03/java_annotation/" class="thumbnail">
+  
+    <span style="background-image:url(http://cgfalcon-attachment.stor.sinaapp.com/87be6df591ac8efdb.png
+)" alt="Java注解" class="thumbnail-image"></span>
+  
+</a>
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/编程/">编程</a></p>
+              <p class="item-title"><a href="/2013/11/03/java_annotation/" class="title">Java注解</a></p>
+              <p class="item-date"><time datetime="2013-11-03T01:10:24.000Z" itemprop="datePublished">2013-11-03</time></p>
+            </div>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/数据库/">数据库</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程/">编程</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/职业生涯/">职业生涯</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/职业生涯/年度回顾/">年度回顾</a><span class="category-list-count">1</span></li></ul></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/2013总结/">2013总结</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/">JVM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Junit/">Junit</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MongoDB/">MongoDB</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Scala/">Scala</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/annotation/">annotation</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/函数式编程/">函数式编程</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编程语言/">编程语言</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/重构/">重构</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/2013总结/" style="font-size: 10px;">2013总结</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Junit/" style="font-size: 10px;">Junit</a> <a href="/tags/MongoDB/" style="font-size: 10px;">MongoDB</a> <a href="/tags/Scala/" style="font-size: 10px;">Scala</a> <a href="/tags/annotation/" style="font-size: 10px;">annotation</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/函数式编程/" style="font-size: 10px;">函数式编程</a> <a href="/tags/编程语言/" style="font-size: 10px;">编程语言</a> <a href="/tags/重构/" style="font-size: 10px;">重构</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06/">六月 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">三月 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/01/">一月 2014</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/11/">十一月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">七月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">五月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">三月 2013</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+  <div id="toTop" class="fa fa-chevron-up"></div>
+</aside>
+      
+    </div>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2015 Falcon Chu<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
+    </div>
+  </div>
+</footer>
+    
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"hellofalcon"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+
+
+<script src="//ajax.useso.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+  </div>
+</body>
+</html>

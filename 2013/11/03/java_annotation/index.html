@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Java注解 | Hellofalcon</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Note to Java Annotation
+本文是对 Java Annotation 基本知识的总结和梳理 
+
+Java annotation 官方说明
+
+Annotations, a form of metadata ( “meta data” 我的理解是编程时就能确切知道的能够提供给运行时的信息), provide data about a program that is not part">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java注解">
+<meta property="og:url" content="http://hellofalcon.com/2013/11/03/java_annotation/index.html">
+<meta property="og:site_name" content="Hellofalcon">
+<meta property="og:description" content="Note to Java Annotation
+本文是对 Java Annotation 基本知识的总结和梳理 
+
+Java annotation 官方说明
+
+Annotations, a form of metadata ( “meta data” 我的理解是编程时就能确切知道的能够提供给运行时的信息), provide data about a program that is not part">
+<meta property="og:image" content="http://cgfalcon-attachment.stor.sinaapp.com/87be6df591ac8efdb.png">
+<meta property="og:image" content="http://cgfalcon-attachment.stor.sinaapp.com/463abed9b3d49ef18ac.png">
+<meta property="og:updated_time" content="2015-05-25T05:39:58.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java注解">
+<meta name="twitter:description" content="Note to Java Annotation
+本文是对 Java Annotation 基本知识的总结和梳理 
+
+Java annotation 官方说明
+
+Annotations, a form of metadata ( “meta data” 我的理解是编程时就能确切知道的能够提供给运行时的信息), provide data about a program that is not part">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href='//fonts.useso.com/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
+  <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css" type="text/css">
+  
+
+</head>
+<body>
+  <div id="container">
+    <header id="header">
+  <div id="header-main" class="header-inner">
+    <div class="outer">
+      <a href="/" id="logo"><i class="logo"></i><span class="site-title">Hellofalcon</span></a>
+      <nav id="main-nav">
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        <div class="profile" id="profile-nav">
+          <a id="profile-anchor" href="javascript:;"><img class="avatar" src="/img/avatar.png"><i class="fa fa-caret-down"></i></a>
+        </div>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="http://hellofalcon.com"></form>
+      </div>
+    </div>
+  </div>
+  <div id="main-nav-mobile" class="header-sub header-inner">
+    <table class="menu outer">
+      <tr>
+      
+        <td><a class="main-nav-link" href="/">Home</a></td>
+      
+        <td><a class="main-nav-link" href="/archives">Archives</a></td>
+      
+        <td><a class="main-nav-link" href="/about">About</a></td>
+      
+      <td>
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://hellofalcon.com"></form>
+      </td>
+      </tr>
+    </table>
+  </div>
+  
+</header>
+    <div class="outer">
+      <aside id="profile">
+  <div class="inner profile-inner">
+  	<div class="base-info profile-block">
+		  <img id="avatar" src="/img/avatar.png">
+      <h2 id="name">Falcon Chu</h2>
+      <h3 id="title">Java程序猿@Alibaba</h3>
+      <span id="location"><i class="fa fa-map-marker"></i>HangZhou, China</span>
+      <a id="follow" href="http://weibo.com/cggogogo">关注我</a>
+  	</div>
+    <div class="article-info profile-block">
+      <div class="article-info-block">
+        8
+        <span>文章</span>
+      </div>
+      <div class="article-info-block">
+        11
+        <span>标签</span>
+      </div>
+    </div>
+    
+    <div class="contact-info profile-block">
+      <table class="contact-list">
+        <tr>
+        
+          <td><a href="https://github.com/cgfalcon" target="_blank" title="github"><i class="fa fa-github"></i></a></td>
+        
+          <td><a href="http://www.zhihu.com/people/cgfalcon" target="_blank" title="zhihu"><i class="fa fa-zhihu"></i></a></td>
+        
+          <td><a href="http://weibo.com/cggogogo" target="_blank" title="weibo"><i class="fa fa-weibo"></i></a></td>
+        
+        </tr>
+      </table>
+    </div>
+    
+  </div>
+</aside>
+      <section id="main"><article id="post-java_annotation" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Java注解
+    </h1>
+  
+
+        <div class="article-meta">
+          <div class="article-date">
+  <i class="fa fa-calendar"></i>
+  <a href="/2013/11/03/java_annotation/">
+    <time datetime="2013-11-03T01:10:24.000Z" itemprop="datePublished">2013-11-03</time>
+  </a>
+</div>
+          
+  <div class="article-category">
+  	<i class="fa fa-folder"></i>
+    <a class="article-category-link" href="/categories/编程/">编程</a>
+  </div>
+
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Note_to_Java_Annotation">Note to Java Annotation</h2><blockquote>
+<p>本文是对 Java Annotation 基本知识的总结和梳理 </p>
+</blockquote>
+<p>Java annotation 官方说明</p>
+<blockquote>
+<p>Annotations, a form of metadata ( “meta data” 我的理解是编程时就能确切知道的能够提供给运行时的信息), provide data about a program that is not part of the program itself. Annotations have no direct effect on the operation of the code they annotate. </p>
+</blockquote>
+<p>从上面定义的话大概体会是这么个意思：</p>
+<p>Annotaion 是对目标代码的标签性注释，或者叫说明，用来给Annotation所标记的对象打上标签，就好比人的名字，某种意义来说就是标签。比如某场活动中要找出所有叫 “张三” 的人，这个时候 “张三” 这个标签就起到标识的作用了。</p>
+<p>比如Spring 提供的 Annotation， <code>@Autowired</code>, <code>@Transaction</code> 等表明了注解标注的对象在<strong>某种场景</strong>下会具有标识性。</p>
+<a id="more"></a>
+<h3 id="Annotation_的用法">Annotation 的用法</h3><p>首先来看 Annotation 可以提供的一些比较重要的作用：</p>
+<ul>
+<li><p><strong>Information for the compiler</strong> — Annotations can be used by the compiler to detect errors or suppress warnings. (为编译器提供有用的信息来发现错误或者忽略警告，例如 <code>@SuppressWarnings</code>)</p>
+</li>
+<li><p><strong>Compile-time and deployment-time processing</strong> — Software tools can process annotation information to generate code, XML files, and so forth. (在编译和部署期间生成代码、XML文件等)</p>
+</li>
+<li><p><strong>Runtime processing</strong> — Some annotations are available to be examined at runtime. (提供运行时的信息)</p>
+</li>
+</ul>
+<p>下面就来定义个简单的 Annotation 试试 </p>
+<pre><code><span class="comment">/**
+ * 定义一个用来生成代码的作者信息的 Annotation。 定义方法和 
+ * Interface 类似，只是在 Interface 之前添加了一个 @ 符号
+ */</span>
+<span class="keyword">public</span> @<span class="keyword">interface</span> <span class="title">Author</span> {
+
+    <span class="function">String <span class="title">name</span>(<span class="params"></span>)</span>;
+    <span class="function">String <span class="title">date</span>(<span class="params"></span>)</span>;
+}
+
+<span class="comment">/**
+ * 然后用定义好的类来修饰一个Class
+ */</span>
+@Author(name=<span class="string">"Falcon"</span>, date=<span class="string">"2013-11-02"</span>)
+<span class="keyword">public</span> <span class="keyword">class</span> <span class="title">HelloWorld</span> {
+
+
+    @Author(name=<span class="string">"Matt"</span>, date=<span class="string">"2013-11-01"</span>)
+    <span class="keyword">public</span> <span class="keyword">static</span> String <span class="keyword">var</span> = <span class="string">""</span>;
+
+
+    @Author(name=<span class="string">"Newton"</span>, date=<span class="string">"2013-11-03"</span>)
+    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span>(<span class="params">String[] args</span>) </span>{
+
+        System.<span class="keyword">out</span>.println(<span class="string">"Hello World!"</span>);
+
+    }
+}
+</code></pre><p>这样就可以了，但是如果只标记 Class 而什么事都不做的话岂不是太无聊了。所以呢继续替 Autor 注解添加一个 jdk 预定义的 Annotation <code>@Documented</code>, 这样就可以使用Javadoc 在生成的代码文档中添加 Author 的注解信息了。（没错，注解可以修饰注解，这叫原注解 - meta annotation）</p>
+<pre><code><span class="annotation">@Documented</span>
+<span class="keyword">public</span> <span class="annotation">@interface</span> Author {
+
+    <span class="function">String <span class="title">name</span><span class="params">()</span></span>;
+    <span class="function">String <span class="title">date</span><span class="params">()</span></span>;
+}
+</code></pre><p>接下来用 Javadoc 生成文档看看。</p>
+<pre><code>javadoc org<span class="class">.cgfalcon</span><span class="class">.annotation</span>
+</code></pre><p>命令将生成 org.cgfalcon.annotation 包下所有源文件的文档。</p>
+<p>先补个不加 <code>@Documented</code> 注解时生成的图</p>
+<p><img src="http://cgfalcon-attachment.stor.sinaapp.com/87be6df591ac8efdb.png" alt="annotation_nodoc"></p>
+<p>加了<code>@Documented</code> 注解的样子</p>
+<p><img src="http://cgfalcon-attachment.stor.sinaapp.com/463abed9b3d49ef18ac.png" alt="annotation_doc"></p>
+<h3 id="Annotation_定义">Annotation 定义</h3><p><strong>Annotation - 注解</strong>：</p>
+<p>注解类似被修饰对象的标签，可以在<strong>类（包括interface、enum）</strong>、<strong>方法</strong>、<strong>字段</strong>声明时使用。 你可以使用jdk 在 <code>java.lang</code> 和 <code>java.lang.annotation</code> 中定义的 Annotation，也可以像前面一样自己定义 Annotation。 定义的语法如下：</p>
+<pre><code>@interface <span class="variable">&lt;NameOfAnnotation&gt;</span> {
+   <span class="variable">&lt;TYPE&gt;</span> <span class="variable">&lt;FIELD_NAME&gt;</span>() [<span class="keyword">default</span> <span class="variable">&lt;DEFAULT_VALUE&gt;</span>];
+}
+
+<span class="variable">&lt;TYPE&gt;</span> 可以是String, int, String[], Class<span class="variable">&lt;?&gt;</span> 等
+<span class="variable">&lt;DEFAULT_VALUE&gt;</span> 给出字段的默认值
+</code></pre><p>另外在 Java SE 8 中将扩展 Annotation 的使用范围，不但可以在声明时使用注解，而且可以在程序体中使用注解，这类注解叫 <strong>Type Annotation</strong>，例如</p>
+<ul>
+<li><p>创建实例时使用注解</p>
+<pre><code><span class="tag">new</span> <span class="at_rule">@<span class="keyword">Interned</span> <span class="function">MyObject</span>()</span>;
+</code></pre></li>
+<li><p>类型转换</p>
+<pre><code>myString = (<span class="annotation">@NonNull</span> <span class="built_in">String</span>) str;
+</code></pre></li>
+<li><p>implements 子句</p>
+<pre><code>class <span class="type">UnmodifiableList</span>&lt;T&gt; implements @<span class="type">Readonly</span> <span class="type">List</span>&lt;@<span class="type">Readonly</span> T&gt; <span class="decorator">{...}</span>
+</code></pre></li>
+<li><p>抛出异常时的声明</p>
+<pre><code><span class="type">void</span> monitorTemperature() throws @<span class="type">Critical</span> <span class="type">TemperatureException</span> <span class="decorator">{...}</span>
+</code></pre></li>
+</ul>
+<p><strong>Meta Annotation - 元注解</strong>：</p>
+<blockquote>
+<p>Annotations that apply to other annotations are called meta-annotations. </p>
+</blockquote>
+<p>也就是修饰注解的注解称为 <strong>元注解</strong></p>
+<h3 id="Java_SE_内置的_Annotation">Java SE 内置的 Annotation</h3><p>JDK内置了三个预定义的Annotaion，分别是 <code>@SuppressWarnings</code>, <code>@Override</code>, <code>@Deprecated</code>。除此之外还有一类 <strong>元注解</strong>， 什么叫元注解呢？其实很简单，也就是<strong>修饰注解的注解</strong>，就比如之前的 <code>@Documented</code> 一样</p>
+<p>三个预定义注解</p>
+<ul>
+<li><code>@Deprecated</code>, indicates that the marked element is deprecated and should no longer be used. （表示被标记的方法、类、字段不应当再使用了，可能会在未来的版本中删除）</li>
+<li><code>@Override</code>, informs the compiler that the element is meant to override an element declared in a superclass. （这个注解告诉编译器，被标记的对象将会覆盖父类中声明的相同的对象）</li>
+<li><code>@SuppressWarnings</code>, tells the compiler to suppress specific warnings that it would otherwise generate （这个注解告诉编译器，忽略被标记对象中可能存在的警告信息）</li>
+</ul>
+<p>四个元注解（meta annotation）</p>
+<ul>
+<li><p><code>@Target</code>,  marks another annotation to restrict what kind of Java elements the annotation can be applied to. （表示注解可以在那些类型上使用） 可取的值有：</p>
+<ul>
+<li>ElementType.ANNOTATION_TYPE</li>
+<li>ElementType.CONSTRUCTOR</li>
+<li>ElementType.FIELD</li>
+<li>ElementType.LOCAL_VARIABLE</li>
+<li>ElementType.METHOD</li>
+<li>ElementType.PACKAGE</li>
+<li>ElementType.PARAMETER</li>
+<li>ElementType.TYPE</li>
+</ul>
+</li>
+<li><p><code>@Retention</code>, specifies how the marked annotation is stored. （表示注解可以存在于哪些阶段）可取的值有：</p>
+<ul>
+<li>RetentionPolicy.SOURCE， 源码级的注解，将会被编译器忽略</li>
+<li>RetentionPolicy.CLASS， 编译级注解，对编译器有用，但是会被JVM忽略</li>
+<li>RetentionPolicy.RUNTIME，运行时级注解，只有这类注解才能在运行时通过反射获取到</li>
+</ul>
+</li>
+<li><p><code>@Documented</code>, indicates that whenever the specified annotation is used those elements should be documented using the Javadoc tool. （告诉javadoc 是否需要在文档中生成）</p>
+</li>
+<li><code>@Inherited</code>, indicates that the annotation type can be inherited from the super class. (This is not true by default.) （这个注解允许，当用户对当前 class 查询的注解不存在时，能够向该 class 的父类class查询该注解。另外，这个注解只能修饰 类） </li>
+<li><code>@Repeatable</code>, Java SE 8新增Annotatoin, 表明相同名称的注解可以出现超过1次</li>
+</ul>
+<h3 id="Annotation_行为的控制">Annotation 行为的控制</h3><p>Annotation 如果只是定义出来，放在 <strong>类</strong>，<strong>方法</strong>，<strong>字段</strong>上来起个简单的标签作用，那其实功能就大大减弱了。因此在自定义注解时，通常会定义和自定义Annotation 相匹配的一组行为来进行对代码增强。</p>
+<p>下面的代码演示通过定义 <code>Bean</code>,<code>@Inject</code> Annotation 来完成实例注入。例子中定义 <strong>EmailValidator</strong> 是对Email地址的检测工具, <strong>EmailService</strong> 是对外提供的Email名称检测服务。</p>
+<pre><code>/<span class="keyword">*</span><span class="keyword">*</span>
+ <span class="keyword">*</span> Bean Annotation.  被 <span class="comment">@Bean 修饰的对象表示需要被容器加载</span>
+ <span class="keyword">*</span>/
+<span class="comment">@Target(ElementType.TYPE)</span>
+<span class="comment">@Retention(RetentionPolicy.RUNTIME)</span>
+public <span class="comment">@interface Bean {</span>
+
+}
+
+/<span class="keyword">*</span><span class="keyword">*</span>
+ <span class="keyword">*</span> <span class="comment">@Inject 用来修饰字段，说明该字段需要由容器注入。</span>
+ <span class="keyword">*</span> <span class="comment">@Inject 提供了属性 target 用来指定要注入的 Class</span>
+ <span class="keyword">*</span>/
+<span class="comment">@Target(ElementType.FIELD)</span>
+<span class="comment">@Retention(RetentionPolicy.RUNTIME)</span>
+public <span class="comment">@interface Inject {</span>
+    Class<span class="variable">&lt;?&gt;</span> target();
+}
+</code></pre><p>接下来是 <strong>Email服务</strong> 的定义</p>
+<pre><code><span class="comment">/**
+ * Email 实例，只提供 address字段
+ */</span>
+<span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Email</span> {
+
+    <span class="keyword">private</span> String address;
+
+    <span class="function"><span class="keyword">public</span> <span class="title">Email</span>(<span class="params">String address</span>) </span>{
+        <span class="keyword">this</span>.address = address;
+    }
+
+    <span class="function"><span class="keyword">public</span> String <span class="title">getAddress</span>(<span class="params"></span>) </span>{
+        <span class="keyword">return</span> address;
+    }
+
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setAddress</span>(<span class="params">String address</span>) </span>{
+        <span class="keyword">this</span>.address = address;
+    }
+
+    @<span class="function">Override
+    <span class="keyword">public</span> String <span class="title">toString</span>(<span class="params"></span>) </span>{
+        <span class="keyword">return</span> <span class="string">"Email{"</span> +
+                <span class="string">"address='"</span> + address + <span class="string">'\''</span> +
+                <span class="string">'}'</span>;
+    }
+}
+
+<span class="comment">/**
+ * EmailValidator 提供对邮箱地址的检测功能
+ */</span>
+@Bean
+<span class="keyword">public</span> <span class="keyword">class</span> <span class="title">EmailValidator</span> {
+
+    <span class="comment">/**
+     * 使用正则表达式来检测邮箱地址是否合法
+     */</span>
+    <span class="keyword">private</span> Pattern emailPattern = Pattern.compile(<span class="string">"[\\w!#$%&amp;'*+/=?^_`{|}~-]+(?:\\.[\\w!#$%&amp;'*+/=?^_`{|}~-]+)*@(?:[\\w](?:[\\w-]*[\\w])?\\.)+[\\w](?:[\\w-]*[\\w])?"</span>);
+
+    <span class="function"><span class="keyword">public</span> boolean <span class="title">validate</span>(<span class="params">Email email</span>) </span>{
+        <span class="keyword">if</span> (email == <span class="keyword">null</span> || email.getAddress() == <span class="keyword">null</span>) {
+            <span class="keyword">return</span> <span class="keyword">false</span>;
+        }
+        Matcher matcher = emailPattern.matcher(email.getAddress());
+        <span class="keyword">if</span> (matcher.find()) {
+            <span class="keyword">return</span> <span class="keyword">true</span>;
+        } <span class="keyword">else</span> {
+            <span class="keyword">return</span> <span class="keyword">false</span>;
+        }
+    }
+}
+
+
+<span class="comment">/**
+ * EmailService Bean，同样EmailService会由容器初始化并维护
+ */</span>
+@Bean
+<span class="keyword">public</span> <span class="keyword">class</span> <span class="title">EmailService</span> {
+
+    <span class="comment">/**
+     * 此处使用 @Inject Annotation，表明字段 emailValidator需要由容器注入
+     */</span>
+    @Inject(target = EmailValidator.class)
+    <span class="keyword">private</span> EmailValidator emailValidator;
+
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setEmailValidator</span>(<span class="params">EmailValidator emailValidator</span>) </span>{
+        <span class="keyword">this</span>.emailValidator = emailValidator;
+    }
+
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">validateEmail</span>(<span class="params">Email email</span>) </span>{
+        <span class="keyword">if</span>(emailValidator.validate(email)) {
+            System.<span class="keyword">out</span>.println(<span class="string">"Eamil valid"</span>);
+        } <span class="keyword">else</span> {
+            System.<span class="keyword">out</span>.println(<span class="string">"Illegal Email Address Format"</span>);
+        }
+    }
+}
+</code></pre><p>这样 <code>@Bean</code>, <code>@Inject</code> 就定义完了，使用也很简单，只需要在需要的字段或方法上加上注解即可。但是只标记不做解析的话就只能当花瓶了，根本毫无作用。因此我们还得自己定义对注解的解析逻辑。</p>
+<p>下面的代码 <strong>BeanContext</strong> 实现一个简单的容器功能，主要做两个工作：</p>
+<ol>
+<li>负责搜索指定 Package 下被 <code>@Bean</code> 标记的类并将之实例化</li>
+<li>对于已经实例化的类，遍历其字段，查找出含有 <code>@Inject</code> 的字段，并使用合适的Class 实例给字段注入值。</li>
+</ol>
+<p>代码如下：</p>
+<pre><code><span class="comment">/**
+ * BeanContext 充当一个简单Bean容器，负责查找 LOAD_PACKAGE 包下的类，加载
+ * 被 @Bean 修饰的类，然后对含有 @Inject 的字段进行注入
+ */</span>
+public class BeanContext {
+
+    public static Map&lt;Class&lt;?&gt;, Object&gt; beanMap = new HashMap&lt;Class&lt;?&gt;, Object&gt;<span class="params">()</span>;
+    <span class="comment">/**
+     * 加载类的起始包
+     */</span>
+    public static final String LOAD_PACKAGE = <span class="string">"org.cgfalcon.annotation"</span>;
+
+    static {
+
+        List&lt;Class&lt;?&gt;&gt; clazzList = new ArrayList&lt;Class&lt;?&gt;&gt;<span class="params">()</span>;
+        try {
+            Enumeration&lt;URL&gt; urls = Thread.currentThread<span class="params">()</span>.getContextClassLoader<span class="params">()</span>.getResources<span class="params">(LOAD_PACKAGE.replace<span class="params">(<span class="string">"."</span>, <span class="string">"/"</span>)</span>)</span>;
+            while <span class="params">(urls.hasMoreElements<span class="params">()</span>)</span> {
+                URL url = urls.nextElement<span class="params">()</span>;
+                <span class="keyword">if</span> <span class="params">(url != null)</span> {
+                    String protocol = url.getProtocol<span class="params">()</span>;
+                    <span class="keyword">if</span> <span class="params">(protocol.equals<span class="params">(<span class="string">"file"</span>)</span>)</span> {
+                        String cPath = url.getPath<span class="params">()</span>;
+                        loadBeans<span class="params">(clazzList, cPath, LOAD_PACKAGE)</span>;
+                    }
+                }
+            }
+
+            <span class="comment">/**
+             * 将查找完的被 @Bean 修饰的类实例化放入 beanMap中
+             */</span>
+            <span class="keyword">for</span> <span class="params">(Class&lt;?&gt; clazz : clazzList)</span> {
+                Object instance = clazz.newInstance<span class="params">()</span>;
+                beanMap.put<span class="params">(clazz, instance)</span>;
+            }
+
+            <span class="comment">/*
+             * Dependencies inject
+             *
+             */</span>
+            iocInject<span class="params">()</span>;
+        } catch <span class="params">(Exception e)</span> {
+            e.printStackTrace<span class="params">()</span>;
+            throw new RuntimeException<span class="params">(e)</span>;
+        }
+    }
+
+    <span class="comment">/**
+     * 查找实例化好的实例，对其中需要 Inject 的字段注入合适的字段
+     */</span>
+    private static void iocInject<span class="params">()</span> {
+        <span class="keyword">for</span> <span class="params">(Map.Entry&lt;Class&lt;?&gt;, Object&gt; entry : beanMap.entrySet<span class="params">()</span>)</span> {
+            Class&lt;?&gt; clazz = entry.getKey<span class="params">()</span>;
+            Object instance = entry.getValue<span class="params">()</span>;
+            Field[] fields = clazz.getDeclaredFields<span class="params">()</span>;
+            <span class="keyword">if</span> <span class="params">(fields != null &amp;&amp; fields.length &gt; <span class="number">0</span>)</span> {
+                <span class="keyword">for</span> <span class="params">(Field eachField : fields)</span> {
+                    <span class="keyword">if</span> <span class="params">(eachField.isAnnotationPresent<span class="params">(Inject.class)</span>)</span> {
+                        <span class="comment">/* 在我的定义中 @Inject 包含一个字段 target, 用来制定要注入的实力类型，
+                         * 此处通过该类型来从 beanMap中查找相应的实例
+                          * */</span>
+                        Class&lt;?&gt; injectClass = eachField.getAnnotation<span class="params">(Inject.class)</span>.target<span class="params">()</span>;
+                        Object injectInstance = beanMap.get<span class="params">(injectClass)</span>;
+                        <span class="keyword">if</span> <span class="params">(injectInstance != null)</span> {
+                            try {
+                                <span class="comment">/*
+                                 * 查找出来的实例注入instance 的指定字段中
+                                 */</span>
+                                eachField.setAccessible<span class="params">(<span class="literal">true</span>)</span>;
+                                eachField.set<span class="params">(instance, injectInstance)</span>;
+                            } catch <span class="params">(IllegalAccessException e)</span> {
+                                e.printStackTrace<span class="params">()</span>;
+                            }
+                        }
+
+                    }
+                }
+            }
+        }
+    }
+
+    public static void loadBeans<span class="params">(List&lt;Class&lt;?&gt;&gt; clazzList, String packagePath, String loadPackage)</span> {
+        File packageDir = new File<span class="params">(packagePath)</span>;
+        <span class="keyword">if</span> <span class="params">(packageDir.isDirectory<span class="params">()</span>)</span> {
+            getSubpackageClasses<span class="params">(clazzList, packageDir, loadPackage)</span>;
+        }
+    }
+
+    <span class="comment">/**
+     * 查找 packageDir 下的class文件，将含有 @Bean 注解的类取出来
+     *
+     * @param clazzList
+     * @param packageDir
+     * @param loadPackage
+     */</span>
+    private static void getSubpackageClasses<span class="params">(List&lt;Class&lt;?&gt;&gt; clazzList, File packageDir, String loadPackage)</span> {
+        File[] subfiles = packageDir.listFiles<span class="params">()</span>;
+        <span class="keyword">for</span> <span class="params">(File subFile : subfiles)</span> {
+            <span class="keyword">if</span> <span class="params">(subFile.isFile<span class="params">()</span> &amp;&amp; subFile.getName<span class="params">()</span>.endsWith<span class="params">(<span class="string">".class"</span>)</span>)</span> {
+                String fileName = subFile.getName<span class="params">()</span>;
+                String className = loadPackage + <span class="string">"."</span> + fileName.substring<span class="params">(<span class="number">0</span>, fileName.indexOf<span class="params">(<span class="string">"."</span>)</span>)</span>;
+
+                try {
+                    Class&lt;?&gt; clazz = Class.forName<span class="params">(className)</span>;
+                    <span class="keyword">if</span> <span class="params">(clazz.isAnnotationPresent<span class="params">(Bean.class)</span>)</span> {
+
+                        clazzList.add<span class="params">(clazz)</span>;
+                    }
+                } catch <span class="params">(ClassNotFoundException e)</span> {
+                    System.out.printf<span class="params">(<span class="string">"Failed to load class: &lt;%s&gt;\n"</span>, className)</span>;
+                }
+            } <span class="keyword">else</span> <span class="keyword">if</span> <span class="params">(subFile.isDirectory<span class="params">()</span>)</span> {
+                getSubpackageClasses<span class="params">(clazzList, subFile, loadPackage + <span class="string">"."</span> + subFile.getName<span class="params">()</span>)</span>;
+            }
+        }
+    }
+
+    public static &lt;T&gt; T getBean<span class="params">(Class&lt;T&gt; clazz)</span> {
+        <span class="keyword">if</span> <span class="params">(beanMap == null)</span> {
+            return null;
+        }
+        return <span class="params">(T)</span> beanMap.get<span class="params">(clazz)</span>;
+    }
+}
+</code></pre><p>然后来实际使用看看</p>
+<pre><code><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>{
+
+    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(String[] args) {
+        EmailService emailService = BeanContext.getBean(EmailService.<span class="keyword">class</span>);
+
+        emailService.validateEmail(<span class="keyword">new</span> Email(<span class="string">"ddd"</span>));
+        emailService.validateEmail(<span class="keyword">new</span> Email(<span class="string">"hotmail@gmail.com"</span>));
+    }
+}
+</code></pre><p>输出结果为：</p>
+<pre><code><span class="type">Email</span>{address=<span class="symbol">'ddd'</span>} - illegal
+<span class="type">Email</span>{address=<span class="symbol">'hotmail</span>@gmail.com'} - valid
+</code></pre><p>由上观之，自定义Annotation的使用通常需要经历： 自定义Annotation， 解析Annotation 两个步骤， 通常比较麻烦的地方就是在解析的步骤上。因此但凡说 Annotation，必定要涉及到使用的特定环境，假设脱离的语境，那么也就像花瓶一样，只能做摆设了。</p>
+<p><strong>参考资料</strong></p>
+<ol>
+<li><a href="http://docs.oracle.com/javase/tutorial/java/annotations/index.html" target="_blank" rel="external"> Oracle | The Java Tutorials | Lesson: Annotations</a></li>
+<li><a href="http://www.infoq.com/cn/articles/cf-java-annotation" target="_blank" rel="external"> InfoQ | Java深度历险（六）——Java注解</a></li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hellofalcon.com/2013/11/03/java_annotation/" data-id="cia3hqngu000jqchhn62su0fl" class="article-share-link">分享到</a>
+      
+        <a href="http://hellofalcon.com/2013/11/03/java_annotation/#ds-thread" class="article-comment-link">评论</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/annotation/">annotation</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2014/01/01/2013简单回顾/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          2013简单回顾
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2013/07/06/MongoDB Aggregate Framework初探/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">MongoDB Aggregate Framework初探</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+  <section id="comments">
+    <div id="ds-thread" class="ds-thread" data-thread-key="http://hellofalcon.com/2013/11/03/java_annotation/" data-title="Java注解" data-url="http://hellofalcon.com/2013/11/03/java_annotation/">
+      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by DuoShuo.</a></noscript>
+      </div>
+  </section>
+</section>
+      
+        <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul id="recent-post" class="">
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              <a href="/2014/06/22/scala-startups/" class="thumbnail">
+  
+    <span style="background-image:url(/img/scalahierarchy.png
+)" alt="scala-startups" class="thumbnail-image"></span>
+  
+</a>
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/编程/">编程</a></p>
+              <p class="item-title"><a href="/2014/06/22/scala-startups/" class="title">scala-startups</a></p>
+              <p class="item-date"><time datetime="2014-06-22T01:10:24.000Z" itemprop="datePublished">2014-06-22</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              <a href="/2014/03/29/JUnit和它的设计模式/" class="thumbnail">
+  
+    <span class="thumbnail-image thumbnail-none"></span>
+  
+</a>
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/编程/">编程</a></p>
+              <p class="item-title"><a href="/2014/03/29/JUnit和它的设计模式/" class="title">JUnit和它的设计模式</a></p>
+              <p class="item-date"><time datetime="2014-03-29T01:10:24.000Z" itemprop="datePublished">2014-03-29</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              <a href="/2014/01/21/自制编程语言/" class="thumbnail">
+  
+    <span style="background-image:url(/img/p_impl_language/alt.png
+)" alt="自制编程语言" class="thumbnail-image"></span>
+  
+</a>
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/编程/">编程</a></p>
+              <p class="item-title"><a href="/2014/01/21/自制编程语言/" class="title">自制编程语言</a></p>
+              <p class="item-date"><time datetime="2014-01-21T01:10:24.000Z" itemprop="datePublished">2014-01-21</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              <a href="/2014/01/01/2013简单回顾/" class="thumbnail">
+  
+    <span style="background-image:url(/img/p_review2013/haiou.jpg
+)" alt="2013简单回顾" class="thumbnail-image"></span>
+  
+</a>
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/职业生涯/">职业生涯</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/职业生涯/年度回顾/">年度回顾</a></p>
+              <p class="item-title"><a href="/2014/01/01/2013简单回顾/" class="title">2013简单回顾</a></p>
+              <p class="item-date"><time datetime="2014-01-01T01:10:24.000Z" itemprop="datePublished">2014-01-01</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              <a href="/2013/11/03/java_annotation/" class="thumbnail">
+  
+    <span style="background-image:url(http://cgfalcon-attachment.stor.sinaapp.com/87be6df591ac8efdb.png
+)" alt="Java注解" class="thumbnail-image"></span>
+  
+</a>
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/编程/">编程</a></p>
+              <p class="item-title"><a href="/2013/11/03/java_annotation/" class="title">Java注解</a></p>
+              <p class="item-date"><time datetime="2013-11-03T01:10:24.000Z" itemprop="datePublished">2013-11-03</time></p>
+            </div>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/数据库/">数据库</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程/">编程</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/职业生涯/">职业生涯</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/职业生涯/年度回顾/">年度回顾</a><span class="category-list-count">1</span></li></ul></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/2013总结/">2013总结</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/">JVM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Junit/">Junit</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MongoDB/">MongoDB</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Scala/">Scala</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/annotation/">annotation</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/函数式编程/">函数式编程</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编程语言/">编程语言</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/重构/">重构</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/2013总结/" style="font-size: 10px;">2013总结</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/Junit/" style="font-size: 10px;">Junit</a> <a href="/tags/MongoDB/" style="font-size: 10px;">MongoDB</a> <a href="/tags/Scala/" style="font-size: 10px;">Scala</a> <a href="/tags/annotation/" style="font-size: 10px;">annotation</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/函数式编程/" style="font-size: 10px;">函数式编程</a> <a href="/tags/编程语言/" style="font-size: 10px;">编程语言</a> <a href="/tags/重构/" style="font-size: 10px;">重构</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06/">六月 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">三月 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/01/">一月 2014</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/11/">十一月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">七月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">五月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">三月 2013</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+  <div id="toTop" class="fa fa-chevron-up"></div>
+</aside>
+      
+    </div>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2015 Falcon Chu<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
+    </div>
+  </div>
+</footer>
+    
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"hellofalcon"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+
+
+<script src="//ajax.useso.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+  </div>
+</body>
+</html>
