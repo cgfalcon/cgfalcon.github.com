@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Java代码规范 | Hellofalcon</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="最近帮团队整理了一份Java编码规范，总体上参考了 Google Java 代码规范
+编码准则尽可能让代码风格看起来像是一个人写的。另外不要盲从一下规则，只要你能给出合理的理由 ^_^
+默认缩减 4 个空格，不要使用 Tab">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java代码规范">
+<meta property="og:url" content="http://hellofalcon.com/2015/09/29/20150929_Java代码规范/index.html">
+<meta property="og:site_name" content="Hellofalcon">
+<meta property="og:description" content="最近帮团队整理了一份Java编码规范，总体上参考了 Google Java 代码规范
+编码准则尽可能让代码风格看起来像是一个人写的。另外不要盲从一下规则，只要你能给出合理的理由 ^_^
+默认缩减 4 个空格，不要使用 Tab">
+<meta property="og:updated_time" content="2015-09-29T02:43:54.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java代码规范">
+<meta name="twitter:description" content="最近帮团队整理了一份Java编码规范，总体上参考了 Google Java 代码规范
+编码准则尽可能让代码风格看起来像是一个人写的。另外不要盲从一下规则，只要你能给出合理的理由 ^_^
+默认缩减 4 个空格，不要使用 Tab">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href='//fonts.useso.com/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
+  <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css" type="text/css">
+  
+
+  
+	<script type="text/javascript">
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?67bfad4475dbdde7048d563d6ba2ea54";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+
+
+</head>
+<body>
+  <div id="container">
+    <header id="header">
+  <div id="header-main" class="header-inner">
+    <div class="outer">
+      <a href="/" id="logo"><i class="logo"></i><span class="site-title">Hellofalcon</span></a>
+      <nav id="main-nav">
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        <div class="profile" id="profile-nav">
+          <a id="profile-anchor" href="javascript:;"><img class="avatar" src="/img/avatar.png"><i class="fa fa-caret-down"></i></a>
+        </div>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="http://hellofalcon.com"></form>
+      </div>
+    </div>
+  </div>
+  <div id="main-nav-mobile" class="header-sub header-inner">
+    <table class="menu outer">
+      <tr>
+      
+        <td><a class="main-nav-link" href="/">Home</a></td>
+      
+        <td><a class="main-nav-link" href="/archives">Archives</a></td>
+      
+        <td><a class="main-nav-link" href="/about">About</a></td>
+      
+      <td>
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://hellofalcon.com"></form>
+      </td>
+      </tr>
+    </table>
+  </div>
+  
+</header>
+    <div class="outer">
+      <aside id="profile">
+  <div class="inner profile-inner">
+  	<div class="base-info profile-block">
+		  <img id="avatar" src="/img/avatar.png">
+      <h2 id="name">Falcon Chu</h2>
+      <h3 id="title">Java程序猿@Alibaba</h3>
+      <span id="location"><i class="fa fa-map-marker"></i>HangZhou, China</span>
+      <a id="follow" href="http://weibo.com/cggogogo">关注我</a>
+  	</div>
+    <div class="article-info profile-block">
+      <div class="article-info-block">
+        13
+        <span>文章</span>
+      </div>
+      <div class="article-info-block">
+        20
+        <span>标签</span>
+      </div>
+    </div>
+    
+    <div class="contact-info profile-block">
+      <table class="contact-list">
+        <tr>
+        
+          <td><a href="https://github.com/cgfalcon" target="_blank" title="github"><i class="fa fa-github"></i></a></td>
+        
+          <td><a href="http://www.zhihu.com/people/cgfalcon" target="_blank" title="zhihu"><i class="fa fa-zhihu"></i></a></td>
+        
+          <td><a href="http://weibo.com/cggogogo" target="_blank" title="weibo"><i class="fa fa-weibo"></i></a></td>
+        
+        </tr>
+      </table>
+    </div>
+    
+  </div>
+</aside>
+      <section id="main"><article id="post-20150929_Java代码规范" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Java代码规范
+    </h1>
+  
+
+        <div class="article-meta">
+          <div class="article-date">
+  <i class="fa fa-calendar"></i>
+  <a href="/2015/09/29/20150929_Java代码规范/">
+    <time datetime="2015-09-29T08:37:49.000Z" itemprop="datePublished">2015-09-29</time>
+  </a>
+</div>
+          
+  <div class="article-category">
+  	<i class="fa fa-folder"></i>
+    <a class="article-category-link" href="/categories/编程/">编程</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/编程/软件工程/">软件工程</a>
+  </div>
+
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近帮团队整理了一份Java编码规范，总体上参考了 Google Java 代码规范</p>
+<h2 id="编码准则">编码准则</h2><p>尽可能让代码风格看起来像是一个人写的。另外不要盲从一下规则，只要你能给出合理的理由 ^_^</p>
+<p><strong>默认缩减 4 个空格，不要使用 Tab</strong></p>
+<a id="more"></a>
+<h2 id="字符集">字符集</h2><p>文件编码使用 UTF-8</p>
+<h2 id="源文件结构">源文件结构</h2><h3 id="Package_语句">Package 语句</h3><p>package语句写在一行里面，不要换行</p>
+<h3 id="Import_语句">Import 语句</h3><ul>
+<li>不要使用通配符，比如 <code>import java.util.*</code></li>
+<li>一个导入语句不要换行</li>
+<li>import语句按照下面顺序排列，看起来不乱，同时要按块组织，块与块之间空行<ul>
+<li><code>import static</code></li>
+<li>&lt;空行&gt;</li>
+<li><code>import com.&lt;company_name&gt;</code> 比如 <code>com.alibaba</code> 自己公司的包</li>
+<li><code>import org.springframework</code> 第三方包导入，按照ASCII字符排列</li>
+<li>&lt;空行&gt;</li>
+<li><code>import java.</code></li>
+<li><code>import javax.</code></li>
+</ul>
+</li>
+</ul>
+<p>代码示例</p>
+<pre><code><span class="preprocessor"><span class="keyword">import</span> static org.junit.assert.AssertNull;</span>
+<span class="comment">// 空行</span>
+<span class="preprocessor"><span class="keyword">import</span> com.alibaba.fastjson.JSONObject;</span>
+<span class="preprocessor"><span class="keyword">import</span> org.aspectj.lang.annotation.Around;</span>
+<span class="preprocessor"><span class="keyword">import</span> org.slf4j.Logger;</span>
+<span class="comment">// 空行</span>
+<span class="preprocessor"><span class="keyword">import</span> java.lang.Thread;</span>
+<span class="preprocessor"><span class="keyword">import</span> java.util.Date;</span>
+<span class="preprocessor"><span class="keyword">import</span> javax.swing.JFrame;</span>
+</code></pre><p>不推荐的样式</p>
+<pre><code><span class="comment">// 相同性质的包被分开放</span>
+
+<span class="preprocessor"><span class="keyword">import</span> com.hellofalcon.blog.shared.model.*;</span>
+
+<span class="preprocessor"><span class="keyword">import</span> com.hellofalcon.blog.util.AddressUtil;</span>
+<span class="preprocessor"><span class="keyword">import</span> com.hellofalcon.blog.util.EncryptUtil;</span>
+<span class="preprocessor"><span class="keyword">import</span> org.apache.commons.lang.StringUtils;</span>
+<span class="preprocessor"><span class="keyword">import</span> org.aspectj.lang.ProceedingJoinPoint;</span>
+<span class="preprocessor"><span class="keyword">import</span> org.aspectj.lang.annotation.Around;</span>
+<span class="preprocessor"><span class="keyword">import</span> org.aspectj.lang.annotation.Aspect;</span>
+<span class="preprocessor"><span class="keyword">import</span> org.slf4j.Logger;</span>
+<span class="preprocessor"><span class="keyword">import</span> org.slf4j.LoggerFactory;</span>
+
+<span class="preprocessor"><span class="keyword">import</span> com.hellofalcon.blog.api.QueryService;</span>    <span class="comment">// 可以和最上面的放到一起</span>
+</code></pre><h3 id="类成员">类成员</h3><p>遵从 <code>相似的成员放在一起</code> 的原则， <code>逻辑类似的成员放在一起</code> 的原则</p>
+<p>推荐样式</p>
+<pre><code><span class="class"><span class="keyword">class</span> <span class="title">Sample</span> </span>{
+    <span class="comment">// 静态变量放在一起</span>
+    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Logger LOG = LogFactory.getLogger(Sample.<span class="keyword">class</span>);
+    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String LOG_PREFIX = <span class="string">"sample-log"</span>;
+
+    <span class="comment">// 实例属性放在一起</span>
+    <span class="keyword">private</span> String name;
+    <span class="keyword">private</span> String version;
+
+    <span class="comment">// 外部Service等放在一起</span>
+    <span class="keyword">private</span> MailService mailService;
+    <span class="keyword">private</span> BeanService beanService;
+
+}
+</code></pre><p>不推荐的样式 </p>
+<pre><code>class Sample {
+    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Logger LOG = LogFactory.getLogger(Sample.class);
+
+    <span class="keyword">private</span> <span class="keyword">String</span> name;
+
+    <span class="keyword">private</span> <span class="keyword">String</span> mail;
+
+    <span class="keyword">private</span> MailService mailService;
+
+    <span class="keyword">private</span> <span class="keyword">String</span> version;
+
+    <span class="keyword">private</span> BeanService beanService;
+
+    <span class="comment">// 静态变量随手放在一处</span>
+    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">String</span> LOG_PREFIX = <span class="string">"sample-log"</span>;
+
+}
+</code></pre><h2 id="格式及排版">格式及排版</h2><h3 id="大括号">大括号</h3><p><code>if</code>, <code>for</code>, <code>do</code>, <code>while</code>, <code>else</code> 等即便只有一个语句也将大括号加上</p>
+<h3 id="大括号的格式">大括号的格式</h3><p>大括号的格式采用 K&amp;R 风格</p>
+<ul>
+<li><code>{</code> 左侧不换行</li>
+<li><code>{</code> 右侧换行</li>
+<li><code>}</code> 左侧必须换行</li>
+<li><code>}</code> 右侧在以下情况不需要换行： 1. <code>}</code> 右侧是 <code>else</code>， 2. <code>}</code> 右侧是 <code>,</code> 逗号。其余情况都要换行</li>
+</ul>
+<p>代码示例：</p>
+<pre><code><span class="comment">// 右括号换行示例</span>
+<span class="keyword">return</span> <span class="keyword">new</span> MyClass() {
+  <span class="annotation">@Override</span> <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">method</span><span class="params">()</span> </span>{
+    <span class="keyword">if</span> (condition()) {
+      <span class="keyword">try</span> {
+        something();
+      } <span class="keyword">catch</span> (ProblemException e) {
+        recover();
+      }
+    }
+  }
+};
+
+<span class="comment">// 右括号不换行示例</span>
+<span class="keyword">if</span> (a == <span class="number">10</span>) {
+    <span class="comment">// do something </span>
+} <span class="keyword">else</span> {
+    <span class="comment">// do something</span>
+}
+</code></pre><h3 id="空代码块">空代码块</h3><ul>
+<li>如果代码块中没有任何代码，则不需要换行</li>
+<li>如果代码块从属于 <code>if</code> <code>else</code> <code>try</code> <code>catch</code> <code>finally</code> 那么代码块中需要换行</li>
+</ul>
+<p>代码示例：</p>
+<pre><code><span class="comment">// 空代码块</span>
+<span class="tag">void</span> <span class="tag">doNothing</span>() {};
+
+<span class="comment">// 需要换行的空代码块</span>
+<span class="tag">try</span> {
+    <span class="comment">// do something</span>
+} <span class="tag">catch</span> (Exception e) {
+    <span class="comment">// do nothing</span>
+}
+</code></pre><h3 id="代码块缩进">代码块缩进</h3><p>代码块的开始需要和之前的语法元素保留 <code>1个空格</code> 的距离</p>
+<p>代码示例：</p>
+<pre><code><span class="keyword">void</span> <span class="function"><span class="keyword">function</span><span class="params">()</span> </span>{
+    <span class="comment">// do something</span>
+}
+
+<span class="keyword">if</span> (a == <span class="number">10</span>) {
+    <span class="comment">// do something</span>
+}
+
+<span class="keyword">try</span> {
+
+} <span class="keyword">catch</span> (Exception e) {
+
+}
+</code></pre><h3 id="每行一个语句">每行一个语句</h3><p>分号 <code>;</code> 确定一个语句， 所以每行只有一个分号</p>
+<h3 id="每行代码的字符数不超过_120">每行代码的字符数不超过 120</h3><p>考虑到目前屏幕的分辨率，单行 120 字符还是比较合适的</p>
+<p>但是以下情况不需要限制字符数</p>
+<ul>
+<li>package 语句</li>
+<li>import 语句</li>
+<li>不可能满足列限制的行(例如，Javadoc中的一个长URL，或是一个长的JSNI方法参考)</li>
+</ul>
+<p><strong>代码换行的时机 （Line Wrapping）</strong></p>
+<p>时机： 在高级的语法结构处断开</p>
+<ul>
+<li>非赋值运算符（-, +, *, / 等），在运算符的前面断开</li>
+<li>赋值运算符 （=），在赋值运算符的后面断开</li>
+</ul>
+<p>代码示例：</p>
+<pre><code><span class="keyword">int</span> <span class="keyword">sum</span> = 
+        a 
+        + b
+        + c;    
+</code></pre><p><strong>换行时的缩进</strong></p>
+<ul>
+<li>同级语法元素可以有相同的缩减</li>
+<li>不同级别的多行缩减，每一个缩进要比上一行多缩进至少4个空格</li>
+</ul>
+<p>代码示例：</p>
+<pre><code><span class="type">int</span> <span class="literal">result</span> = 
+    someService.invoke(
+        param1,
+        (a 
+            + b 
+            + c
+        )            
+    )
+</code></pre><h3 id="何时使用空白">何时使用空白</h3><p>此处空白指： 空行 和 空格</p>
+<p><strong>空行使用的时机</strong></p>
+<p>空行的使用注意是用来帮助代码划分逻辑块</p>
+<ul>
+<li>类中连续的成员： 字段、构造器、方法、嵌套类、静态初始化块、实例初始化块，之间应该有空行<ul>
+<li>但是有例外： 字段直接如果没有其他内容可以省略空行</li>
+</ul>
+</li>
+<li>函数内的逻辑块之间可以用空行隔开</li>
+<li>类中第一个和最后一个成语前后的空行可以省略</li>
+</ul>
+<p>代码示例：</p>
+<pre><code><span class="keyword">class</span> Sample {
+    <span class="comment">// 静态变量放在一起</span>
+    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Logger LOG = LogFactory.getLogger(Sample.<span class="keyword">class</span>);
+    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String LOG_PREFIX = <span class="string">"sample-log"</span>;
+
+    <span class="comment">// 实例属性放在一起</span>
+    <span class="keyword">private</span> String name;
+    <span class="keyword">private</span> String <span class="keyword">version</span>;
+
+    <span class="comment">// 外部Service等放在一起</span>
+    <span class="keyword">private</span> MailService mailService;
+    <span class="keyword">private</span> BeanService beanService;
+
+    <span class="comment">// 静态初始化块</span>
+    <span class="keyword">static</span> {
+        <span class="comment">// do something here</span>
+    }
+
+    <span class="keyword">public</span> Sample() {
+        <span class="comment">// do some initialization</span>
+    }
+
+    <span class="keyword">public</span> Sample(String name, String <span class="keyword">version</span>) {
+        <span class="keyword">this</span>.name = name;
+        <span class="keyword">this</span>.<span class="keyword">version</span> = <span class="keyword">version</span>;
+    }
+
+    <span class="comment">// innser class</span>
+    <span class="keyword">class</span> InnerClass {
+
+    }
+
+    <span class="comment">// static nested class</span>
+    <span class="keyword">static</span> <span class="keyword">class</span> NestedClass {
+
+    }         
+}
+</code></pre><p><strong>空白使用的时机</strong></p>
+<p>除了语法需要的空格外，以下几个地方也请使用空格：</p>
+<ul>
+<li>将所有保留字（例如 <code>if</code>, <code>for</code>, <code>catch</code>）和 <code>(</code> 用空格分隔</li>
+<li>将所有保留字（例如 <code>else</code>, <code>catch</code>） 和 <code>}</code> 用空格分隔</li>
+<li><code>{</code> 之前都加上空格，除了以下两个例外<ul>
+<li><code>@SomeAnnotation({a, b})</code>，这样是不需要空格的</li>
+<li><code>String[][] x = foo;</code>，这样也是不需要的</li>
+</ul>
+</li>
+<li>所有的二元操作符左右都加上空格</li>
+<li><code>,</code> <code>:</code> <code>;</code> <code>)</code> 后都加上空格</li>
+<li>注释符合 <code>//</code> 的两次留空格</li>
+</ul>
+<p>代码示例： </p>
+<pre><code><span class="type">int</span> sum = <span class="number">1</span> + <span class="number">2</span> + <span class="number">3</span> * <span class="number">19</span> + (<span class="number">4</span> % <span class="number">3</span>)
+
+<span class="keyword">if</span> (flag == <span class="literal">true</span>) {
+    // <span class="keyword">do</span> something
+} <span class="keyword">else</span> { 
+    // <span class="keyword">do</span> something
+}
+
+<span class="type">int</span> <span class="literal">result</span> = service.invoke(p1, p2, p3);
+
+<span class="type">int</span> triple = flag ? <span class="number">1</span> : <span class="number">2</span>; // comment example
+</code></pre><h3 id="特定语法结构的格式">特定语法结构的格式</h3><p><strong>变量声明</strong></p>
+<ul>
+<li>每行一个变量声明，不要使用连续的变量声明，如 <code>int a, b;</code></li>
+<li>变量在使用的时候再声明，并且尽快完成初始化</li>
+</ul>
+<p><strong>Array声明</strong></p>
+<p>Array声明按照代码块的约定来即可</p>
+<pre><code><span class="keyword">new</span> <span class="built_in">int</span><span class="literal">[]</span> {           <span class="keyword">new</span> <span class="built_in">int</span><span class="literal">[]</span> {
+  <span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>            <span class="number">0</span>,
+}                       <span class="number">1</span>,
+                        <span class="number">2</span>,
+<span class="keyword">new</span> <span class="built_in">int</span><span class="literal">[]</span> {             <span class="number">3</span>,
+  <span class="number">0</span>, <span class="number">1</span>,               }
+  <span class="number">2</span>, <span class="number">3</span>
+}                     <span class="keyword">new</span> <span class="built_in">int</span><span class="literal">[]</span>
+                          {<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>}
+</code></pre><p><strong>Switch语句</strong></p>
+<ul>
+<li>每个Switch语句必须有 <code>default</code> 子句</li>
+<li>子句缩进 4 个空格</li>
+</ul>
+<p>代码示例：</p>
+<pre><code><span class="keyword">switch</span>(rn) {
+    <span class="keyword">case</span> <span class="string">'I'</span>: <span class="keyword">return</span> <span class="number">1</span>;
+    <span class="keyword">case</span> <span class="string">'V'</span>: <span class="keyword">return</span> <span class="number">5</span>;
+    <span class="keyword">case</span> <span class="string">'X'</span>: <span class="keyword">return</span> <span class="number">10</span>;
+    <span class="keyword">case</span> <span class="string">'L'</span>: <span class="keyword">return</span> <span class="number">50</span>;
+    <span class="keyword">case</span> <span class="string">'C'</span>: <span class="keyword">return</span> <span class="number">100</span>;
+    <span class="keyword">case</span> <span class="string">'D'</span>: <span class="keyword">return</span> <span class="number">500</span>;
+    <span class="keyword">case</span> <span class="string">'M'</span>: <span class="keyword">return</span> <span class="number">1000</span>;
+    <span class="keyword">default</span>: <span class="keyword">return</span> <span class="number">0</span>;
+}    
+</code></pre><p><strong>注解 Annotation</strong></p>
+<ul>
+<li>注解紧跟JavaDoc之后</li>
+<li>每行一个注解</li>
+</ul>
+<p>代码示例：</p>
+<pre><code><span class="variable">@Override</span>
+<span class="variable">@Nullable</span>
+public String <span class="function">getNameIfPresent</span>() { ... }
+</code></pre><p><strong>注释的使用</strong></p>
+<ul>
+<li>注释要和它所修饰的语句使用相同的缩进规则</li>
+<li>需要注释中的代码被格式化或者生产JavaDoc的时候使用 <code>/* ... */</code> 来进行注释</li>
+</ul>
+<p>注释示例：</p>
+<pre><code>/<span class="keyword">*</span>
+ <span class="keyword">*</span> This is          // <span class="keyword">And</span> so           /<span class="keyword">*</span> Or you can
+ <span class="keyword">*</span> okay.            // is this.          <span class="keyword">*</span> even do this. <span class="keyword">*</span>/
+ <span class="keyword">*</span>/
+</code></pre><p><strong>修饰符</strong></p>
+<p>类和其成员有修饰符的时候按照下列顺序来显示</p>
+<pre><code><span class="keyword">public</span> <span class="keyword">protected</span> <span class="keyword">private</span> <span class="keyword">abstract</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">transient</span> <span class="keyword">volatile</span> <span class="keyword">synchronized</span> <span class="keyword">native</span> <span class="keyword">strictfp</span>
+</code></pre><p><strong>数字字面量</strong></p>
+<p>long 型的字面量赋值的时候使用 <code>L</code> 来结尾，例如 <code>2000000L</code> 而不是 <code>200000l</code></p>
+<h2 id="命名的艺术">命名的艺术</h2><p>标识符命名的通用准则： </p>
+<ul>
+<li><p>标识符的组成中只使用 <strong>ASCII字母</strong> 和 <strong>数字</strong> 、<strong>下划线(<code>_</code>)</strong> 来命名</p>
+</li>
+<li><p>lowerCamelCase： 小写驼峰命名法， 除了第一个单词的首字母小写，其他单词的首字母大写其余字母小写。</p>
+</li>
+<li><p>UpperCamelCase： 大写驼峰命名法， 所有单词的首字母大写，其余都小写</p>
+</li>
+</ul>
+<h3 id="包命名">包命名</h3><ul>
+<li>全小写</li>
+<li>只能包含字母</li>
+</ul>
+<p>包名示例：</p>
+<pre><code><span class="comment">// 推荐的</span>
+com<span class="class">.mycomp</span><span class="class">.service</span>
+
+<span class="comment">// 不推荐的</span>
+com<span class="class">.mycomp</span><span class="class">.mail_service</span>
+com<span class="class">.mycomp</span><span class="class">.mailService</span>
+</code></pre><h3 id="类命名">类命名</h3><ul>
+<li>命名规则： UpperCamelCase</li>
+<li>通常的类名是 <strong>名字</strong> 或者 <strong>名词短语</strong>，例如 <code>ArrayList</code>。 对于接口的命名则可用一些<strong>形容词</strong>，例如 <code>Readable</code></li>
+<li>测试方法使用 <code>test</code> 开头或者 <code>Test</code> 结尾。例如 <code>MailServiceTest</code>, <code>testGetMessage</code></li>
+</ul>
+<h3 id="方法命名">方法命名</h3><ul>
+<li>命名规则： lowerCamelCase</li>
+<li>方法名通常是 <strong>动词</strong> 或 <strong>动词短语</strong></li>
+<li>测试方法可以用<strong>下划线(_)</strong>来做一些特殊标记，比如 <code>testPop_empty</code>, <code>testPop_null</code></li>
+</ul>
+<h3 id="常量命名">常量命名</h3><ul>
+<li>使用 <code>static final</code> 来修饰你的常量</li>
+<li>所有单词的所有字母大写，单词之间用<strong>下划线（_）</strong>来分隔</li>
+</ul>
+<p>常量示例：</p>
+<pre><code><span class="comment">// Constants</span>
+<span class="literal">static</span> <span class="keyword">final</span> <span class="built_in">int</span> NUMBER = <span class="number">5</span>;
+<span class="literal">static</span> <span class="keyword">final</span> ImmutableList&lt;<span class="built_in">String</span>&gt; NAMES = ImmutableList.of(<span class="string">"Ed"</span>, <span class="string">"Ann"</span>);
+<span class="literal">static</span> <span class="keyword">final</span> Joiner COMMA_JOINER = Joiner.on(<span class="string">','</span>);  <span class="comment">// because Joiner is immutable</span>
+<span class="literal">static</span> <span class="keyword">final</span> SomeMutableType[] EMPTY_ARRAY = {};
+<span class="keyword">enum</span> SomeEnum { ENUM_CONSTANT }
+</code></pre><h3 id="非常量字段的命名">非常量字段的命名</h3><ul>
+<li>命名规则： lowerCamelCase。例如 <code>computedValues</code></li>
+</ul>
+<h3 id="参数命名">参数命名</h3><ul>
+<li>命名规则： lowerCamelCase。 </li>
+<li>避免单个字母的变量名</li>
+</ul>
+<h3 id="本地变量命名">本地变量命名</h3><ul>
+<li>命名规则： lowerCamelCase</li>
+<li>尽可能的简短</li>
+<li>通用要尽可能少用一个字母的变量，除非这个变量用在循环中暂时使用</li>
+<li>本地变量用 <code>final</code> 修饰的时候也不用遵循常量的命名规则</li>
+</ul>
+<h3 id="类型变量命名">类型变量命名</h3><p>类型变量，特别是泛型类型变量名可以用下面的两种方式来命名</p>
+<ul>
+<li>采用单个大写字符的命名，例如 <code>T</code>, <code>F</code>, <code>E</code> 等</li>
+<li>一个首字母大写的单词加上 <code>T</code>， 例如 <code>RequestT</code>, <code>FooBarT</code> 等</li>
+</ul>
+<h2 id="异常_Exceptoin">异常 Exceptoin</h2><h3 id="异常的捕获">异常的捕获</h3><p>不要忽略捕获到的异常，你可以打个日志什么的，但是就是不要忽略</p>
+<p>异常的分类： Checked Exception 和 Unchecked Exception。归根到底可以归因到：服务方自己产生的异常，还是调用方使用不当产生的异常。</p>
+<h3 id="Exception_和_RuntimeException_使用的准则">Exception 和 RuntimeException 使用的准则</h3><ul>
+<li>如果你希望调用方处理异常，那么用Exception</li>
+<li>如果你希望调用方可忽略异常，那么用RuntimeException</li>
+<li>使用时注意不要让底层异常越过太多层向上抛，否则上层应用也不知道怎么处理</li>
+<li>当你需要给调用方返回更多的错误信息的时候，可以自定义异常</li>
+</ul>
+<h3 id="异常的实践">异常的实践</h3><ul>
+<li>记得释放资源。特别是数据库还有网络资源，使用 <code>try-catch-finally</code></li>
+<li>不要使用异常作控制流程之用</li>
+<li>不要忽略异常</li>
+<li>生成代码不要 <code>printStatckTrace()</code></li>
+</ul>
+<h2 id="IDE相关">IDE相关</h2><p><strong>IDEA</strong></p>
+<blockquote>
+<p>基于 Intellij IDEA 14</p>
+</blockquote>
+<p>组织import： <code>Ctrl + Alt + O</code></p>
+<p>代码格式化： <code>Ctrl + Alt + L</code></p>
+<p>设置工程编码： </p>
+<ul>
+<li><strong>Step 1</strong>: <code>Ctrl + Alt + S</code> (调出Settings)</li>
+<li><strong>Step 2</strong>: Editor =&gt; File Encoding </li>
+<li><strong>Step 3</strong>: IDE Encoding 指定全局默认编码， Project Encoding 指定当前工程编码</li>
+</ul>
+<p>如何少些点代码？</p>
+<blockquote>
+<p>IDEA 默认配置了各种代码模板，多多使用的话，写Java也不用感叹人生苦短</p>
+</blockquote>
+<ul>
+<li><strong>快捷键</strong>：<ul>
+<li><code>Ctrl + J</code>，调用默认Code Template，这个是可以自己配置的</li>
+<li><code>Ctrl + Alt + T</code>，这个快捷键首先要先选中一个代码块（不知道肿么选中？自己面壁去），然后敲击这个快捷键，可以插入 <code>if-else</code>，<code>switch</code>，<code>try-catch-finally</code> 来包裹代码块</li>
+</ul>
+</li>
+<li><p><strong>编辑器</strong></p>
+<blockquote>
+<p>这个功能直接在编辑器写缩略短语即可，IDEA会自动提示，然后按Tab就可以</p>
+</blockquote>
+<ul>
+<li><code>iter</code>， 可以用来遍历Collection</li>
+<li><code>new XXX().var</code>， 用来快速生成一个 new 语句</li>
+<li><code>&lt;expression&gt;.var</code>， 同上，快速定义个变量并复制</li>
+<li><code>ifn</code>，用来快速生成 <code>if(xxx == null) {}</code> 这样的代码 </li>
+<li>… 其他还有很多，可以到官网下载小册子学习</li>
+</ul>
+</li>
+</ul>
+<p><strong>Eclipse</strong></p>
+<blockquote>
+<p>欢迎补充</p>
+</blockquote>
+<h2 id="参考资料">参考资料</h2><ol>
+<li>文档 - <a href="https://google.github.io/styleguide/javaguide.html" target="_blank" rel="external">https://google.github.io/styleguide/javaguide.html</a></li>
+<li>文档 - <a href="http://www.onjava.com/pub/a/onjava/2003/11/19/exceptions.html?page=1" target="_blank" rel="external">http://www.onjava.com/pub/a/onjava/2003/11/19/exceptions.html?page=1</a></li>
+<li>书籍 - 《编写可读代码的艺术》 （The Art of Readable Code）</li>
+<li>书籍 - 《代码大全》 (Code Complete)</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hellofalcon.com/2015/09/29/20150929_Java代码规范/" data-id="cif4r8jsp0002nohhqyq8amym" class="article-share-link">分享到</a>
+      
+        <a href="http://hellofalcon.com/2015/09/29/20150929_Java代码规范/#ds-thread" class="article-comment-link">评论</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/软件工程/">软件工程</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2015/07/25/20150725_JavaScript学习笔记/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">JavaScript 学习笔记</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+  <section id="comments">
+    <div id="ds-thread" class="ds-thread" data-thread-key="http://hellofalcon.com/2015/09/29/20150929_Java代码规范/" data-title="Java代码规范" data-url="http://hellofalcon.com/2015/09/29/20150929_Java代码规范/">
+      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by DuoShuo.</a></noscript>
+      </div>
+  </section>
+</section>
+      
+        <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul id="recent-post" class="">
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              <a href="/2015/09/29/20150929_Java代码规范/" class="thumbnail">
+  
+    <span class="thumbnail-image thumbnail-none"></span>
+  
+</a>
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/编程/">编程</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/编程/软件工程/">软件工程</a></p>
+              <p class="item-title"><a href="/2015/09/29/20150929_Java代码规范/" class="title">Java代码规范</a></p>
+              <p class="item-date"><time datetime="2015-09-29T08:37:49.000Z" itemprop="datePublished">2015-09-29</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              <a href="/2015/07/25/20150725_JavaScript学习笔记/" class="thumbnail">
+  
+    <span class="thumbnail-image thumbnail-none"></span>
+  
+</a>
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/编程/">编程</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/编程/读书笔记/">读书笔记</a></p>
+              <p class="item-title"><a href="/2015/07/25/20150725_JavaScript学习笔记/" class="title">JavaScript 学习笔记</a></p>
+              <p class="item-date"><time datetime="2015-07-25T08:37:49.000Z" itemprop="datePublished">2015-07-25</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              <a href="/2015/07/25/20150718_数据可视化/" class="thumbnail">
+  
+    <span class="thumbnail-image thumbnail-none"></span>
+  
+</a>
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/编程/">编程</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/编程/读书笔记/">读书笔记</a></p>
+              <p class="item-title"><a href="/2015/07/25/20150718_数据可视化/" class="title">D3.js 数据可视化</a></p>
+              <p class="item-date"><time datetime="2015-07-25T00:34:49.000Z" itemprop="datePublished">2015-07-25</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              <a href="/2015/06/10/20150610-programers-architect/" class="thumbnail">
+  
+    <span style="background-image:url(http://img4.douban.com/lpic/s27766899.jpg
+)" alt="读《程序员必读之软件架构》" class="thumbnail-image"></span>
+  
+</a>
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/编程/">编程</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/编程/读书笔记/">读书笔记</a></p>
+              <p class="item-title"><a href="/2015/06/10/20150610-programers-architect/" class="title">读《程序员必读之软件架构》</a></p>
+              <p class="item-date"><time datetime="2015-06-10T00:34:49.000Z" itemprop="datePublished">2015-06-10</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              <a href="/2015/05/29/20150529_javascript-start/" class="thumbnail">
+  
+    <span style="background-image:url(http://img4.douban.com/lpic/s1888787.jpg
+)" alt="Javascript 学习书单" class="thumbnail-image"></span>
+  
+</a>
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/编程/">编程</a></p>
+              <p class="item-title"><a href="/2015/05/29/20150529_javascript-start/" class="title">Javascript 学习书单</a></p>
+              <p class="item-date"><time datetime="2015-05-29T01:09:51.000Z" itemprop="datePublished">2015-05-29</time></p>
+            </div>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/数据库/">数据库</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程/">编程</a><span class="category-list-count">10</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/编程/读书笔记/">读书笔记</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程/软件工程/">软件工程</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/职业生涯/">职业生涯</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/职业生涯/年度回顾/">年度回顾</a><span class="category-list-count">1</span></li></ul></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/2013总结/">2013总结</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/D3-js/">D3.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ECMAScript/">ECMAScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/">JVM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/">Javascript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Junit/">Junit</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MongoDB/">MongoDB</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Scala/">Scala</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/annotation/">annotation</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/函数式编程/">函数式编程</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端/">前端</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据可视化/">数据可视化</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/架构/">架构</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编程语言/">编程语言</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书笔记/">读书笔记</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/软件工程/">软件工程</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/重构/">重构</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/2013总结/" style="font-size: 10px;">2013总结</a> <a href="/tags/D3-js/" style="font-size: 10px;">D3.js</a> <a href="/tags/ECMAScript/" style="font-size: 10px;">ECMAScript</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/Javascript/" style="font-size: 20px;">Javascript</a> <a href="/tags/Junit/" style="font-size: 10px;">Junit</a> <a href="/tags/MongoDB/" style="font-size: 10px;">MongoDB</a> <a href="/tags/Scala/" style="font-size: 10px;">Scala</a> <a href="/tags/annotation/" style="font-size: 10px;">annotation</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/函数式编程/" style="font-size: 10px;">函数式编程</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/数据可视化/" style="font-size: 10px;">数据可视化</a> <a href="/tags/架构/" style="font-size: 10px;">架构</a> <a href="/tags/编程语言/" style="font-size: 10px;">编程语言</a> <a href="/tags/读书笔记/" style="font-size: 10px;">读书笔记</a> <a href="/tags/软件工程/" style="font-size: 10px;">软件工程</a> <a href="/tags/重构/" style="font-size: 10px;">重构</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">五月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06/">六月 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">三月 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/01/">一月 2014</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/11/">十一月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">七月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">五月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">三月 2013</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+  <div id="toTop" class="fa fa-chevron-up"></div>
+</aside>
+      
+    </div>
+    <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2015 Falcon Chu<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
+    </div>
+  </div>
+</footer>
+    
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"hellofalcon"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+
+
+<script src="//ajax.useso.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+  </div>
+</body>
+</html>
