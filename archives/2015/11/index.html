@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Category: 年度回顾 | Hellofalcon</title>
+  <title>Archives: 2015/11 | Hellofalcon</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="个人博客">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Hellofalcon">
-<meta property="og:url" content="http://hellofalcon.com/categories/职业生涯/年度回顾/index.html">
+<meta property="og:url" content="http://hellofalcon.com/archives/2015/11/index.html">
 <meta property="og:site_name" content="Hellofalcon">
 <meta property="og:description" content="个人博客">
 <meta name="twitter:card" content="summary">
@@ -112,7 +112,7 @@
 </aside>
       <section id="main">
   
-    <article id="post-20140101_2013简单回顾" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-20151101-数字证书相关知识总结" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
     
@@ -120,21 +120,21 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2014/01/01/20140101_2013简单回顾/">2013简单回顾</a>
+      <a class="article-title" href="/2015/11/01/20151101-数字证书相关知识总结/">数字证书相关知识总结</a>
     </h1>
   
 
         <div class="article-meta">
           <div class="article-date">
   <i class="fa fa-calendar"></i>
-  <a href="/2014/01/01/20140101_2013简单回顾/">
-    <time datetime="2014-01-01T01:10:24.000Z" itemprop="datePublished">2014-01-01</time>
+  <a href="/2015/11/01/20151101-数字证书相关知识总结/">
+    <time datetime="2015-11-01T08:30:06.000Z" itemprop="datePublished">2015-11-01</time>
   </a>
 </div>
           
   <div class="article-category">
   	<i class="fa fa-folder"></i>
-    <a class="article-category-link" href="/categories/职业生涯/">职业生涯</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/职业生涯/年度回顾/">年度回顾</a>
+    <a class="article-category-link" href="/categories/安全/">安全</a>
   </div>
 
         </div>
@@ -142,23 +142,24 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="/img/p_review2013/haiou.jpg" alt="海鸥" title="海鸥"></p>
-<p>马年就这么悄悄地到来了，回家总是满满的幸福，各种好吃的马上补上，虽然有些事情是遗憾的，但是我相信未来是美好的，心怀乐观，总会将自己引入光明之道。</p>
-<p>2013年对我来说是重要的一年，经历了很多艰难的事，越发感觉自己能力有限，回首过去5年自己无所作为，无比的懊悔，有些事情总是明白太晚。但是痛楚让自己醒悟了，现在终于知道自己该坚持什么，该放弃什么。我得承认自己能力有限，不要想象自己可以扭转乾坤，需要更脚踏实地的一步步前行。</p>
-        
-          <p class="article-more-link">
-            <a href="/2014/01/01/20140101_2013简单回顾/#more">阅读全文</a>
-          </p>
-        
+        <p>今天有空整理下最近学习到的一些数字证书相关的知识。</p>
+<p>最近一段时间的工作内容涉及到了一些数字证书的东西，这块东西以前对其机制了解的不多，云里雾里的，因为从教科书上看到的理论总是那么抽象。什么CA啦，公钥啦等东西如何确保网络交流的安全的，为什么他们需要彼此等等。</p>
+<p>那么一点点开始吧，先从一些基本概念开始</p>
+<h2 id="概念">概念</h2><h3 id="常见的算法">常见的算法</h3><p>非对称加密算法： RSA，DSA/DSS<br>对称加密算法： AES，RC4，3DES<br>HASH算法： MD5，SHA1，SHA256</p>
+<p>非对称和对称</p>
+<h2 id="先看一个例子">先看一个例子</h2><p>下面展示一段伪代码，代码的功能是对要网络传输的数据进行数字签名</p>
+<pre><code><span class="typedef"><span class="keyword">data</span> = &lt;需要传输的内容&gt;.getBytes<span class="container">()</span></span>
+<span class="title">signData</span> = signer.sign(<span class="typedef"><span class="keyword">data</span>, "md5", "sha-1"</span>
+</code></pre>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hellofalcon.com/2014/01/01/20140101_2013简单回顾/" data-id="ciglkjqrn001trshh3mr24sz8" class="article-share-link">分享到</a>
+      <a data-url="http://hellofalcon.com/2015/11/01/20151101-数字证书相关知识总结/" data-id="ciglkjqmy0002rshhyufj31sa" class="article-share-link">分享到</a>
       
-        <a href="http://hellofalcon.com/2014/01/01/20140101_2013简单回顾/#ds-thread" class="article-comment-link">评论</a>
+        <a href="http://hellofalcon.com/2015/11/01/20151101-数字证书相关知识总结/#ds-thread" class="article-comment-link">评论</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/2013总结/">2013总结</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/安全/">安全</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数字证书/">数字证书</a></li></ul>
 
     </footer>
   </div>
