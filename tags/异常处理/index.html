@@ -3,27 +3,17 @@
 <head>
   <meta charset="utf-8">
   
-  <title>数字证书相关知识总结 | Hellofalcon</title>
+  <title>Tag: 异常处理 | Hellofalcon</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="今天有空整理下最近学习到的一些数字证书相关的知识。
-最近一段时间的工作内容涉及到了一些数字证书的东西，这块东西以前对其机制了解的不多，云里雾里的，因为从教科书上看到的理论总是那么抽象。什么CA啦，公钥啦等东西如何确保网络交流的安全的，为什么他们需要彼此等等。
-那么一点点开始吧，先从一些基本概念开始
-概念常见的算法非对称加密算法： RSA，DSA/DSS对称加密算法： AES，RC4，3DESHAS">
-<meta property="og:type" content="article">
-<meta property="og:title" content="数字证书相关知识总结">
-<meta property="og:url" content="http://hellofalcon.com/2015/11/01/20151101-数字证书相关知识总结/index.html">
+  <meta name="description" content="个人博客">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Hellofalcon">
+<meta property="og:url" content="http://hellofalcon.com/tags/异常处理/index.html">
 <meta property="og:site_name" content="Hellofalcon">
-<meta property="og:description" content="今天有空整理下最近学习到的一些数字证书相关的知识。
-最近一段时间的工作内容涉及到了一些数字证书的东西，这块东西以前对其机制了解的不多，云里雾里的，因为从教科书上看到的理论总是那么抽象。什么CA啦，公钥啦等东西如何确保网络交流的安全的，为什么他们需要彼此等等。
-那么一点点开始吧，先从一些基本概念开始
-概念常见的算法非对称加密算法： RSA，DSA/DSS对称加密算法： AES，RC4，3DESHAS">
-<meta property="og:updated_time" content="2015-11-01T08:58:25.000Z">
+<meta property="og:description" content="个人博客">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="数字证书相关知识总结">
-<meta name="twitter:description" content="今天有空整理下最近学习到的一些数字证书相关的知识。
-最近一段时间的工作内容涉及到了一些数字证书的东西，这块东西以前对其机制了解的不多，云里雾里的，因为从教科书上看到的理论总是那么抽象。什么CA啦，公钥啦等东西如何确保网络交流的安全的，为什么他们需要彼此等等。
-那么一点点开始吧，先从一些基本概念开始
-概念常见的算法非对称加密算法： RSA，DSA/DSS对称加密算法： AES，RC4，3DESHAS">
+<meta name="twitter:title" content="Hellofalcon">
+<meta name="twitter:description" content="个人博客">
   
   
     <link rel="icon" href="/favicon.png">
@@ -93,7 +83,7 @@
         <span>文章</span>
       </div>
       <div class="article-info-block">
-        22
+        24
         <span>标签</span>
       </div>
     </div>
@@ -114,29 +104,31 @@
     
   </div>
 </aside>
-      <section id="main"><article id="post-20151101-数字证书相关知识总结" class="article article-type-post" itemscope itemprop="blogPost">
+      <section id="main">
+  
+    <article id="post-20151106-编码中异常的使用建议" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
     
       <header class="article-header">
         
   
-    <h1 class="article-title" itemprop="name">
-      数字证书相关知识总结
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/11/21/20151106-编码中异常的使用建议/">Java编码中异常的使用建议</a>
     </h1>
   
 
         <div class="article-meta">
           <div class="article-date">
   <i class="fa fa-calendar"></i>
-  <a href="/2015/11/01/20151101-数字证书相关知识总结/">
-    <time datetime="2015-11-01T08:30:06.000Z" itemprop="datePublished">2015-11-01</time>
+  <a href="/2015/11/21/20151106-编码中异常的使用建议/">
+    <time datetime="2015-11-21T09:48:13.000Z" itemprop="datePublished">2015-11-21</time>
   </a>
 </div>
           
   <div class="article-category">
   	<i class="fa fa-folder"></i>
-    <a class="article-category-link" href="/categories/安全/">安全</a>
+    <a class="article-category-link" href="/categories/程序设计/">程序设计</a>
   </div>
 
         </div>
@@ -144,48 +136,33 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>今天有空整理下最近学习到的一些数字证书相关的知识。</p>
-<p>最近一段时间的工作内容涉及到了一些数字证书的东西，这块东西以前对其机制了解的不多，云里雾里的，因为从教科书上看到的理论总是那么抽象。什么CA啦，公钥啦等东西如何确保网络交流的安全的，为什么他们需要彼此等等。</p>
-<p>那么一点点开始吧，先从一些基本概念开始</p>
-<h2 id="概念">概念</h2><h3 id="常见的算法">常见的算法</h3><p>非对称加密算法： RSA，DSA/DSS<br>对称加密算法： AES，RC4，3DES<br>HASH算法： MD5，SHA1，SHA256</p>
-<p>非对称和对称</p>
-<h2 id="先看一个例子">先看一个例子</h2><p>下面展示一段伪代码，代码的功能是对要网络传输的数据进行数字签名</p>
-<pre><code><span class="typedef"><span class="keyword">data</span> = &lt;需要传输的内容&gt;.getBytes<span class="container">()</span></span>
-<span class="title">signData</span> = signer.sign(<span class="typedef"><span class="keyword">data</span>, "md5", "sha-1"</span>
-</code></pre>
+        <p>异常，精确计算机世界里的不安定份子。当然说的是异常的使用，似乎没有什么统一的标准。但是我觉得在一个团队或者是系统里面还是应该遵循一定的规矩。</p>
+<p>无规矩不方圆。</p>
+<p>这周就把异常的时候给列一个使用准则。</p>
+<p><img src="/img/p_java_exception_practice/source_code.jpg" alt="Code" title="Code"></p>
+        
+          <p class="article-more-link">
+            <a href="/2015/11/21/20151106-编码中异常的使用建议/#more">阅读全文</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hellofalcon.com/2015/11/01/20151101-数字证书相关知识总结/" data-id="ciglkjqmy0002rshhyufj31sa" class="article-share-link">分享到</a>
+      <a data-url="http://hellofalcon.com/2015/11/21/20151106-编码中异常的使用建议/" data-id="cih8wy8w60002r8hhdbbf4ti8" class="article-share-link">分享到</a>
       
-        <a href="http://hellofalcon.com/2015/11/01/20151101-数字证书相关知识总结/#ds-thread" class="article-comment-link">评论</a>
+        <a href="http://hellofalcon.com/2015/11/21/20151106-编码中异常的使用建议/#ds-thread" class="article-comment-link">评论</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/安全/">安全</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数字证书/">数字证书</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/异常处理/">异常处理</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编码规范/">编码规范</a></li></ul>
 
     </footer>
   </div>
   
-    
-<nav id="article-nav">
-  
-  
-    <a href="/2015/09/29/20150929_Java代码规范/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Java代码规范</div>
-    </a>
-  
-</nav>
-
-  
 </article>
 
 
-  <section id="comments">
-    <div id="ds-thread" class="ds-thread" data-thread-key="http://hellofalcon.com/2015/11/01/20151101-数字证书相关知识总结/" data-title="数字证书相关知识总结" data-url="http://hellofalcon.com/2015/11/01/20151101-数字证书相关知识总结/">
-      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by DuoShuo.</a></noscript>
-      </div>
-  </section>
+  
+  
 </section>
       
         <aside id="sidebar">
@@ -199,17 +176,18 @@
           <li>
             
             <div class="item-thumbnail">
-              <a href="/2015/11/01/20151101-数字证书相关知识总结/" class="thumbnail">
+              <a href="/2015/11/21/20151106-编码中异常的使用建议/" class="thumbnail">
   
-    <span class="thumbnail-image thumbnail-none"></span>
+    <span style="background-image:url(/img/p_java_exception_practice/source_code.jpg
+)" alt="Java编码中异常的使用建议" class="thumbnail-image"></span>
   
 </a>
             </div>
             
             <div class="item-inner">
-              <p class="item-category"><a class="article-category-link" href="/categories/安全/">安全</a></p>
-              <p class="item-title"><a href="/2015/11/01/20151101-数字证书相关知识总结/" class="title">数字证书相关知识总结</a></p>
-              <p class="item-date"><time datetime="2015-11-01T08:30:06.000Z" itemprop="datePublished">2015-11-01</time></p>
+              <p class="item-category"><a class="article-category-link" href="/categories/程序设计/">程序设计</a></p>
+              <p class="item-title"><a href="/2015/11/21/20151106-编码中异常的使用建议/" class="title">Java编码中异常的使用建议</a></p>
+              <p class="item-date"><time datetime="2015-11-21T09:48:13.000Z" itemprop="datePublished">2015-11-21</time></p>
             </div>
           </li>
         
@@ -291,7 +269,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/安全/">安全</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据库/">数据库</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程/">编程</a><span class="category-list-count">10</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/编程/读书笔记/">读书笔记</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程/软件工程/">软件工程</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/职业生涯/">职业生涯</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/职业生涯/年度回顾/">年度回顾</a><span class="category-list-count">1</span></li></ul></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/数据库/">数据库</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/程序设计/">程序设计</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程/">编程</a><span class="category-list-count">10</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/编程/读书笔记/">读书笔记</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程/软件工程/">软件工程</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/职业生涯/">职业生涯</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/职业生涯/年度回顾/">年度回顾</a><span class="category-list-count">1</span></li></ul></li></ul>
     </div>
   </div>
 
@@ -300,7 +278,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/2013总结/">2013总结</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/D3-js/">D3.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ECMAScript/">ECMAScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/">JVM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/">Javascript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Junit/">Junit</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MongoDB/">MongoDB</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Scala/">Scala</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/annotation/">annotation</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/函数式编程/">函数式编程</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端/">前端</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/安全/">安全</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数字证书/">数字证书</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据可视化/">数据可视化</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/架构/">架构</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编程语言/">编程语言</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书笔记/">读书笔记</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/软件工程/">软件工程</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/重构/">重构</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/2013总结/">2013总结</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/D3-js/">D3.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ECMAScript/">ECMAScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/">JVM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/">Javascript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Junit/">Junit</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MongoDB/">MongoDB</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Scala/">Scala</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/annotation/">annotation</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/函数式编程/">函数式编程</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端/">前端</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/异常处理/">异常处理</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据可视化/">数据可视化</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/架构/">架构</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编码规范/">编码规范</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编程语言/">编程语言</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书笔记/">读书笔记</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/软件工程/">软件工程</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/重构/">重构</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -309,7 +287,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/2013总结/" style="font-size: 10px;">2013总结</a> <a href="/tags/D3-js/" style="font-size: 10px;">D3.js</a> <a href="/tags/ECMAScript/" style="font-size: 10px;">ECMAScript</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/Javascript/" style="font-size: 20px;">Javascript</a> <a href="/tags/Junit/" style="font-size: 10px;">Junit</a> <a href="/tags/MongoDB/" style="font-size: 10px;">MongoDB</a> <a href="/tags/Scala/" style="font-size: 10px;">Scala</a> <a href="/tags/annotation/" style="font-size: 10px;">annotation</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/函数式编程/" style="font-size: 10px;">函数式编程</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/安全/" style="font-size: 10px;">安全</a> <a href="/tags/数字证书/" style="font-size: 10px;">数字证书</a> <a href="/tags/数据可视化/" style="font-size: 10px;">数据可视化</a> <a href="/tags/架构/" style="font-size: 10px;">架构</a> <a href="/tags/编程语言/" style="font-size: 10px;">编程语言</a> <a href="/tags/读书笔记/" style="font-size: 10px;">读书笔记</a> <a href="/tags/软件工程/" style="font-size: 10px;">软件工程</a> <a href="/tags/重构/" style="font-size: 10px;">重构</a>
+      <a href="/tags/2013总结/" style="font-size: 10px;">2013总结</a> <a href="/tags/D3-js/" style="font-size: 10px;">D3.js</a> <a href="/tags/ECMAScript/" style="font-size: 10px;">ECMAScript</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/Javascript/" style="font-size: 20px;">Javascript</a> <a href="/tags/Junit/" style="font-size: 10px;">Junit</a> <a href="/tags/MongoDB/" style="font-size: 10px;">MongoDB</a> <a href="/tags/Scala/" style="font-size: 10px;">Scala</a> <a href="/tags/annotation/" style="font-size: 10px;">annotation</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/函数式编程/" style="font-size: 10px;">函数式编程</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/异常处理/" style="font-size: 10px;">异常处理</a> <a href="/tags/数据可视化/" style="font-size: 10px;">数据可视化</a> <a href="/tags/架构/" style="font-size: 10px;">架构</a> <a href="/tags/编码规范/" style="font-size: 10px;">编码规范</a> <a href="/tags/编程语言/" style="font-size: 10px;">编程语言</a> <a href="/tags/读书笔记/" style="font-size: 10px;">读书笔记</a> <a href="/tags/软件工程/" style="font-size: 10px;">软件工程</a> <a href="/tags/重构/" style="font-size: 10px;">重构</a>
     </div>
   </div>
 
