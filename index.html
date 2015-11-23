@@ -1,887 +1,1457 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html class="theme-next   use-motion ">
 <head>
-  <meta charset="utf-8">
-  
-  <title>Hellofalcon</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="个人博客">
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.2" />
+
+
+
+
+
+
+<meta name="description" content="驽马十驾，功在不舍">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Hellofalcon">
 <meta property="og:url" content="http://hellofalcon.com/index.html">
 <meta property="og:site_name" content="Hellofalcon">
-<meta property="og:description" content="个人博客">
+<meta property="og:description" content="驽马十驾，功在不舍">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hellofalcon">
-<meta name="twitter:description" content="个人博客">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  <link href='//fonts.useso.com/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
-  <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  <link rel="stylesheet" href="/css/style.css" type="text/css">
-  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css" type="text/css">
-  
+<meta name="twitter:description" content="驽马十驾，功在不舍">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: '',
+    sidebar: 'post',
+    motion: true
+  };
+</script>
+
+  <title> Hellofalcon </title>
 </head>
-<body>
-  <div id="container">
-    <header id="header">
-  <div id="header-main" class="header-inner">
-    <div class="outer">
-      <a href="/" id="logo"><i class="logo"></i><span class="site-title">Hellofalcon</span></a>
-      <nav id="main-nav">
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-          <a class="main-nav-link" href="/about">About</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        <div class="profile" id="profile-nav">
-          <a id="profile-anchor" href="javascript:;"><img class="avatar" src="/img/avatar.png"><i class="fa fa-caret-down"></i></a>
-        </div>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit"> </button><input type="hidden" name="sitesearch" value="http://hellofalcon.com"></form>
-      </div>
-    </div>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
   </div>
-  <div id="main-nav-mobile" class="header-sub header-inner">
-    <table class="menu outer">
-      <tr>
-      
-        <td><a class="main-nav-link" href="/">Home</a></td>
-      
-        <td><a class="main-nav-link" href="/archives">Archives</a></td>
-      
-        <td><a class="main-nav-link" href="/about">About</a></td>
-      
-      <td>
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><input type="hidden" name="sitesearch" value="http://hellofalcon.com"></form>
-      </td>
-      </tr>
-    </table>
-  </div>
-  
-</header>
-    <div class="outer">
-      <aside id="profile">
-  <div class="inner profile-inner">
-  	<div class="base-info profile-block">
-		  <img id="avatar" src="/img/avatar.png">
-      <h2 id="name">Falcon Chu</h2>
-      <h3 id="title">Java程序猿@Alibaba</h3>
-      <span id="location"><i class="fa fa-map-marker"></i>HangZhou, China</span>
-      <a id="follow" href="http://weibo.com/cggogogo">关注我</a>
-  	</div>
-    <div class="article-info profile-block">
-      <div class="article-info-block">
-        14
-        <span>文章</span>
-      </div>
-      <div class="article-info-block">
-        24
-        <span>标签</span>
-      </div>
-    </div>
-    
-    <div class="contact-info profile-block">
-      <table class="contact-list">
-        <tr>
-        
-          <td><a href="https://github.com/cgfalcon" target="_blank" title="github"><i class="fa fa-github"></i></a></td>
-        
-          <td><a href="http://www.zhihu.com/people/cgfalcon" target="_blank" title="zhihu"><i class="fa fa-zhihu"></i></a></td>
-        
-          <td><a href="http://weibo.com/cggogogo" target="_blank" title="weibo"><i class="fa fa-weibo"></i></a></td>
-        
-        </tr>
-      </table>
-    </div>
-    
-  </div>
-</aside>
-      <section id="main">
-  
-    <article id="post-20151106-编码中异常的使用建议" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/11/21/20151106-编码中异常的使用建议/">Java编码中异常的使用建议</a>
-    </h1>
+<![endif]-->
   
 
-        <div class="article-meta">
-          <div class="article-date">
-  <i class="fa fa-calendar"></i>
-  <a href="/2015/11/21/20151106-编码中异常的使用建议/">
-    <time datetime="2015-11-21T09:48:13.000Z" itemprop="datePublished">2015-11-21</time>
-  </a>
-</div>
-          
-  <div class="article-category">
-  	<i class="fa fa-folder"></i>
-    <a class="article-category-link" href="/categories/程序设计/">程序设计</a>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?67bfad4475dbdde7048d563d6ba2ea54";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <div class="container one-column 
+   page-home 
+">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Hellofalcon</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
   </div>
+  <p class="site-subtitle">求道</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu menu-left">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+      
+        <li class="menu-item menu-item-search">
+          <a href="#" class="st-search-show-outputs">
+            
+              <i class="menu-item-icon fa fa-search icon-next-search"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', '4z18VGUyrvbtfTxxwKJV','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+  <section id="posts" class="posts-expand">
+
+    
+
+    
+    
+      
+      
+        
+        
+        
+      
+
+      
+    
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/11/22/20151122-kotlin-getstart/" itemprop="url">
+                  初识Kotlin
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2015-11-22T14:41:13+08:00" content="2015-11-22">
+              2015-11-22
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/程序设计/" itemprop="url" rel="index">
+                    <span itemprop="name">程序设计</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/11/22/20151122-kotlin-getstart/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/22/20151122-kotlin-getstart/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
 
         </div>
       </header>
     
-    <div class="article-entry" itemprop="articleBody">
+
+
+    <div class="post-body">
+
       
-        <p>异常，精确计算机世界里的不安定份子。当然说的是异常的使用，似乎没有什么统一的标准。但是我觉得在一个团队或者是系统里面还是应该遵循一定的规矩。</p>
+      
+
+      
+        
+          <p><img src="/img/20151122-kotlin-getstart/kotlin.jpg" alt="Kotlin"></p>
+<p>Kotlin 是Jetbrains 开发的基于JVM的静态类型的编程语言。 曾经幻想自己能不能裁剪下Java的语法，然后重新做一个JVM语言，不过在发现Kotlin之后发现完全没有这个必要了。 它已经做了我想做的东西，而且人家做的很好。 除了有专业团队的支持以外，还有专业的IDE支持（给IDEA加分），这样的待遇其实我想是很多新生语言都羡慕的。 </p>
+<p>Scala也有TypeSafe来支持，但是目前看上去语法复杂，有时候IDE都不能知道语法对不对。 </p>
+<p>Kotlin还很年轻，现在也才 1.0-beta，不过背后的Java生态算是很大一部分助力，因此Kotlin其实很多类库都是借用JDK的现成东西。 在学习的时候不免产生Kotlin会不会自己的东西太少了的担忧。 但是Kotlin基于JDK 1.6 引入了高阶函数等特性，而这些特性在Java语言中需要等到 JDK 8 才能提供。 因此基于这点，Kotlin对于想使用JDK 8 特性的人来说是一个吸引力。 这意味着，即便你的生产环境是JDK 6 也可以安全的使用Kotlin。</p>
+<p>到现在为止也学习了不少编程语言，Haskell、Python、JavaScript、Scala，大致学习的流程遵循了：基本数据类型 <code>-&gt;</code> 基本语法结构 <code>-&gt;</code> 高级语法特性 <code>-&gt;</code> 类库, 这样的顺序来学习。 在这篇文章中同样遵循这样的顺序来学习Kotlin，并会和Java做下比较。</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/11/22/20151122-kotlin-getstart/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/11/21/20151106-编码中异常的使用建议/" itemprop="url">
+                  Java编码中异常的使用建议
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2015-11-21T17:48:13+08:00" content="2015-11-21">
+              2015-11-21
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/程序设计/" itemprop="url" rel="index">
+                    <span itemprop="name">程序设计</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/11/21/20151106-编码中异常的使用建议/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/21/20151106-编码中异常的使用建议/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <p><img src="/img/p_java_exception_practice/source_code.jpg" alt="Code" title="Code"></p>
+<p>异常，精确计算机世界里的不安定份子。当然说的是异常的使用，似乎没有什么统一的标准。但是我觉得在一个团队或者是系统里面还是应该遵循一定的规矩。</p>
 <p>无规矩不方圆。</p>
 <p>这周就把异常的使用给列一个使用准则。</p>
-<p><img src="/img/p_java_exception_practice/source_code.jpg" alt="Code" title="Code"></p>
-        
-          <p class="article-more-link">
-            <a href="/2015/11/21/20151106-编码中异常的使用建议/#more">阅读全文</a>
-          </p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/11/21/20151106-编码中异常的使用建议/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
-    <footer class="article-footer">
-      <a data-url="http://hellofalcon.com/2015/11/21/20151106-编码中异常的使用建议/" data-id="cih8xe9sq0002e4hhbtzyrkgm" class="article-share-link">分享到</a>
-      
-        <a href="http://hellofalcon.com/2015/11/21/20151106-编码中异常的使用建议/#ds-thread" class="article-comment-link">评论</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/异常处理/">异常处理</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编码规范/">编码规范</a></li></ul>
 
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
     </footer>
-  </div>
-  
-</article>
+  </article>
 
 
+    
+      
+
   
-    <article id="post-20150929_Java代码规范" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
     
-    
-      <header class="article-header">
+      <header class="post-header">
+
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/09/29/20150929_Java代码规范/">Java代码规范</a>
-    </h1>
-  
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/09/29/20150929_Java代码规范/" itemprop="url">
+                  Java代码规范
+                </a>
+              
+            
+          </h1>
+        
 
-        <div class="article-meta">
-          <div class="article-date">
-  <i class="fa fa-calendar"></i>
-  <a href="/2015/09/29/20150929_Java代码规范/">
-    <time datetime="2015-09-29T08:37:49.000Z" itemprop="datePublished">2015-09-29</time>
-  </a>
-</div>
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2015-09-29T16:37:49+08:00" content="2015-09-29">
+              2015-09-29
+            </time>
+          </span>
+
           
-  <div class="article-category">
-  	<i class="fa fa-folder"></i>
-    <a class="article-category-link" href="/categories/编程/">编程</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/编程/软件工程/">软件工程</a>
-  </div>
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/编程/" itemprop="url" rel="index">
+                    <span itemprop="name">编程</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/编程/软件工程/" itemprop="url" rel="index">
+                    <span itemprop="name">软件工程</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/09/29/20150929_Java代码规范/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/29/20150929_Java代码规范/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
 
         </div>
       </header>
     
-    <div class="article-entry" itemprop="articleBody">
+
+
+    <div class="post-body">
+
       
-        <p>最近帮团队整理了一份Java编码规范，总体上参考了 Google Java 代码规范</p>
+      
+
+      
+        
+          <p>最近帮团队整理了一份Java编码规范，总体上参考了 Google Java 代码规范</p>
 <h2 id="编码准则">编码准则</h2><p>尽可能让代码风格看起来像是一个人写的。另外不要盲从一下规则，只要你能给出合理的理由 ^_^</p>
 <p><strong>默认缩减 4 个空格，不要使用 Tab</strong></p>
-        
-          <p class="article-more-link">
-            <a href="/2015/09/29/20150929_Java代码规范/#more">阅读全文</a>
-          </p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/09/29/20150929_Java代码规范/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
-    <footer class="article-footer">
-      <a data-url="http://hellofalcon.com/2015/09/29/20150929_Java代码规范/" data-id="cih8xe9t70009e4hhde22ov61" class="article-share-link">分享到</a>
-      
-        <a href="http://hellofalcon.com/2015/09/29/20150929_Java代码规范/#ds-thread" class="article-comment-link">评论</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/软件工程/">软件工程</a></li></ul>
 
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
     </footer>
-  </div>
-  
-</article>
+  </article>
 
 
+    
+      
+
   
-    <article id="post-20150725_JavaScript学习笔记" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
     
-    
-      <header class="article-header">
+      <header class="post-header">
+
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/07/25/20150725_JavaScript学习笔记/">JavaScript 学习笔记</a>
-    </h1>
-  
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/07/25/20150725_JavaScript学习笔记/" itemprop="url">
+                  JavaScript 学习笔记
+                </a>
+              
+            
+          </h1>
+        
 
-        <div class="article-meta">
-          <div class="article-date">
-  <i class="fa fa-calendar"></i>
-  <a href="/2015/07/25/20150725_JavaScript学习笔记/">
-    <time datetime="2015-07-25T08:37:49.000Z" itemprop="datePublished">2015-07-25</time>
-  </a>
-</div>
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2015-07-25T16:37:49+08:00" content="2015-07-25">
+              2015-07-25
+            </time>
+          </span>
+
           
-  <div class="article-category">
-  	<i class="fa fa-folder"></i>
-    <a class="article-category-link" href="/categories/编程/">编程</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/编程/读书笔记/">读书笔记</a>
-  </div>
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/编程/" itemprop="url" rel="index">
+                    <span itemprop="name">编程</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/编程/读书笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">读书笔记</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/07/25/20150725_JavaScript学习笔记/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/25/20150725_JavaScript学习笔记/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
 
         </div>
       </header>
     
-    <div class="article-entry" itemprop="articleBody">
+
+
+    <div class="post-body">
+
       
-        <p>读了《JavaScript高级程序设计》，感觉非常赞，例子的说明很详细。</p>
+      
+
+      
+        
+          <p>读了《JavaScript高级程序设计》，感觉非常赞，例子的说明很详细。</p>
 <p>通常而言浏览器中的 JavaScript = ECMAScript + BOM + DOM</p>
 <p>BOM 和 DOM 是宿主容器浏览器给 ECMAScript 提供的扩展，而当容器变为Node时则没有BOM和DOM。</p>
-        
-          <p class="article-more-link">
-            <a href="/2015/07/25/20150725_JavaScript学习笔记/#more">阅读全文</a>
-          </p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/07/25/20150725_JavaScript学习笔记/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
-    <footer class="article-footer">
-      <a data-url="http://hellofalcon.com/2015/07/25/20150725_JavaScript学习笔记/" data-id="cih8xe9tg000ie4hh8bj4ggst" class="article-share-link">分享到</a>
-      
-        <a href="http://hellofalcon.com/2015/07/25/20150725_JavaScript学习笔记/#ds-thread" class="article-comment-link">评论</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ECMAScript/">ECMAScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
 
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
     </footer>
-  </div>
-  
-</article>
+  </article>
 
 
+    
+      
+
   
-    <article id="post-20150718_数据可视化" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
     
-    
-      <header class="article-header">
+      <header class="post-header">
+
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/07/25/20150718_数据可视化/">D3.js 数据可视化</a>
-    </h1>
-  
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/07/25/20150718_数据可视化/" itemprop="url">
+                  D3.js 数据可视化
+                </a>
+              
+            
+          </h1>
+        
 
-        <div class="article-meta">
-          <div class="article-date">
-  <i class="fa fa-calendar"></i>
-  <a href="/2015/07/25/20150718_数据可视化/">
-    <time datetime="2015-07-25T00:34:49.000Z" itemprop="datePublished">2015-07-25</time>
-  </a>
-</div>
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2015-07-25T08:34:49+08:00" content="2015-07-25">
+              2015-07-25
+            </time>
+          </span>
+
           
-  <div class="article-category">
-  	<i class="fa fa-folder"></i>
-    <a class="article-category-link" href="/categories/编程/">编程</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/编程/读书笔记/">读书笔记</a>
-  </div>
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/编程/" itemprop="url" rel="index">
+                    <span itemprop="name">编程</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/编程/读书笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">读书笔记</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/07/25/20150718_数据可视化/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/25/20150718_数据可视化/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
 
         </div>
       </header>
     
-    <div class="article-entry" itemprop="articleBody">
+
+
+    <div class="post-body">
+
       
-        <p>（本文是学习过程中的摘录，后续会整理）</p>
+      
+
+      
+        
+          <p>（本文是学习过程中的摘录，后续会整理）</p>
 <h3 id="什么是数据可视化">什么是数据可视化</h3><p>数据可视化就是把信息映射成可见图形的过程</p>
 <h3 id="交互式可视化">交互式可视化</h3><p>静态可视化需要多个静态图才能展示信息的多个方面</p>
 <h3 id="D3_-_Data_Driven_Documents">D3 - Data Driven Documents</h3><p>学习D3的过程，就是学习那些告诉它如何加载、绑定数据，变换和过渡元素的语<br>法的过程</p>
 <p>D3主要用于生成那些解释型的，而非探索型的可视化图形。 Tableau 和 ggplot 就是探索性工具</p>
 <p>解释型视图约束条件更多，限制也更多，同时也更容<br>易做专做精，而且主要用于传达最重要的信息</p>
 <p>数据是结构化的信息</p>
-        
-          <p class="article-more-link">
-            <a href="/2015/07/25/20150718_数据可视化/#more">阅读全文</a>
-          </p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/07/25/20150718_数据可视化/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
-    <footer class="article-footer">
-      <a data-url="http://hellofalcon.com/2015/07/25/20150718_数据可视化/" data-id="cih8xe9tp000qe4hhedkfafgi" class="article-share-link">分享到</a>
-      
-        <a href="http://hellofalcon.com/2015/07/25/20150718_数据可视化/#ds-thread" class="article-comment-link">评论</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/D3-js/">D3.js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/">Javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据可视化/">数据可视化</a></li></ul>
 
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
     </footer>
-  </div>
-  
-</article>
+  </article>
 
 
+    
+      
+
   
-    <article id="post-20150610-programers-architect" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
     
-    
-      <header class="article-header">
+      <header class="post-header">
+
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/06/10/20150610-programers-architect/">读《程序员必读之软件架构》</a>
-    </h1>
-  
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/06/10/20150610-programers-architect/" itemprop="url">
+                  读《程序员必读之软件架构》
+                </a>
+              
+            
+          </h1>
+        
 
-        <div class="article-meta">
-          <div class="article-date">
-  <i class="fa fa-calendar"></i>
-  <a href="/2015/06/10/20150610-programers-architect/">
-    <time datetime="2015-06-10T00:34:49.000Z" itemprop="datePublished">2015-06-10</time>
-  </a>
-</div>
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2015-06-10T08:34:49+08:00" content="2015-06-10">
+              2015-06-10
+            </time>
+          </span>
+
           
-  <div class="article-category">
-  	<i class="fa fa-folder"></i>
-    <a class="article-category-link" href="/categories/编程/">编程</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/编程/读书笔记/">读书笔记</a>
-  </div>
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/编程/" itemprop="url" rel="index">
+                    <span itemprop="name">编程</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/编程/读书笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">读书笔记</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/06/10/20150610-programers-architect/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/06/10/20150610-programers-architect/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
 
         </div>
       </header>
     
-    <div class="article-entry" itemprop="articleBody">
+
+
+    <div class="post-body">
+
       
-        <p><img src="http://img4.douban.com/lpic/s27766899.jpg" alt="software architecture for developers" title="software architecture for developers"></p>
+      
+
+      
+        
+          <p><img src="http://img4.douban.com/lpic/s27766899.jpg" alt="software architecture for developers" title="software architecture for developers"></p>
 <p>最近读了《程序员必读之软件架构》, 感觉大部分内容比较口水话，或者是我还领悟不到精髓。</p>
 <p>不过书中还是提供一些比较有用的信息。比如在敏捷开发下大部分团队不再使用UML而采用简单的草图，</p>
 <p><img src="http://cdn.infoq.com/statics_s1_20150603-0041/resource/articles/agile-software-architecture-sketches-NoUML/en/resources/1big.png" alt="draft architecture" title="draft architecture"></p>
 <p>但是大部分草图不像UML那么规范化，不容易读懂。平常在画程序功能图或者说架构图的时候，总觉得无法<br>表述清楚整个系统的运行情况，看完书后发现是因为自己将不同层次的内容混杂在一起。为了表述清楚系统如何<br>构成，可以通过绘制多个不同层次的图来达到目的。</p>
-        
-          <p class="article-more-link">
-            <a href="/2015/06/10/20150610-programers-architect/#more">阅读全文</a>
-          </p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/06/10/20150610-programers-architect/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
-    <footer class="article-footer">
-      <a data-url="http://hellofalcon.com/2015/06/10/20150610-programers-architect/" data-id="cih8xe9tz000ze4hhfg7m3hwa" class="article-share-link">分享到</a>
-      
-        <a href="http://hellofalcon.com/2015/06/10/20150610-programers-architect/#ds-thread" class="article-comment-link">评论</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/架构/">架构</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
 
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
     </footer>
-  </div>
-  
-</article>
+  </article>
 
 
+    
+      
+
   
-    <article id="post-20150529_javascript-start" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
     
-    
-      <header class="article-header">
+      <header class="post-header">
+
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/05/29/20150529_javascript-start/">Javascript 学习书单</a>
-    </h1>
-  
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/05/29/20150529_javascript-start/" itemprop="url">
+                  Javascript 学习书单
+                </a>
+              
+            
+          </h1>
+        
 
-        <div class="article-meta">
-          <div class="article-date">
-  <i class="fa fa-calendar"></i>
-  <a href="/2015/05/29/20150529_javascript-start/">
-    <time datetime="2015-05-29T01:09:51.000Z" itemprop="datePublished">2015-05-29</time>
-  </a>
-</div>
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2015-05-29T09:09:51+08:00" content="2015-05-29">
+              2015-05-29
+            </time>
+          </span>
+
           
-  <div class="article-category">
-  	<i class="fa fa-folder"></i>
-    <a class="article-category-link" href="/categories/编程/">编程</a>
-  </div>
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/编程/" itemprop="url" rel="index">
+                    <span itemprop="name">编程</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/05/29/20150529_javascript-start/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/05/29/20150529_javascript-start/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
 
         </div>
       </header>
     
-    <div class="article-entry" itemprop="articleBody">
+
+
+    <div class="post-body">
+
       
-        <p>近期由于项目需要，要研究下前端数据可视化这块，需要使用D3.js 这样的类库，想来自己去年开始学习Javascript，虽然现在蹩脚的JS水平能够实现项目需求，但是感觉自己JS底子没打好，所以豆瓣上找了一些评分高的Javascript书，准备今年看完</p>
+      
+
+      
+        
+          <p>近期由于项目需要，要研究下前端数据可视化这块，需要使用D3.js 这样的类库，想来自己去年开始学习Javascript，虽然现在蹩脚的JS水平能够实现项目需求，但是感觉自己JS底子没打好，所以豆瓣上找了一些评分高的Javascript书，准备今年看完</p>
 <blockquote>
 <p>从上到下，从浅到深</p>
 </blockquote>
 <h3 id="JavaScript高级程序设计">JavaScript高级程序设计</h3><p><img src="http://img4.douban.com/lpic/s1888787.jpg" alt="JavaScript高级程序设计" title="JavaScript高级程序设计"><br>作者: Nicholas C. Zakas </p>
-        
-          <p class="article-more-link">
-            <a href="/2015/05/29/20150529_javascript-start/#more">阅读全文</a>
-          </p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/05/29/20150529_javascript-start/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
-    <footer class="article-footer">
-      <a data-url="http://hellofalcon.com/2015/05/29/20150529_javascript-start/" data-id="cih8xe9uo0016e4hhi3pynabb" class="article-share-link">分享到</a>
-      
-        <a href="http://hellofalcon.com/2015/05/29/20150529_javascript-start/#ds-thread" class="article-comment-link">评论</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/">Javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li></ul>
 
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
     </footer>
-  </div>
-  
-</article>
+  </article>
 
 
+    
+      
+
   
-    <article id="post-20140622_scala-startups" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
     
-    
-      <header class="article-header">
+      <header class="post-header">
+
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/06/22/20140622_scala-startups/">scala-startups</a>
-    </h1>
-  
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/06/22/20140622_scala-startups/" itemprop="url">
+                  scala-startups
+                </a>
+              
+            
+          </h1>
+        
 
-        <div class="article-meta">
-          <div class="article-date">
-  <i class="fa fa-calendar"></i>
-  <a href="/2014/06/22/20140622_scala-startups/">
-    <time datetime="2014-06-22T01:10:24.000Z" itemprop="datePublished">2014-06-22</time>
-  </a>
-</div>
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2014-06-22T09:10:24+08:00" content="2014-06-22">
+              2014-06-22
+            </time>
+          </span>
+
           
-  <div class="article-category">
-  	<i class="fa fa-folder"></i>
-    <a class="article-category-link" href="/categories/编程/">编程</a>
-  </div>
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/编程/" itemprop="url" rel="index">
+                    <span itemprop="name">编程</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2014/06/22/20140622_scala-startups/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/06/22/20140622_scala-startups/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
 
         </div>
       </header>
     
-    <div class="article-entry" itemprop="articleBody">
+
+
+    <div class="post-body">
+
       
-        <blockquote>
+      
+
+      
+        
+          <blockquote>
 <p>To be a good programer, I should Know about functional programming</p>
 </blockquote>
 <h2 id="What_is_Scala">What is Scala</h2><p>Scala stands for <strong>Scalable language</strong></p>
 <p>Scala 融合了 面向对象 和 函数式 的特性。面向对象方便构建大型系统同时有利于拓展，而函数式对于处理有趣的功能点上能够快速的完成开发。（Scala’s functional programming constructs make it easy to build interesting things quickly from simple parts. Its object-oriented constructs make it easy to structure larger systems and to adapt them to new demands.）</p>
 <p><strong>关于scala应该包含什么类库</strong></p>
 <p>So the approach of attempting to provide<br>everything in one language doesn’t scale very well. Instead, Scala allows<br>users to grow and adapt the language in the directions they need by defining<br>easy-to-use libraries that feel like native language support.</p>
-        
-          <p class="article-more-link">
-            <a href="/2014/06/22/20140622_scala-startups/#more">阅读全文</a>
-          </p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2014/06/22/20140622_scala-startups/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
-    <footer class="article-footer">
-      <a data-url="http://hellofalcon.com/2014/06/22/20140622_scala-startups/" data-id="cih8xe9uw001be4hhvfv4wlqu" class="article-share-link">分享到</a>
-      
-        <a href="http://hellofalcon.com/2014/06/22/20140622_scala-startups/#ds-thread" class="article-comment-link">评论</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Scala/">Scala</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/函数式编程/">函数式编程</a></li></ul>
 
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
     </footer>
-  </div>
-  
-</article>
+  </article>
 
 
+    
+      
+
   
-    <article id="post-20140329_JUnit和它的设计模式" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
     
-    
-      <header class="article-header">
+      <header class="post-header">
+
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/03/29/20140329_JUnit和它的设计模式/">JUnit和它的设计模式</a>
-    </h1>
-  
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/01/21/20140121_自制编程语言/" itemprop="url">
+                  自制编程语言
+                </a>
+              
+            
+          </h1>
+        
 
-        <div class="article-meta">
-          <div class="article-date">
-  <i class="fa fa-calendar"></i>
-  <a href="/2014/03/29/20140329_JUnit和它的设计模式/">
-    <time datetime="2014-03-29T01:10:24.000Z" itemprop="datePublished">2014-03-29</time>
-  </a>
-</div>
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2014-01-21T09:10:24+08:00" content="2014-01-21">
+              2014-01-21
+            </time>
+          </span>
+
           
-  <div class="article-category">
-  	<i class="fa fa-folder"></i>
-    <a class="article-category-link" href="/categories/编程/">编程</a>
-  </div>
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/编程/" itemprop="url" rel="index">
+                    <span itemprop="name">编程</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2014/01/21/20140121_自制编程语言/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/01/21/20140121_自制编程语言/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
 
         </div>
       </header>
     
-    <div class="article-entry" itemprop="articleBody">
+
+
+    <div class="post-body">
+
       
-        <h3 id="JUnit设计原则">JUnit设计原则</h3><p>先来说说单元测试框架应当遵循什么原则：</p>
-<ol>
-<li>Each unit test should run independently of all other unit tests.</li>
-<li>The framework should detect and report errors test by test.</li>
-<li>It should be easy to define which unit tests will run.</li>
-</ol>
-<p>JUnit 设计目标：</p>
-<ol>
-<li>The framework must help us write useful tests.</li>
-<li>The framework must help us create tests that retain their value over time.</li>
-<li>The framework must help us lower the cost of writing tests by reusing code.</li>
-</ol>
-<p>Junit是如何实现单元测试框架应当遵循的原则的：</p>
-<ol>
-<li>Separate test class instances and class loaders for each unit test to avoid side effects （目标1）</li>
-<li>JUnit annotations to provide resource initialization and reclamation methods: @Before, @BeforeClass, @After, and @AfterClass （目标3）</li>
-</ol>
+      
+
+      
         
-          <p class="article-more-link">
-            <a href="/2014/03/29/20140329_JUnit和它的设计模式/#more">阅读全文</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://hellofalcon.com/2014/03/29/20140329_JUnit和它的设计模式/" data-id="cih8xe9v3001he4hhr879cnkj" class="article-share-link">分享到</a>
-      
-        <a href="http://hellofalcon.com/2014/03/29/20140329_JUnit和它的设计模式/#ds-thread" class="article-comment-link">评论</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Junit/">Junit</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-20140121_自制编程语言" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/01/21/20140121_自制编程语言/">自制编程语言</a>
-    </h1>
-  
-
-        <div class="article-meta">
-          <div class="article-date">
-  <i class="fa fa-calendar"></i>
-  <a href="/2014/01/21/20140121_自制编程语言/">
-    <time datetime="2014-01-21T01:10:24.000Z" itemprop="datePublished">2014-01-21</time>
-  </a>
-</div>
-          
-  <div class="article-category">
-  	<i class="fa fa-folder"></i>
-    <a class="article-category-link" href="/categories/编程/">编程</a>
-  </div>
-
-        </div>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="编程语言开发札记">编程语言开发札记</h2><blockquote>
+          <h2 id="编程语言开发札记">编程语言开发札记</h2><blockquote>
 <p>以下文字用于记录我在开发自己JVM语言过程中的学习历程，一是为了记录自己的成长，而是如果能够帮助有这方面需求的人，那就再好不过了     - Falcon</p>
 </blockquote>
 <h3 id="2013/12/24_平安夜">2013/12/24 平安夜</h3><p>我的目标是制作JVM语言。目前搜集一些资料，但是JVM生成字节码方面的资料很少。</p>
 <p>目前看了的资料有 </p>
 <p> <a href="http://stackoverflow.com/questions/3380498/create-a-jvm-programming-language">http://stackoverflow.com/questions/3380498/create-a-jvm-programming-language</a></p>
-        
-          <p class="article-more-link">
-            <a href="/2014/01/21/20140121_自制编程语言/#more">阅读全文</a>
-          </p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2014/01/21/20140121_自制编程语言/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
-    <footer class="article-footer">
-      <a data-url="http://hellofalcon.com/2014/01/21/20140121_自制编程语言/" data-id="cih8xe9vc001ne4hhpkx9xj87" class="article-share-link">分享到</a>
-      
-        <a href="http://hellofalcon.com/2014/01/21/20140121_自制编程语言/#ds-thread" class="article-comment-link">评论</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JVM/">JVM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程语言/">编程语言</a></li></ul>
 
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
     </footer>
-  </div>
-  
-</article>
+  </article>
 
 
-  
-    <article id="post-20140101_2013简单回顾" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
     
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/01/01/20140101_2013简单回顾/">2013简单回顾</a>
-    </h1>
-  
 
-        <div class="article-meta">
-          <div class="article-date">
-  <i class="fa fa-calendar"></i>
-  <a href="/2014/01/01/20140101_2013简单回顾/">
-    <time datetime="2014-01-01T01:10:24.000Z" itemprop="datePublished">2014-01-01</time>
-  </a>
-</div>
-          
-  <div class="article-category">
-  	<i class="fa fa-folder"></i>
-    <a class="article-category-link" href="/categories/职业生涯/">职业生涯</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/职业生涯/年度回顾/">年度回顾</a>
-  </div>
+  </section>
+
+  
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
+
 
         </div>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="/img/p_review2013/haiou.jpg" alt="海鸥" title="海鸥"></p>
-<p>马年就这么悄悄地到来了，回家总是满满的幸福，各种好吃的马上补上，虽然有些事情是遗憾的，但是我相信未来是美好的，心怀乐观，总会将自己引入光明之道。</p>
-<p>2013年对我来说是重要的一年，经历了很多艰难的事，越发感觉自己能力有限，回首过去5年自己无所作为，无比的懊悔，有些事情总是明白太晚。但是痛楚让自己醒悟了，现在终于知道自己该坚持什么，该放弃什么。我得承认自己能力有限，不要想象自己可以扭转乾坤，需要更脚踏实地的一步步前行。</p>
-        
-          <p class="article-more-link">
-            <a href="/2014/01/01/20140101_2013简单回顾/#more">阅读全文</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://hellofalcon.com/2014/01/01/20140101_2013简单回顾/" data-id="cih8xe9vo001te4hha4rmxfmz" class="article-share-link">分享到</a>
-      
-        <a href="http://hellofalcon.com/2014/01/01/20140101_2013简单回顾/#ds-thread" class="article-comment-link">评论</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/2013总结/">2013总结</a></li></ul>
 
+        
+
+
+        
+
+      </div>
+
+      
+        
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/uploads/avatar.png" alt="Falcon Chu" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">Falcon Chu</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">驽马十驾，功在不舍</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">15</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">8</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">25</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/cgfalcon" target="_blank">
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/cggogogo" target="_blank">
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.zhihu.com/people/cgfalcon" target="_blank">
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+
+    </div>
+  </aside>
+
+
+      
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2013 - 
+  <span itemprop="copyrightYear">2015</span>
+  <span class="with-love">
+    <i class="icon-next-heart fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Falcon Chu</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT
+  </a>
+</div>
+
+
+
+      </div>
     </footer>
-  </div>
-  
-</article>
 
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
 
   
   
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">下一页 &raquo;</a>
-    </nav>
-  
-</section>
-      
-        <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">最新文章</h3>
-    <div class="widget">
-      <ul id="recent-post" class="">
-        
-          <li>
-            
-            <div class="item-thumbnail">
-              <a href="/2015/11/21/20151106-编码中异常的使用建议/" class="thumbnail">
-  
-    <span style="background-image:url(/img/p_java_exception_practice/source_code.jpg
-)" alt="Java编码中异常的使用建议" class="thumbnail-image"></span>
-  
-</a>
-            </div>
-            
-            <div class="item-inner">
-              <p class="item-category"><a class="article-category-link" href="/categories/程序设计/">程序设计</a></p>
-              <p class="item-title"><a href="/2015/11/21/20151106-编码中异常的使用建议/" class="title">Java编码中异常的使用建议</a></p>
-              <p class="item-date"><time datetime="2015-11-21T09:48:13.000Z" itemprop="datePublished">2015-11-21</time></p>
-            </div>
-          </li>
-        
-          <li>
-            
-            <div class="item-thumbnail">
-              <a href="/2015/09/29/20150929_Java代码规范/" class="thumbnail">
-  
-    <span class="thumbnail-image thumbnail-none"></span>
-  
-</a>
-            </div>
-            
-            <div class="item-inner">
-              <p class="item-category"><a class="article-category-link" href="/categories/编程/">编程</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/编程/软件工程/">软件工程</a></p>
-              <p class="item-title"><a href="/2015/09/29/20150929_Java代码规范/" class="title">Java代码规范</a></p>
-              <p class="item-date"><time datetime="2015-09-29T08:37:49.000Z" itemprop="datePublished">2015-09-29</time></p>
-            </div>
-          </li>
-        
-          <li>
-            
-            <div class="item-thumbnail">
-              <a href="/2015/07/25/20150725_JavaScript学习笔记/" class="thumbnail">
-  
-    <span class="thumbnail-image thumbnail-none"></span>
-  
-</a>
-            </div>
-            
-            <div class="item-inner">
-              <p class="item-category"><a class="article-category-link" href="/categories/编程/">编程</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/编程/读书笔记/">读书笔记</a></p>
-              <p class="item-title"><a href="/2015/07/25/20150725_JavaScript学习笔记/" class="title">JavaScript 学习笔记</a></p>
-              <p class="item-date"><time datetime="2015-07-25T08:37:49.000Z" itemprop="datePublished">2015-07-25</time></p>
-            </div>
-          </li>
-        
-          <li>
-            
-            <div class="item-thumbnail">
-              <a href="/2015/07/25/20150718_数据可视化/" class="thumbnail">
-  
-    <span class="thumbnail-image thumbnail-none"></span>
-  
-</a>
-            </div>
-            
-            <div class="item-inner">
-              <p class="item-category"><a class="article-category-link" href="/categories/编程/">编程</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/编程/读书笔记/">读书笔记</a></p>
-              <p class="item-title"><a href="/2015/07/25/20150718_数据可视化/" class="title">D3.js 数据可视化</a></p>
-              <p class="item-date"><time datetime="2015-07-25T00:34:49.000Z" itemprop="datePublished">2015-07-25</time></p>
-            </div>
-          </li>
-        
-          <li>
-            
-            <div class="item-thumbnail">
-              <a href="/2015/06/10/20150610-programers-architect/" class="thumbnail">
-  
-    <span style="background-image:url(http://img4.douban.com/lpic/s27766899.jpg
-)" alt="读《程序员必读之软件架构》" class="thumbnail-image"></span>
-  
-</a>
-            </div>
-            
-            <div class="item-inner">
-              <p class="item-category"><a class="article-category-link" href="/categories/编程/">编程</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/编程/读书笔记/">读书笔记</a></p>
-              <p class="item-title"><a href="/2015/06/10/20150610-programers-architect/" class="title">读《程序员必读之软件架构》</a></p>
-              <p class="item-date"><time datetime="2015-06-10T00:34:49.000Z" itemprop="datePublished">2015-06-10</time></p>
-            </div>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
 
   
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">分类</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/数据库/">数据库</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/程序设计/">程序设计</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程/">编程</a><span class="category-list-count">10</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/编程/读书笔记/">读书笔记</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程/软件工程/">软件工程</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/职业生涯/">职业生涯</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/职业生涯/年度回顾/">年度回顾</a><span class="category-list-count">1</span></li></ul></li></ul>
-    </div>
-  </div>
 
   
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">标签</h3>
-    <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/2013总结/">2013总结</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/D3-js/">D3.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ECMAScript/">ECMAScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/">JVM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/">Javascript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Junit/">Junit</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MongoDB/">MongoDB</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Scala/">Scala</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/annotation/">annotation</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/函数式编程/">函数式编程</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端/">前端</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/异常处理/">异常处理</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据可视化/">数据可视化</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/架构/">架构</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编码规范/">编码规范</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编程语言/">编程语言</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书笔记/">读书笔记</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/软件工程/">软件工程</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/重构/">重构</a><span class="tag-list-count">1</span></li></ul>
-    </div>
-  </div>
-
   
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"hellofalcon"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">标签云</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/2013总结/" style="font-size: 10px;">2013总结</a> <a href="/tags/D3-js/" style="font-size: 10px;">D3.js</a> <a href="/tags/ECMAScript/" style="font-size: 10px;">ECMAScript</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/Javascript/" style="font-size: 20px;">Javascript</a> <a href="/tags/Junit/" style="font-size: 10px;">Junit</a> <a href="/tags/MongoDB/" style="font-size: 10px;">MongoDB</a> <a href="/tags/Scala/" style="font-size: 10px;">Scala</a> <a href="/tags/annotation/" style="font-size: 10px;">annotation</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/函数式编程/" style="font-size: 10px;">函数式编程</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/异常处理/" style="font-size: 10px;">异常处理</a> <a href="/tags/数据可视化/" style="font-size: 10px;">数据可视化</a> <a href="/tags/架构/" style="font-size: 10px;">架构</a> <a href="/tags/编码规范/" style="font-size: 10px;">编码规范</a> <a href="/tags/编程语言/" style="font-size: 10px;">编程语言</a> <a href="/tags/读书笔记/" style="font-size: 10px;">读书笔记</a> <a href="/tags/软件工程/" style="font-size: 10px;">软件工程</a> <a href="/tags/重构/" style="font-size: 10px;">重构</a>
-    </div>
-  </div>
+     
 
-  
+
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">归档</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/09/">九月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">六月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">五月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06/">六月 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/03/">三月 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/01/">一月 2014</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/11/">十一月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">七月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/05/">五月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/03/">三月 2013</a><span class="archive-list-count">1</span></li></ul>
-    </div>
-  </div>
+  
 
   
-  <div id="toTop" class="fa fa-chevron-up"></div>
-</aside>
-      
-    </div>
-    <footer id="footer">
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.2"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.2"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+<script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+<script type="text/javascript" src="/js/motion.js?v=0.4.5.2" id="motion.global"></script>
+
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
   
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2015 Falcon Chu<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
-    </div>
-  </div>
-</footer>
-    
 
-<script type="text/javascript">
-  var duoshuoQuery = {short_name:"hellofalcon"};
-  (function() {
-    var ds = document.createElement('script');
-    ds.type = 'text/javascript';ds.async = true;
-    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-    ds.charset = 'UTF-8';
-    (document.getElementsByTagName('head')[0] 
-     || document.getElementsByTagName('body')[0]).appendChild(ds);
-  })();
-</script>
+  <script type="text/javascript" src="/js/bootstrap.js"></script>
 
+  
+  
 
-<script src="//ajax.useso.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+  
+  
 
-
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
-  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
-
-
-<script src="/js/script.js" type="text/javascript"></script>
-
-
-
-
-	<script type="text/javascript">
-	var _hmt = _hmt || [];
-	(function() {
-	  var hm = document.createElement("script");
-	  hm.src = "//hm.baidu.com/hm.js?67bfad4475dbdde7048d563d6ba2ea54";
-	  var s = document.getElementsByTagName("script")[0]; 
-	  s.parentNode.insertBefore(hm, s);
-	})();
-	</script>
-
-
-<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1256711282'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1256711282%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
-
-  </div>
 </body>
 </html>
