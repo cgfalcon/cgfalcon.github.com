@@ -323,7 +323,7 @@
 
       
         
-          <p><img src="/img/20151122-kotlin-getstart/kotlin.jpg" alt="Kotlin"></p>
+          <p><img src="/img/20151122-kotlin-getstart/kotlin.JPG" alt="Kotlin"></p>
 <p>Kotlin 是Jetbrains 开发的基于JVM的静态类型的编程语言。 曾经幻想自己能不能裁剪下Java的语法，然后重新做一个JVM语言，不过在发现Kotlin之后发现完全没有这个必要了。 它已经做了我想做的东西，而且人家做的很好。 除了有专业团队的支持以外，还有专业的IDE支持（给IDEA加分），这样的待遇其实我想是很多新生语言都羡慕的。 </p>
 <p>Scala也有TypeSafe来支持，但是目前看上去语法复杂，有时候IDE都不能知道语法对不对。 </p>
 <p>Kotlin还很年轻，现在也才 1.0-beta，不过背后的Java生态算是很大一部分助力，因此Kotlin其实很多类库都是借用JDK的现成东西。 在学习的时候不免产生Kotlin会不会自己的东西太少了的担忧。 但是Kotlin基于JDK 1.6 引入了高阶函数等特性，而这些特性在Java语言中需要等到 JDK 8 才能提供。 因此基于这点，Kotlin对于想使用JDK 8 特性的人来说是一个吸引力。 这意味着，即便你的生产环境是JDK 6 也可以安全的使用Kotlin。</p>
@@ -1126,6 +1126,125 @@
 <p>So the approach of attempting to provide<br>everything in one language doesn’t scale very well. Instead, Scala allows<br>users to grow and adapt the language in the directions they need by defining<br>easy-to-use libraries that feel like native language support.</p>
           <div class="post-more-link text-center">
             <a class="btn" href="/2014/06/22/20140622_scala-startups/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2014/03/29/20140329_JUnit和它的设计模式/" itemprop="url">
+                  JUnit和它的设计模式
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2014-03-29T09:10:24+08:00" content="2014-03-29">
+              2014-03-29
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/编程/" itemprop="url" rel="index">
+                    <span itemprop="name">编程</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2014/03/29/20140329_JUnit和它的设计模式/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/03/29/20140329_JUnit和它的设计模式/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <h3 id="JUnit设计原则">JUnit设计原则</h3><p>先来说说单元测试框架应当遵循什么原则：</p>
+<ol>
+<li>Each unit test should run independently of all other unit tests.</li>
+<li>The framework should detect and report errors test by test.</li>
+<li>It should be easy to define which unit tests will run.</li>
+</ol>
+<p>JUnit 设计目标：</p>
+<ol>
+<li>The framework must help us write useful tests.</li>
+<li>The framework must help us create tests that retain their value over time.</li>
+<li>The framework must help us lower the cost of writing tests by reusing code.</li>
+</ol>
+<p>Junit是如何实现单元测试框架应当遵循的原则的：</p>
+<ol>
+<li>Separate test class instances and class loaders for each unit test to avoid side effects （目标1）</li>
+<li>JUnit annotations to provide resource initialization and reclamation methods: @Before, @BeforeClass, @After, and @AfterClass （目标3）</li>
+</ol>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2014/03/29/20140329_JUnit和它的设计模式/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
