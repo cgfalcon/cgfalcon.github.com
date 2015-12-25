@@ -60,7 +60,7 @@ Scala也有TypeSafe来支持，但是目前看上">
 <meta property="og:description" content="Kotlin 是Jetbrains 开发的基于JVM的静态类型的编程语言。 曾经幻想自己能不能裁剪下Java的语法，然后重新做一个JVM语言，不过在发现Kotlin之后发现完全没有这个必要了。 它已经做了我想做的东西，而且人家做的很好。 除了有专业团队的支持以外，还有专业的IDE支持（给IDEA加分），这样的待遇其实我想是很多新生语言都羡慕的。 
 Scala也有TypeSafe来支持，但是目前看上">
 <meta property="og:image" content="http://typeorigin.com/img/20151122-kotlin-getstart/kotlin.JPG">
-<meta property="og:updated_time" content="2015-12-20T09:51:46.000Z">
+<meta property="og:updated_time" content="2015-12-22T22:49:08.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="初识Kotlin">
 <meta name="twitter:description" content="Kotlin 是Jetbrains 开发的基于JVM的静态类型的编程语言。 曾经幻想自己能不能裁剪下Java的语法，然后重新做一个JVM语言，不过在发现Kotlin之后发现完全没有这个必要了。 它已经做了我想做的东西，而且人家做的很好。 除了有专业团队的支持以外，还有专业的IDE支持（给IDEA加分），这样的待遇其实我想是很多新生语言都羡慕的。 
@@ -550,6 +550,23 @@ val asc = <span class="keyword">Array</span>(<span class="number">5</span>, <spa
 <p>比如你非常悲剧的从两个包下面导入了相同名称的类，在Java中你很可能要将其中一个使用的时候使用全限定名。但是Kotlin帮助很好的解决了这个问题</p>
 <pre><code><span class="preprocessor"><span class="keyword">import</span> foo.Bar</span>
 <span class="preprocessor"><span class="keyword">import</span> boo.Bar as bBar</span>
+</code></pre><h3 id="Enum">Enum</h3><p>Kotlin 使用 Enum的方式和 Java类似</p>
+<pre><code><span class="keyword">enum</span> <span class="class"><span class="keyword">class</span> <span class="title">Name</span></span>(<span class="variable"><span class="keyword">val</span> type</span>: String) {
+    Tree(<span class="string">"tree"</span>), Bar(<span class="string">"bar"</span>)
+}
+
+<span class="keyword">enum</span> <span class="class"><span class="keyword">class</span> <span class="title">ProtocolState</span> </span>{
+    WAITING {
+        <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">signal</span><span class="params">()</span> = TALKING</span>
+    },
+    TALKING {
+        <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">signal</span><span class="params">()</span> = WAITING</span>
+    };
+    abstract <span class="function"><span class="keyword">fun</span> <span class="title">signal</span><span class="params">()</span>: ProtocolState</span>
+}
+</code></pre><p>另外还有两个比较有用的方法</p>
+<pre><code>EnumClass.<span class="function"><span class="title">valueOf</span><span class="params">(value: String)</span></span>: EnumClass throws IllegalArgumentException
+EnumClass.<span class="function"><span class="title">values</span><span class="params">()</span></span>: Array&lt;EnumClass&gt;
 </code></pre><h2 id="高级语法特性">高级语法特性</h2><h2 id="类库">类库</h2></span>
       
     </div>
@@ -576,6 +593,10 @@ val asc = <span class="keyword">Array</span>(<span class="number">5</span>, <spa
           </div>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/12/25/20151225-how-to-get-douban-info/" rel="prev" title="如何获取用户自己的豆瓣信息">
+                如何获取用户自己的豆瓣信息 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -647,21 +668,21 @@ val asc = <span class="keyword">Array</span>(<span class="number">5</span>, <spa
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">15</span>
+              <span class="site-state-item-count">17</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             <a href="/categories">
-              <span class="site-state-item-count">8</span>
+              <span class="site-state-item-count">9</span>
               <span class="site-state-item-name">分类</span>
               </a>
           </div>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">24</span>
+              <span class="site-state-item-count">27</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
@@ -713,7 +734,7 @@ val asc = <span class="keyword">Array</span>(<span class="number">5</span>, <spa
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本数据类型"><span class="nav-number">1.</span> <span class="nav-text">基本数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Number"><span class="nav-number">1.1.</span> <span class="nav-text">Number</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Number_使用的一些规则"><span class="nav-number">1.1.1.</span> <span class="nav-text">Number 使用的一些规则</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Character"><span class="nav-number">1.2.</span> <span class="nav-text">Character</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Boolean"><span class="nav-number">1.3.</span> <span class="nav-text">Boolean</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#String"><span class="nav-number">1.4.</span> <span class="nav-text">String</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#字符串字面量"><span class="nav-number">1.4.1.</span> <span class="nav-text">字符串字面量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#字符串模板表达式"><span class="nav-number">1.4.2.</span> <span class="nav-text">字符串模板表达式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Array"><span class="nav-number">1.5.</span> <span class="nav-text">Array</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#快速创建Array的方法"><span class="nav-number">1.5.1.</span> <span class="nav-text">快速创建Array的方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基本语法结构"><span class="nav-number">2.</span> <span class="nav-text">基本语法结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#控制流"><span class="nav-number">2.1.</span> <span class="nav-text">控制流</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#if_语句"><span class="nav-number">2.1.1.</span> <span class="nav-text">if 语句</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#when_语句"><span class="nav-number">2.1.2.</span> <span class="nav-text">when 语句</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#for_语句"><span class="nav-number">2.1.3.</span> <span class="nav-text">for 语句</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Package_语法"><span class="nav-number">2.2.</span> <span class="nav-text">Package 语法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#高级语法特性"><span class="nav-number">3.</span> <span class="nav-text">高级语法特性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类库"><span class="nav-number">4.</span> <span class="nav-text">类库</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本数据类型"><span class="nav-number">1.</span> <span class="nav-text">基本数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Number"><span class="nav-number">1.1.</span> <span class="nav-text">Number</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Number_使用的一些规则"><span class="nav-number">1.1.1.</span> <span class="nav-text">Number 使用的一些规则</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Character"><span class="nav-number">1.2.</span> <span class="nav-text">Character</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Boolean"><span class="nav-number">1.3.</span> <span class="nav-text">Boolean</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#String"><span class="nav-number">1.4.</span> <span class="nav-text">String</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#字符串字面量"><span class="nav-number">1.4.1.</span> <span class="nav-text">字符串字面量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#字符串模板表达式"><span class="nav-number">1.4.2.</span> <span class="nav-text">字符串模板表达式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Array"><span class="nav-number">1.5.</span> <span class="nav-text">Array</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#快速创建Array的方法"><span class="nav-number">1.5.1.</span> <span class="nav-text">快速创建Array的方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基本语法结构"><span class="nav-number">2.</span> <span class="nav-text">基本语法结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#控制流"><span class="nav-number">2.1.</span> <span class="nav-text">控制流</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#if_语句"><span class="nav-number">2.1.1.</span> <span class="nav-text">if 语句</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#when_语句"><span class="nav-number">2.1.2.</span> <span class="nav-text">when 语句</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#for_语句"><span class="nav-number">2.1.3.</span> <span class="nav-text">for 语句</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Package_语法"><span class="nav-number">2.2.</span> <span class="nav-text">Package 语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Enum"><span class="nav-number">2.3.</span> <span class="nav-text">Enum</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#高级语法特性"><span class="nav-number">3.</span> <span class="nav-text">高级语法特性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类库"><span class="nav-number">4.</span> <span class="nav-text">类库</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
@@ -973,6 +994,30 @@ val asc = <span class="keyword">Array</span>(<span class="number">5</span>, <spa
 
   
   
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+
+  
+    <script type="text/javascript" src="http://cdn.staticfile.org/mathjax/2.4.0/MathJax.js"></script>
+    <script type="text/javascript" src="http://cdn.staticfile.org/mathjax/2.4.0/config/TeX-AMS-MML_HTMLorMML.js"></script>
+  
+
 
   
   

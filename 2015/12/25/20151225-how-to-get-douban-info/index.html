@@ -1,0 +1,887 @@
+<!doctype html>
+<html class="theme-next   use-motion ">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="API,豆瓣," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.2" />
+
+
+
+
+
+
+<meta name="description" content="相信不少人在豆瓣上混迹不少时间，也积蓄了不少东西吧，比如我喜欢看书，上面记录了写自己看过的书。以书会友，本人就想在博客里面把书单取到，然后展示下。
+怎么取得书单呢？当然可以通过抓取实现，在豆瓣没有开放API前可以这么做, 现在的话就是脱裤子放屁了。
+在做这个之前我还走了个弯路，以为要到豆瓣上注册App才可以，结果发现完全没必要。当然如果你要修改数据啊之类的，那就要注册App了，需要用户授权，要走O">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何获取用户自己的豆瓣信息">
+<meta property="og:url" content="http://typeorigin.com/2015/12/25/20151225-how-to-get-douban-info/index.html">
+<meta property="og:site_name" content="Type Origin">
+<meta property="og:description" content="相信不少人在豆瓣上混迹不少时间，也积蓄了不少东西吧，比如我喜欢看书，上面记录了写自己看过的书。以书会友，本人就想在博客里面把书单取到，然后展示下。
+怎么取得书单呢？当然可以通过抓取实现，在豆瓣没有开放API前可以这么做, 现在的话就是脱裤子放屁了。
+在做这个之前我还走了个弯路，以为要到豆瓣上注册App才可以，结果发现完全没必要。当然如果你要修改数据啊之类的，那就要注册App了，需要用户授权，要走O">
+<meta property="og:updated_time" content="2015-12-25T01:42:35.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="如何获取用户自己的豆瓣信息">
+<meta name="twitter:description" content="相信不少人在豆瓣上混迹不少时间，也积蓄了不少东西吧，比如我喜欢看书，上面记录了写自己看过的书。以书会友，本人就想在博客里面把书单取到，然后展示下。
+怎么取得书单呢？当然可以通过抓取实现，在豆瓣没有开放API前可以这么做, 现在的话就是脱裤子放屁了。
+在做这个之前我还走了个弯路，以为要到豆瓣上注册App才可以，结果发现完全没必要。当然如果你要修改数据啊之类的，那就要注册App了，需要用户授权，要走O">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'default',
+    sidebar: 'post',
+    motion: true
+  };
+</script>
+
+  <title> 如何获取用户自己的豆瓣信息 | Type Origin </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?67bfad4475dbdde7048d563d6ba2ea54";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Type Origin</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">求道</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu menu-left">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <form class="site-search-form">
+    <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+  </form>
+
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', '4z18VGUyrvbtfTxxwKJV','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                如何获取用户自己的豆瓣信息
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2015-12-25T09:31:21+08:00" content="2015-12-25">
+              2015-12-25
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/编程/" itemprop="url" rel="index">
+                    <span itemprop="name">编程</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/12/25/20151225-how-to-get-douban-info/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/25/20151225-how-to-get-douban-info/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><p>相信不少人在豆瓣上混迹不少时间，也积蓄了不少东西吧，比如我喜欢看书，上面记录了写自己看过的书。以书会友，本人就想在博客里面把书单取到，然后展示下。</p>
+<p>怎么取得书单呢？当然可以通过抓取实现，在豆瓣没有开放API前可以这么做, 现在的话就是脱裤子放屁了。</p>
+<p>在做这个之前我还走了个弯路，以为要到豆瓣上注册App才可以，结果发现完全没必要。当然如果你要修改数据啊之类的，那就要注册App了，需要用户授权，要走<code>Oauth</code>，比较麻烦。现在如果只是读取的话很简单。</p>
+<a id="more"></a>
+<p>首先你需要知道你的 <code>豆瓣ID</code>。</p>
+<p>怎么知道呢？直接登录到豆瓣，然后到账号管理里，看浏览器url</p>
+<pre><code><span class="string">http:</span><span class="comment">//www.douban.com/people/<span class="doctag"><span class="keyword">xxx</span></span>/</span>
+</code></pre><p>会看到类似的url, xxx就是<code>豆瓣ID</code>，记住就好。</p>
+<p>然后关于使用，直接Get调接口就可以。</p>
+<p>比如假设我的id是 12345, 那么接口就是</p>
+<pre><code><span class="string">https:</span><span class="comment">//api.douban.com/v2/book/user/12345/collections</span>
+</code></pre><p>返回结果是Json，长下面样子</p>
+<pre><code><span class="collection">{
+    <span class="string">"count"</span>: <span class="number">20</span>, 
+    <span class="string">"start"</span>: <span class="number">0</span>, 
+    <span class="string">"total"</span>: <span class="number">30</span>, 
+    <span class="string">"collections"</span>: <span class="collection">[
+        <span class="collection">{
+            <span class="string">"status"</span>: <span class="string">"read"</span>, 
+            <span class="string">"comment"</span>: <span class="string">"飞机上看完的书，书中有很多有趣的数学问题，对于一个数学很难及格的人也能被勾起积分兴趣。"</span>, 
+            <span class="string">"updated"</span>: <span class="string">"2013-10-06 00:11:04"</span>, 
+            <span class="string">"user_id"</span>: <span class="string">"49236350"</span>, 
+            <span class="string">"tags"</span>: <span class="collection">[
+                <span class="string">"数学"</span>, 
+                <span class="string">"Matrix67"</span>, 
+                <span class="string">"顾森"</span>
+            ]</span>, 
+            <span class="string">"rating"</span>: <span class="collection">{
+                <span class="string">"max"</span>: <span class="number">5</span>, 
+                <span class="string">"value"</span>: <span class="string">"4"</span>, 
+                <span class="string">"min"</span>: <span class="number">0</span>
+            }</span>, 
+            <span class="string">"book"</span>: <span class="collection">{
+                <span class="string">"rating"</span>: <span class="collection">{
+                    <span class="string">"max"</span>: <span class="number">10</span>, 
+                    <span class="string">"numRaters"</span>: <span class="number">819</span>, 
+                    <span class="string">"average"</span>: <span class="string">"8.4"</span>, 
+                    <span class="string">"min"</span>: <span class="number">0</span>
+                }</span>, 
+                <span class="string">"subtitle"</span>: <span class="string">"Matrix67数学笔记"</span>, 
+                <span class="string">"author"</span>: <span class="collection">[
+                    <span class="string">"顾森"</span>
+                ]</span>, 
+                <span class="string">"pubdate"</span>: <span class="string">"2012-6"</span>, 
+                <span class="string">"tags"</span>: <span class="collection">[
+                    <span class="collection">{
+                        <span class="string">"count"</span>: <span class="number">2984</span>, 
+                        <span class="string">"name"</span>: <span class="string">"数学"</span>, 
+                        <span class="string">"title"</span>: <span class="string">"数学"</span>
+                    }</span>, 
+                    <span class="collection">{
+                        <span class="string">"count"</span>: <span class="number">1346</span>, 
+                        <span class="string">"name"</span>: <span class="string">"科普"</span>, 
+                        <span class="string">"title"</span>: <span class="string">"科普"</span>
+                    }</span>, 
+                    <span class="collection">{
+                        <span class="string">"count"</span>: <span class="number">858</span>, 
+                        <span class="string">"name"</span>: <span class="string">"思考的乐趣：Matrix67数学笔记"</span>, 
+                        <span class="string">"title"</span>: <span class="string">"思考的乐趣：Matrix67数学笔记"</span>
+                    }</span>, 
+                    <span class="collection">{
+                        <span class="string">"count"</span>: <span class="number">762</span>, 
+                        <span class="string">"name"</span>: <span class="string">"思维"</span>, 
+                        <span class="string">"title"</span>: <span class="string">"思维"</span>
+                    }</span>, 
+                    <span class="collection">{
+                        <span class="string">"count"</span>: <span class="number">595</span>, 
+                        <span class="string">"name"</span>: <span class="string">"数学思维"</span>, 
+                        <span class="string">"title"</span>: <span class="string">"数学思维"</span>
+                    }</span>, 
+                    <span class="collection">{
+                        <span class="string">"count"</span>: <span class="number">578</span>, 
+                        <span class="string">"name"</span>: <span class="string">"Matrix67"</span>, 
+                        <span class="string">"title"</span>: <span class="string">"Matrix67"</span>
+                    }</span>, 
+                    <span class="collection">{
+                        <span class="string">"count"</span>: <span class="number">258</span>, 
+                        <span class="string">"name"</span>: <span class="string">"顾森"</span>, 
+                        <span class="string">"title"</span>: <span class="string">"顾森"</span>
+                    }</span>, 
+                    <span class="collection">{
+                        <span class="string">"count"</span>: <span class="number">171</span>, 
+                        <span class="string">"name"</span>: <span class="string">"计算机科学"</span>, 
+                        <span class="string">"title"</span>: <span class="string">"计算机科学"</span>
+                    }</span>
+                ]</span>, 
+                <span class="string">"origin_title"</span>: <span class="string">""</span>, 
+                <span class="string">"image"</span>: <span class="string">"http://img3.douban.com/mpic/s10323913.jpg"</span>, 
+                <span class="string">"binding"</span>: <span class="string">"平装"</span>, 
+                <span class="string">"translator"</span>: <span class="collection">[ ]</span>, 
+                <span class="string">"catalog"</span>: <span class="string">"序..."</span>,
+                <span class="string">"pages"</span>: <span class="string">"266"</span>, 
+                <span class="string">"images"</span>: <span class="collection">{
+                    <span class="string">"small"</span>: <span class="string">"http://img3.douban.com/spic/s10323913.jpg"</span>, 
+                    <span class="string">"large"</span>: <span class="string">"http://img3.douban.com/lpic/s10323913.jpg"</span>, 
+                    <span class="string">"medium"</span>: <span class="string">"http://img3.douban.com/mpic/s10323913.jpg"</span>
+                }</span>, 
+                <span class="string">"alt"</span>: <span class="string">"http://book.douban.com/subject/10779597/"</span>, 
+                <span class="string">"id"</span>: <span class="string">"10779597"</span>, 
+                <span class="string">"publisher"</span>: <span class="string">"人民邮电出版社"</span>, 
+                <span class="string">"isbn10"</span>: <span class="string">"7115275866"</span>, 
+                <span class="string">"isbn13"</span>: <span class="string">"9787115275868"</span>, 
+                <span class="string">"title"</span>: <span class="string">"思考的乐趣"</span>, 
+                <span class="string">"url"</span>: <span class="string">"http://api.douban.com/v2/book/10779597"</span>, 
+                <span class="string">"alt_title"</span>: <span class="string">""</span>, 
+                <span class="string">"author_intro"</span>: <span class="string">"作者简介：
+顾森
+网名Matrix67，北京大学中文系应用语言学专业学生，数学爱好者。2005年开办数学博http://www.matrix67.com，至今已积累上千篇文章，已有上万人订阅。长期为各类科普杂志供稿，从事中学数学教育工作多年。"</span>, 
+                <span class="string">"summary"</span>: <span class="string">"本书是一个疯狂数学爱好者的数学笔记，面向所有喜爱数学的读者。从2005年7月开始，作者已经写了连续六年的博客，积累下来了大量的数学文章。 部分文章内容被广泛关注，在网络上大量分享转载。
+这本书有意挑选了初等的话题，让大大小小的读者都能没有障碍地阅读。文章内容新，让有数学背景的人也会发现很多自己没见过的初等问题。 文章是独立的。一篇文章一个话题，文章与文章之间基本不会做参考，读者可以随意跳着看。
+文章内容注重思想性，基本上是原创，没有什么版权争议。
+总之，这是一本标新立异的趣味数学书。每一个读过的人都会被深深吸引。这是一个热爱思考的年轻人积攒的让人一读就欲罢不能的趣味书。
+本书包括5部分内容，即生活中的数学、数学之美、几何的大厦、精妙的证明、思维的尺度，涉及48篇精彩的文章。即使你不喜欢数学，也会为本书的精彩所倾倒。"</span>, 
+                <span class="string">"price"</span>: <span class="string">"45.00元"</span>
+            }</span>, 
+            <span class="string">"book_id"</span>: <span class="string">"10779597"</span>, 
+            <span class="string">"id"</span>: <span class="number">732685539</span>
+        }</span>
+    ]</span>
+}</span>
+</code></pre><p>返回列表中包含了自己想读，读过，以及在读的书，可以按照自己的需求进行处理。</p>
+<p>另外要注意的是，接口默认只返回前<strong>20条</strong>数据，所以在书单数量超过20的时候需要自己处理，多次请求。或者你可以想读，读过，在读的书分开请求</p>
+<p>请求参数为：</p>
+<pre><code><span class="operator"><span class="keyword">start</span> -  偏移量
+<span class="keyword">count</span> -  返回的结果数
+<span class="keyword">status</span> - [wish|reading|<span class="keyword">read</span>], 分别对应 想读，在读，读过</span>
+</code></pre><p>如果你要用高端功能，那么只能注册App了，给个传送门：<a href="http://developers.douban.com/apikey/apply" target="_blank" rel="external">http://developers.douban.com/apikey/apply</a></p>
+<p>如果还有需要了解API详细信息的可以看 <a href="http://developers.douban.com/wiki/?title=guide" target="_blank" rel="external">豆瓣API快速入门</a></p>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/API/" rel="tag">#API</a>
+          
+            <a href="/tags/豆瓣/" rel="tag">#豆瓣</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/11/22/20151122-kotlin-getstart/" rel="next" title="初识Kotlin">
+                <i class="fa fa-chevron-left"></i> 初识Kotlin
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+        </div>
+
+        
+
+
+        
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2015/12/25/20151225-how-to-get-douban-info/"
+           data-title="如何获取用户自己的豆瓣信息" data-url="http://typeorigin.com/2015/12/25/20151225-how-to-get-douban-info/">
+      </div>
+    
+  </div>
+
+
+      </div>
+
+      
+        
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/uploads/avatar.png" alt="Falcon Chu" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">Falcon Chu</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">驽马十驾，功在不舍</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">17</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">9</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">27</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/cgfalcon" target="_blank">
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/cggogogo" target="_blank">
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.zhihu.com/people/cgfalcon" target="_blank">
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+      
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2013 - 
+  <span itemprop="copyrightYear">2015</span>
+  <span class="with-love">
+    <i class="icon-next-heart fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Falcon Chu</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.default
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+
+  
+    
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"typeorigin"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+    
+     
+
+
+    
+  
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.2"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.2"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+<script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+<script type="text/javascript" src="/js/motion.js?v=0.4.5.2" id="motion.global"></script>
+
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.2" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    motionMiddleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+      if (CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  <script type="text/javascript" src="/js/bootstrap.js"></script>
+
+  
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+
+  
+    <script type="text/javascript" src="http://cdn.staticfile.org/mathjax/2.4.0/MathJax.js"></script>
+    <script type="text/javascript" src="http://cdn.staticfile.org/mathjax/2.4.0/config/TeX-AMS-MML_HTMLorMML.js"></script>
+  
+
+
+  
+  
+
+</body>
+</html>
