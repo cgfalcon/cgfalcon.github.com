@@ -961,7 +961,7 @@ body {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ff2be4;
+  background: #21ffc4;
 }
 .sidebar-nav {
   margin: 0 0 20px;
@@ -1251,12 +1251,8 @@ body {
   height: 2px;
   bottom: 0;
   left: 0;
-  background-color: #000;
   visibility: hidden;
   transform: scaleX(0);
-  transition-duration: 0.2s;
-  transition-timing-function: ease-in-out;
-  transition-delay: 0s;
 }
 .posts-expand .post-title-link:hover::before {
   visibility: visible;
@@ -1991,4 +1987,53 @@ body {
   .use-motion .site-search form {
     top: 0 !important;
   }
+}
+#header {
+  background-position-x: 0px;
+  background-position-y: -120px;
+  background-image: url("/img/signal.jpg");
+}
+.menu .menu-item a {
+  color: #bebebe;
+}
+.menu .menu-item a:hover {
+  color: #fff;
+}
+.posts-expand .post-title {
+  text-align: left;
+}
+.posts-expand .post-meta {
+  text-align: left;
+}
+.posts-expand .post-title-link:hover {
+  color: #669994;
+  text-decoration: none;
+}
+.posts-expand .post-eof {
+  margin: 30px auto 60px;
+  width: 100%;
+}
+.post-more-link {
+  text-align: left;
+}
+.btn {
+  background: #474747;
+  border: 2px solid #474747;
+  color: #fff;
+}
+.btn:hover {
+  background: #8f8f8f;
+  border: 2px solid #8f8f8f;
+  color: #fff;
+}
+.links-of-author a {
+  border-bottom: none;
+}
+.tag-cloud a {
+  border-bottom: none;
+  padding: 0 5px;
+}
+.tag-cloud a:hover {
+  background: #555;
+  color: #fff !important;
 }
