@@ -63,7 +63,7 @@ Math">
 一开始看到了开源中国上的关于MathML的文章，文章有点长没看完只看了开头。知道了MathML其实就是类似XML一样的显示数学公式的协议规范。
 
 Math">
-<meta property="og:updated_time" content="2015-12-25T01:51:58.000Z">
+<meta property="og:updated_time" content="2015-12-26T14:50:46.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何在网页中显示数学公式">
 <meta name="twitter:description" content="之前写贝叶斯分类相关文章的时候，就想到如果我要写公式怎么办，如果直接用普通字符写出来恐怕不太美观，就像前面写标签云的时候一样，连个方程组写出来都很难看。于是就上网搜了些资料，看看怎么能像word一样显示数学公式。当然也顺便为了拯救难看的方程组。
@@ -126,7 +126,7 @@ Math">
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
-  <p class="site-subtitle">求道</p>
+  <p class="site-subtitle"></p>
 </div>
 
 <div class="site-nav-toggle">
@@ -349,7 +349,7 @@ Math">
 <p>采用AsciiMath的话, 只要将公式放在反引号(back quote)`之间就可以了，比如求根公式，比较粗糙的写出来是这样的：</p>
 <pre><code>x = <span class="list">(<span class="keyword">-b</span> +- sqrt<span class="list">(<span class="keyword">b</span>^<span class="number">2</span><span class="number">-4</span>ac)</span>)</span>/<span class="list">(<span class="number">2</span>a)</span>
 </code></pre><p>然后MathJax渲染后是这样的：</p>
-<p>`x = (-b +- sqrt(b^2-4ac))/(2a)`</p>
+<p>$$x = {-b \pm \sqrt{b^2-4ac} \over 2a}.$$</p>
 <p>看上去是很美观的。</p>
 <p>由于自己独立博客架在新浪云上，默认代码空间只有100M，但是看了下MathJax的文件居然要100多兆，而且上传也不给力，所以又搜了下，发现在引入MathJax.js的时候可以用到CDN上拉，相应的前面的脚本改为：</p>
 <pre><code><span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span> <span class="attribute">src</span>=<span class="value">"http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=AM_HTMLorMML-full"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>.
@@ -485,17 +485,23 @@ Math">
               <span class="links-of-author-item">
                 <a href="https://github.com/cgfalcon" target="_blank">
                   
+                    <i class="fa fa-github"></i> github
+                  
                 </a>
               </span>
             
               <span class="links-of-author-item">
                 <a href="http://weibo.com/cggogogo" target="_blank">
                   
+                    <i class="fa fa-weibo"></i> 微博
+                  
                 </a>
               </span>
             
               <span class="links-of-author-item">
                 <a href="http://www.zhihu.com/people/cgfalcon" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> 知乎
                   
                 </a>
               </span>
