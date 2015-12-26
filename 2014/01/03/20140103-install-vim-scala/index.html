@@ -35,7 +35,7 @@
 <link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="架构,读书笔记," />
+  <meta name="keywords" content="IDE,Scala,Vim," />
 
 
 
@@ -51,27 +51,25 @@
 
 
 
-<meta name="description" content="最近读了《程序员必读之软件架构》, 感觉大部分内容比较口水话，或者是我还领悟不到精髓。
-不过书中还是提供一些比较有用的信息。比如在敏捷开发下大部分团队不再使用UML而采用简单的草图，
+<meta name="description" content="文中的所有描述都基于 Windows
 
-但是大部分草图不像UML那么规范化，不容易读懂。平常在画程序功能图或者说架构图的时候，总觉得无法表述清楚整个系统的运行情况，看完书后发现是因为自己将不同层次的内容混杂在一起。为了表述清楚系统如何构成，可以通过绘制多">
+对于Windows需要先安装 Git 和 Curl， 然后我将配置 Vundle 来管理依赖，这样依赖的安装和删除都会很方便
+安装步骤">
 <meta property="og:type" content="article">
-<meta property="og:title" content="读《程序员必读之软件架构》">
-<meta property="og:url" content="http://typeorigin.com/2015/06/10/20150610-programers-architect/index.html">
+<meta property="og:title" content="将Vim打造为ScalaIDE">
+<meta property="og:url" content="http://typeorigin.com/2014/01/03/20140103-install-vim-scala/index.html">
 <meta property="og:site_name" content="Type Origin">
-<meta property="og:description" content="最近读了《程序员必读之软件架构》, 感觉大部分内容比较口水话，或者是我还领悟不到精髓。
-不过书中还是提供一些比较有用的信息。比如在敏捷开发下大部分团队不再使用UML而采用简单的草图，
+<meta property="og:description" content="文中的所有描述都基于 Windows
 
-但是大部分草图不像UML那么规范化，不容易读懂。平常在画程序功能图或者说架构图的时候，总觉得无法表述清楚整个系统的运行情况，看完书后发现是因为自己将不同层次的内容混杂在一起。为了表述清楚系统如何构成，可以通过绘制多">
-<meta property="og:image" content="http://img4.douban.com/lpic/s27766899.jpg">
-<meta property="og:image" content="http://cdn.infoq.com/statics_s1_20150603-0041/resource/articles/agile-software-architecture-sketches-NoUML/en/resources/1big.png">
-<meta property="og:updated_time" content="2015-06-10T01:17:19.000Z">
+对于Windows需要先安装 Git 和 Curl， 然后我将配置 Vundle 来管理依赖，这样依赖的安装和删除都会很方便
+安装步骤">
+<meta property="og:updated_time" content="2015-12-26T15:08:17.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="读《程序员必读之软件架构》">
-<meta name="twitter:description" content="最近读了《程序员必读之软件架构》, 感觉大部分内容比较口水话，或者是我还领悟不到精髓。
-不过书中还是提供一些比较有用的信息。比如在敏捷开发下大部分团队不再使用UML而采用简单的草图，
+<meta name="twitter:title" content="将Vim打造为ScalaIDE">
+<meta name="twitter:description" content="文中的所有描述都基于 Windows
 
-但是大部分草图不像UML那么规范化，不容易读懂。平常在画程序功能图或者说架构图的时候，总觉得无法表述清楚整个系统的运行情况，看完书后发现是因为自己将不同层次的内容混杂在一起。为了表述清楚系统如何构成，可以通过绘制多">
+对于Windows需要先安装 Git 和 Curl， 然后我将配置 Vundle 来管理依赖，这样依赖的安装和删除都会很方便
+安装步骤">
 
 
 
@@ -83,7 +81,7 @@
   };
 </script>
 
-  <title> 读《程序员必读之软件架构》 | Type Origin </title>
+  <title> 将Vim打造为ScalaIDE | Type Origin </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -254,7 +252,7 @@
             
             
               
-                读《程序员必读之软件架构》
+                将Vim打造为ScalaIDE
               
             
           </h1>
@@ -263,8 +261,8 @@
         <div class="post-meta">
           <span class="post-time">
             发表于
-            <time itemprop="dateCreated" datetime="2015-06-10T08:34:49+08:00" content="2015-06-10">
-              2015-06-10
+            <time itemprop="dateCreated" datetime="2014-01-03T23:06:54+08:00" content="2014-01-03">
+              2014-01-03
             </time>
           </span>
 
@@ -280,18 +278,6 @@
 
                 
                 
-                  ， 
-                
-
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/编程/读书笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">读书笔记</span>
-                  </a>
-                </span>
-
-                
-                
 
               
             </span>
@@ -301,8 +287,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/06/10/20150610-programers-architect/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/06/10/20150610-programers-architect/" itemprop="commentsCount"></span>
+                <a href="/2014/01/03/20140103-install-vim-scala/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2014/01/03/20140103-install-vim-scala/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -321,61 +307,110 @@
       
 
       
-        <span itemprop="articleBody"><p><img src="http://img4.douban.com/lpic/s27766899.jpg" alt="software architecture for developers" title="software architecture for developers"></p>
-<p>最近读了《程序员必读之软件架构》, 感觉大部分内容比较口水话，或者是我还领悟不到精髓。</p>
-<p>不过书中还是提供一些比较有用的信息。比如在敏捷开发下大部分团队不再使用UML而采用简单的草图，</p>
-<p><img src="http://cdn.infoq.com/statics_s1_20150603-0041/resource/articles/agile-software-architecture-sketches-NoUML/en/resources/1big.png" alt="draft architecture" title="draft architecture"></p>
-<p>但是大部分草图不像UML那么规范化，不容易读懂。平常在画程序功能图或者说架构图的时候，总觉得无法<br>表述清楚整个系统的运行情况，看完书后发现是因为自己将不同层次的内容混杂在一起。为了表述清楚系统如何<br>构成，可以通过绘制多个不同层次的图来达到目的。</p>
+        <span itemprop="articleBody"><blockquote>
+<p>文中的所有描述都基于 Windows</p>
+</blockquote>
+<p>对于Windows需要先安装 <strong>Git</strong> 和 <strong>Curl</strong>， 然后我将配置 Vundle 来管理依赖，这样依赖的安装和删除都会很方便</p>
+<p>安装步骤</p>
 <a id="more"></a>
-<p><strong>语境图</strong></p>
-<p>主要回答以下问题：</p>
 <ol>
-<li>构建的系统是什么</li>
-<li>谁会使用它</li>
-<li>如何已有系统交互</li>
+<li><p>安装Git</p>
+<p> 下载 <a href="https://code.google.com/p/msysgit/downloads/list" target="_blank" rel="external">git for windows</a></p>
+<p> 安装git。记得安装的时候选中 <code>Run Git from the Windows Command Prompt</code></p>
+<p> 确认安装</p>
+<pre><code>c:\&gt;git <span class="comment">--version</span>
+</code></pre></li>
+<li><p>安装curl</p>
+<p> Vundle 需要curl的支持</p>
+<p> <a href="http://curl.haxx.se/download.html" target="_blank" rel="external">下载 curl</a></p>
+<p> 到 $GIT_HOME/cmd 添加一个脚本 curl.cmd</p>
+<pre><code><span class="comment">@rem Do not use "echo off" to not affect any child calls.</span>
+@<span class="keyword">setlocal</span>
+
+<span class="comment">@rem Get the abolute path to the parent directory, which is assumed to be the</span>
+<span class="comment">@rem Git installation root.</span>
+@<span class="flow">for</span> /F "delims=" <span class="envvar">%%I</span> <span class="flow">in</span> ("%~dp0..") <span class="flow">do</span> @<span class="keyword">set</span> git_install_root=<span class="envvar">%%~</span>fI
+@<span class="keyword">set</span> <span class="built_in">PATH</span>=<span class="envvar">%git_install_root%</span>\bin;<span class="envvar">%git_install_root%</span>\mingw\bin;<span class="envvar">%PATH%</span>
+
+@<span class="flow">if</span> <span class="flow">not</span> <span class="flow">exist</span> "<span class="envvar">%HOME%</span>" @<span class="keyword">set</span> HOME=<span class="envvar">%HOMEDRIVE%</span><span class="envvar">%HOMEPATH%</span>
+@<span class="flow">if</span> <span class="flow">not</span> <span class="flow">exist</span> "<span class="envvar">%HOME%</span>" @<span class="keyword">set</span> HOME=<span class="envvar">%USERPROFILE%</span>
+
+@curl.exe %*
+</code></pre><p> 确认安装</p>
+<pre><code>C:\&gt; curl <span class="comment">--version</span>
+</code></pre></li>
+<li><p>安装 Vundle</p>
+<pre><code><span class="keyword">cd</span> &lt;<span class="keyword">vim</span>目录&gt;
+git clone http<span class="variable">s:</span>//github.<span class="keyword">com</span>/gmarik/vundle.git vimfiles/bundle/vundle
+</code></pre><p> 对于windows来说，还需要在 _vimrc 中添加</p>
+<pre><code>set rtp+=<span class="variable">$VIM</span>/vimfiles/bundle/vundle
+call vundle#<span class="function"><span class="title">rc</span><span class="params">()</span></span>
+</code></pre><p> 这样vundle才能正常启动</p>
+</li>
 </ol>
-<p><strong>容器图</strong></p>
-<p>容器图中是否容器的判断标准是：程序是否是单独进程运作。比如Web服务器和数据库服务器就是<br>单独的容器。容器也就是逻辑上可执行的文件或过程。</p>
-<p>容器图主要回答以下问题：</p>
 <ol>
-<li>软件系统的整体形态是什么样</li>
-<li>采用的技术决策是什么</li>
-<li>职责是如何分布的</li>
-<li>容器之间如何交流</li>
-<li>开发者在哪里写代码</li>
+<li>编辑 _vimrc (位于Vim目录) 配置需要的插件。 可以参考文章后面的依赖列表。</li>
 </ol>
-<p><strong>组件图</strong></p>
-<p>组件图是对容器的剖析，帮助了解容器内部</p>
-<p>主要回答以下问题：</p>
 <ol>
-<li>系统由哪些组件/服务组成</li>
-<li>在高层次上，系统如何工作是否清晰</li>
-<li>所有组件/服务都驻留在一个容器吗</li>
+<li><p>打开 gvim，然后执行</p>
+<pre><code><span class="attribute">:BundleInstall</span>
+</code></pre></li>
 </ol>
-<p>上面的图但凡包含各组成部分之间交互的，都需要规范化交互的类型的表示方法，比如数据流<br>怎么表示，模块依赖怎么表示，重要和非重要怎么表示等。</p>
-<p>因此在绘图时，着重从下面几个属性出发来区分元素</p>
-<ul>
-<li>形状（方形、菱形….）</li>
-<li>线条（直线、虚线….，包括箭头）</li>
-<li>颜色</li>
-<li>边框（虚线、实线、双实线…）</li>
-<li>缩略语（元素简单的描述）</li>
-</ul>
-<p>另外，最后讲到架构师除了关注功能需求外，还要思考一些非公能性需求：</p>
-<ul>
-<li>性能</li>
-<li>可伸缩性，主要从业务增长上衡量</li>
-<li>可用性，可接受的故障时间</li>
-<li>故障转移</li>
-<li>安全性，诸如权限</li>
-<li>审计，考虑记录一些关键用户操作的审计日志</li>
-<li>容错和恢复</li>
-<li>国际化和本地化</li>
-<li>监测和管理</li>
-<li>数据保存和归档</li>
-<li>互操作性，主要是和其他系统的交互</li>
-</ul>
-<h3 id="结语">结语</h3><p>了解一个系统应该怎么思考设计，让自己的设计能力提升一些</p>
+<ol>
+<li><p>配置ctags 使其能够对 scala 列出tag</p>
+<pre><code>--langdef=scala
+--langmap=scala:.scala
+--regex-scala=/^[ \t]*((<span class="keyword">abstract</span>|<span class="keyword">final</span>|sealed|<span class="type">implicit</span>|lazy)[ \t]*)*(<span class="keyword">private</span>|<span class="keyword">protected</span>)?[ \t]*<span class="keyword">class</span>[ \t]+([a-zA-Z0-_]+)/\<span class="number">4</span>/c,classes/
+--regex-scala=/^[ \t]*((<span class="keyword">abstract</span>|<span class="keyword">final</span>|sealed|<span class="type">implicit</span>|lazy)[ \t]*)*(<span class="keyword">private</span>|<span class="keyword">protected</span>)?[ \t]*object[ \t]+([a-zA-Z0-_]+)/\<span class="number">4</span>/c,objects/
+--regex-scala=/^[ \t]*((<span class="keyword">abstract</span>|<span class="keyword">final</span>|sealed|<span class="type">implicit</span>|lazy)[ \t]*)*(<span class="keyword">private</span>|<span class="keyword">protected</span>)?[ \t]*<span class="keyword">case</span> <span class="keyword">class</span>[ \t]+([a-zA-Z0-_]+)/\<span class="number">4</span>/c,<span class="keyword">case</span> classes/
+--regex-scala=/^[ \t]*((<span class="keyword">abstract</span>|<span class="keyword">final</span>|sealed|<span class="type">implicit</span>|lazy)[ \t]*)*(<span class="keyword">private</span>|<span class="keyword">protected</span>)?[ \t]*<span class="keyword">case</span> object[ \t]+([a-zA-Z0-_]+)/\<span class="number">4</span>/c,<span class="keyword">case</span> objects/
+--regex-scala=/^[ \t]*((<span class="keyword">abstract</span>|<span class="keyword">final</span>|sealed|<span class="type">implicit</span>|lazy)[ \t]*)*(<span class="keyword">private</span>|<span class="keyword">protected</span>)?[ \t]*trait[ \t]+([a-zA-Z0-_]+)/\<span class="number">4</span>/t,traits/
+--regex-scala=/^[ \t]*<span class="keyword">type</span>[ \t]+([a-zA-Z0-_]+)/\<span class="number">1</span>/T,types/
+--regex-scala=/^[ \t]*((<span class="keyword">abstract</span>|<span class="keyword">final</span>|sealed|<span class="type">implicit</span>|lazy)[ \t]*)*def[ \t]+([a-zA-Z0-_]+)/\<span class="number">3</span>/m,methods/
+--regex-scala=/^[ \t]*((<span class="keyword">abstract</span>|<span class="keyword">final</span>|sealed|<span class="type">implicit</span>|lazy)[ \t]*)*val[ \t]+([a-zA-Z0-_]+)/\<span class="number">3</span>/l,constants/
+--regex-scala=/^[ \t]*((<span class="keyword">abstract</span>|<span class="keyword">final</span>|sealed|<span class="type">implicit</span>|lazy)[ \t]*)*var[ \t]+([a-zA-Z0-_]+)/\<span class="number">3</span>/l,variables/
+--regex-scala=/^[ \t]*package[ \t]+([a-zA-Z0-_.]+)/\<span class="number">1</span>/p,packages/
+</code></pre></li>
+</ol>
+<pre><code>到工程目录下
+
+    ctags -<span class="constant">R</span> . --<span class="literal">exclude</span>=<span class="literal">target</span> --<span class="literal">exclude</span>=<span class="literal">vendor</span>
+</code></pre><p>最后列一些我配置的依赖</p>
+<pre><code><span class="string">" ===========  Basic Bundle
+</span>Bundle <span class="string">'gmarik/vundle'</span>
+
+<span class="string">" ===========  Theame
+</span>Bundle <span class="string">'molokai'</span>
+Bundle <span class="string">'rickharris/vim-blackboard'</span>
+Bundle <span class="string">'altercation/vim-colors-solarized'</span>
+Bundle <span class="string">'tomasr/molokai'</span>
+Bundle <span class="string">'rickharris/vim-monokai'</span>
+Bundle <span class="string">'tpope/vim-vividchalk'</span>
+Bundle <span class="string">'Lokaltog/vim-distinguished'</span>
+
+Bundle <span class="string">'Markdown'</span>
+Bundle <span class="string">'Markdown-syntax'</span>
+
+<span class="string">"     ---------  Scala Support
+</span>Bundle <span class="string">'derekwyatt/vim-scala'</span>
+<span class="string">"     ---------  Language Package Support
+</span>Bundle <span class="string">'sheerun/vim-polyglot'</span>
+
+
+<span class="string">" ===========  IDE Features
+</span>
+Bundle <span class="string">'majutsushi/tagbar'</span>
+
+<span class="string">"   ---------   Project Navigation
+</span>Bundle <span class="string">'scrooloose/nerdtree'</span>
+
+<span class="string">"   ---------   Auto Complete
+</span>Bundle <span class="string">'Shougo/neocomplcache.vim'</span>
+Bundle <span class="string">'Lokaltog/vim-powerline'</span>
+Bundle <span class="string">'vim-scripts/taglist.vim'</span>
+Bundle <span class="string">'fholgado/minibufexpl.vim'</span>
+Bundle <span class="string">'Raimondi/delimitMate'</span>
+</code></pre><h2 id="参考资料">参考资料</h2><p>[1]<a href="https://github.com/gmarik/vundle/wiki/Vundle-for-Windows" target="_blank" rel="external">Vundle for windows</a></p>
 </span>
       
     </div>
@@ -384,9 +419,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/架构/" rel="tag">#架构</a>
+            <a href="/tags/IDE/" rel="tag">#IDE</a>
           
-            <a href="/tags/读书笔记/" rel="tag">#读书笔记</a>
+            <a href="/tags/Scala/" rel="tag">#Scala</a>
+          
+            <a href="/tags/Vim/" rel="tag">#Vim</a>
           
         </div>
       
@@ -395,16 +432,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/05/29/20150529_javascript-start/" rel="next" title="Javascript 学习书单">
-                <i class="fa fa-chevron-left"></i> Javascript 学习书单
+              <a href="/2014/01/01/20140101_2013简单回顾/" rel="next" title="2013简单回顾">
+                <i class="fa fa-chevron-left"></i> 2013简单回顾
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/07/25/20150718_数据可视化/" rel="prev" title="D3.js 数据可视化">
-                D3.js 数据可视化 <i class="fa fa-chevron-right"></i>
+              <a href="/2014/01/21/20140121_自制编程语言/" rel="prev" title="自制编程语言">
+                自制编程语言 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -432,8 +469,8 @@
         
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2015/06/10/20150610-programers-architect/"
-           data-title="读《程序员必读之软件架构》" data-url="http://typeorigin.com/2015/06/10/20150610-programers-architect/">
+      <div class="ds-thread" data-thread-key="2014/01/03/20140103-install-vim-scala/"
+           data-title="将Vim打造为ScalaIDE" data-url="http://typeorigin.com/2014/01/03/20140103-install-vim-scala/">
       </div>
     
   </div>
@@ -549,7 +586,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#结语"><span class="nav-number">1.</span> <span class="nav-text">结语</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">1.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
