@@ -961,7 +961,7 @@ body {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #498ceb;
+  background: #7f9f49;
 }
 .sidebar-nav {
   margin: 0 0 20px;
@@ -1168,9 +1168,6 @@ body {
   border: 2px solid #222;
   text-decoration: none;
   transition-property: background-color;
-  transition-duration: 0.2s;
-  transition-timing-function: ease-in-out;
-  transition-delay: 0s;
 }
 .btn:hover {
   border-color: #222;

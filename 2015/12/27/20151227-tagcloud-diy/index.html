@@ -35,7 +35,7 @@
 <link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="架构,读书笔记," />
+  <meta name="keywords" content="Django,Python,标签云," />
 
 
 
@@ -51,27 +51,24 @@
 
 
 
-<meta name="description" content="最近读了《程序员必读之软件架构》, 感觉大部分内容比较口水话，或者是我还领悟不到精髓。
-不过书中还是提供一些比较有用的信息。比如在敏捷开发下大部分团队不再使用UML而采用简单的草图，
-
-但是大部分草图不像UML那么规范化，不容易读懂。平常在画程序功能图或者说架构图的时候，总觉得无法表述清楚整个系统的运行情况，看完书后发现是因为自己将不同层次的内容混杂在一起。为了表述清楚系统如何构成，可以通过绘制多">
+<meta name="description" content="标签云是一种简单的数据可视化方法。标签云中根据标签的衡量指标，呈现时设置不同的字体大小或者颜色来表达标签的重要性，能够方便的表达博客的关注点。
+实现标签云的思路下面是我自己实现一个简单标签云的过程，在我的标签云中，实现了用不同的字体大小来表达标签被引用的次数。当然其实有很多现成的工具可以用，不过自己对于实现原理比较好奇，也就想自己实现个，最后效果是有了，也不知道是不是常规手段。
+在开工的时候我考虑">
 <meta property="og:type" content="article">
-<meta property="og:title" content="读《程序员必读之软件架构》">
-<meta property="og:url" content="http://typeorigin.com/2015/06/10/20150610-programers-architect/index.html">
+<meta property="og:title" content="简单标签云实现">
+<meta property="og:url" content="http://typeorigin.com/2015/12/27/20151227-tagcloud-diy/index.html">
 <meta property="og:site_name" content="Type Origin">
-<meta property="og:description" content="最近读了《程序员必读之软件架构》, 感觉大部分内容比较口水话，或者是我还领悟不到精髓。
-不过书中还是提供一些比较有用的信息。比如在敏捷开发下大部分团队不再使用UML而采用简单的草图，
-
-但是大部分草图不像UML那么规范化，不容易读懂。平常在画程序功能图或者说架构图的时候，总觉得无法表述清楚整个系统的运行情况，看完书后发现是因为自己将不同层次的内容混杂在一起。为了表述清楚系统如何构成，可以通过绘制多">
-<meta property="og:image" content="http://img4.douban.com/lpic/s27766899.jpg">
-<meta property="og:image" content="http://cdn.infoq.com/statics_s1_20150603-0041/resource/articles/agile-software-architecture-sketches-NoUML/en/resources/1big.png">
-<meta property="og:updated_time" content="2015-06-10T01:17:19.000Z">
+<meta property="og:description" content="标签云是一种简单的数据可视化方法。标签云中根据标签的衡量指标，呈现时设置不同的字体大小或者颜色来表达标签的重要性，能够方便的表达博客的关注点。
+实现标签云的思路下面是我自己实现一个简单标签云的过程，在我的标签云中，实现了用不同的字体大小来表达标签被引用的次数。当然其实有很多现成的工具可以用，不过自己对于实现原理比较好奇，也就想自己实现个，最后效果是有了，也不知道是不是常规手段。
+在开工的时候我考虑">
+<meta property="og:image" content="http://typeorigin.com/img/20151227-tagcloud-diy/tagcloud.png">
+<meta property="og:image" content="http://typeorigin.com/img/20151227-tagcloud-diy/complex_tagcloud.png">
+<meta property="og:updated_time" content="2015-12-27T03:24:04.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="读《程序员必读之软件架构》">
-<meta name="twitter:description" content="最近读了《程序员必读之软件架构》, 感觉大部分内容比较口水话，或者是我还领悟不到精髓。
-不过书中还是提供一些比较有用的信息。比如在敏捷开发下大部分团队不再使用UML而采用简单的草图，
-
-但是大部分草图不像UML那么规范化，不容易读懂。平常在画程序功能图或者说架构图的时候，总觉得无法表述清楚整个系统的运行情况，看完书后发现是因为自己将不同层次的内容混杂在一起。为了表述清楚系统如何构成，可以通过绘制多">
+<meta name="twitter:title" content="简单标签云实现">
+<meta name="twitter:description" content="标签云是一种简单的数据可视化方法。标签云中根据标签的衡量指标，呈现时设置不同的字体大小或者颜色来表达标签的重要性，能够方便的表达博客的关注点。
+实现标签云的思路下面是我自己实现一个简单标签云的过程，在我的标签云中，实现了用不同的字体大小来表达标签被引用的次数。当然其实有很多现成的工具可以用，不过自己对于实现原理比较好奇，也就想自己实现个，最后效果是有了，也不知道是不是常规手段。
+在开工的时候我考虑">
 
 
 
@@ -83,7 +80,7 @@
   };
 </script>
 
-  <title> 读《程序员必读之软件架构》 | Type Origin </title>
+  <title> 简单标签云实现 | Type Origin </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -254,7 +251,7 @@
             
             
               
-                读《程序员必读之软件架构》
+                简单标签云实现
               
             
           </h1>
@@ -263,8 +260,8 @@
         <div class="post-meta">
           <span class="post-time">
             发表于
-            <time itemprop="dateCreated" datetime="2015-06-10T08:34:49+08:00" content="2015-06-10">
-              2015-06-10
+            <time itemprop="dateCreated" datetime="2015-12-27T10:43:05+08:00" content="2015-12-27">
+              2015-12-27
             </time>
           </span>
 
@@ -280,18 +277,6 @@
 
                 
                 
-                  ， 
-                
-
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/编程/读书笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">读书笔记</span>
-                  </a>
-                </span>
-
-                
-                
 
               
             </span>
@@ -301,8 +286,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/06/10/20150610-programers-architect/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/06/10/20150610-programers-architect/" itemprop="commentsCount"></span>
+                <a href="/2015/12/27/20151227-tagcloud-diy/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/27/20151227-tagcloud-diy/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -321,61 +306,109 @@
       
 
       
-        <span itemprop="articleBody"><p><img src="http://img4.douban.com/lpic/s27766899.jpg" alt="software architecture for developers" title="software architecture for developers"></p>
-<p>最近读了《程序员必读之软件架构》, 感觉大部分内容比较口水话，或者是我还领悟不到精髓。</p>
-<p>不过书中还是提供一些比较有用的信息。比如在敏捷开发下大部分团队不再使用UML而采用简单的草图，</p>
-<p><img src="http://cdn.infoq.com/statics_s1_20150603-0041/resource/articles/agile-software-architecture-sketches-NoUML/en/resources/1big.png" alt="draft architecture" title="draft architecture"></p>
-<p>但是大部分草图不像UML那么规范化，不容易读懂。平常在画程序功能图或者说架构图的时候，总觉得无法<br>表述清楚整个系统的运行情况，看完书后发现是因为自己将不同层次的内容混杂在一起。为了表述清楚系统如何<br>构成，可以通过绘制多个不同层次的图来达到目的。</p>
+        <span itemprop="articleBody"><p><strong>标签云</strong>是一种简单的数据可视化方法。<strong>标签云</strong>中根据标签的衡量指标，呈现时设置不同的字体大小或者颜色来表达标签的重要性，能够方便的表达博客的关注点。</p>
+<h2 id="实现标签云的思路">实现标签云的思路</h2><p>下面是我自己实现一个简单标签云的过程，在我的<strong>标签云</strong>中，实现了用不同的字体大小来表达标签被引用的次数。当然其实有很多现成的工具可以用，不过自己对于实现原理比较好奇，也就想自己实现个，最后效果是有了，也不知道是不是常规手段。</p>
+<p>在开工的时候我考虑了这么个问题：标签的被引用次数我很容易得到，我只需要几个简单的SQL就可以统计出各标签的的使用次数，但是问题在于难道我的标签<strong>Java</strong>被引用了100次, 标签<strong>切糕</strong> 仅仅被引用1次，在显示的时候就让 <strong>Java</strong> 比 <strong>切糕</strong> 大一百倍？那切糕肯定不满意了，好歹切糕也很火啊。而且更实际的问题是，我们的页面在展示标签时的空间是有大小的，不可能任由字体任意大。</p>
+<p>那么现在缕缕思路，实现<strong>标签云</strong>，我先要做下面的工作：</p>
+<ol>
+<li>统计出各标签的引用次数</li>
+<li>合理的显示标签大小</li>
+</ol>
 <a id="more"></a>
-<p><strong>语境图</strong></p>
-<p>主要回答以下问题：</p>
+<p>哦，前面忘记说了，基于<strong>标签云</strong>的实现，我的数据模型是这样的：1张Post表, 1张Tag表，还有一张 Post 和Tag 的关联表</p>
+<h2 id="统计标签的引用次数">统计标签的引用次数</h2><p>统计很简单，一句SQL就可以实现，我使用的Django，查询的话就这样：</p>
+<pre><code>tag_list = Tag<span class="class">.objects</span><span class="class">.annotate</span>(num_post=<span class="function"><span class="title">Count</span><span class="params">(<span class="string">'post_tag'</span>)</span></span>)
+</code></pre><h2 id="合理显示标签大小">合理显示标签大小</h2><p>什么叫做合理呢？起码不能太大吧，起码也不能小的看不见吧。那么就只能规定一个取值的范围。</p>
+<p>标签的引用次数可能会差别很大，如果直接用引用次数来作为最终标签的字体大小的话，也不是不可以，只不过有的字体会特别大,有的呢又特别小。</p>
+<p>如果直接表示大小不行，那么我就是用倍数来表示。比如我只能接受最大的字体是最小字体的3倍，那么如何将差别很大的引用次数映射到 1 ~ 3 的范围之间呢？</p>
+<p>首先来个假设，假设现在我有一组标签的引用次数 $ A = [1, 3, 5, 6, 10] $, 接下来的过程其实也就是找到一个合适的函数来完成这个映射。思路就是讲我们的数字逐步的往 $ [1, 3] $上靠。</p>
+<p>先找出 A 中的最大值 $ max(A) $, 然后将 A 中的每个数值除以 $ max(A) $, 结果也就是<br>$ A’ = [0.1, 0.3, 0.5, 0.6, 1] $， 现在已经成功的将值域缩小到 $ [0, 1] $ 之间，继续向 $ [1, 3] $ 上靠。</p>
+<p>现在对于 $ A’ $ 中的每个数字n, 都满足 $ 0 \le n \le 1 $, 不等式两边同时乘以 2，则取值范围变为 $ 0 \le 2n \le 2 $， 再将不等式两边同时加上1则等于 $ 1 \le 2n + 1 \le 3 $。</p>
+<p>现在我数组A中原来的引用次数已经转化为 $ [1, 3] $ 之间。但是这只是个特例，我还需要更通用的公式才能满足不同区间的需求。</p>
+<p>根据上面的步骤，可以抽象为一下步骤</p>
+<p>$$ A’ \times x + y $$</p>
+<p>假设目标区间是$ [L, U] $, 那么利用两个端点值，可以得到两个方程：</p>
+<p>$$ max(A’) \times x + y = U $$</p>
+<p>$$ min(A’) \times x + y = L $$</p>
+<p> 解方程组得：</p>
+<p>$$ x = \frac {U − L} {max(A’) − min(A’)} $$    (注意分母为 0 的情况)</p>
+<p>$$ y = U − x $$ </p>
+<p>公式有了，接下来实现就方便了。再用前面的例子 $ A = [1, 3, 5, 6, 10] $ 来总结下计算过程：</p>
 <ol>
-<li>构建的系统是什么</li>
-<li>谁会使用它</li>
-<li>如何已有系统交互</li>
+<li><p>A中每个元素除以 $ max(A) $ 得 $ A’ = [0.1, 0.3, 0.5, 0.6, 1] $ </p>
+</li>
+<li><p>求出 A’ 中最大最小值  $ max(A’) $ , $ min(A’) $</p>
+</li>
+<li><p>运用公式 $ x = \frac {U - L} {max(A’) - min(A’)} $ , $ y = U − x $ 计算两个变量x, y 的值</p>
+</li>
+<li><p>对 A’ 中每个元素运用公式 $ A’ \times x + y $ 计算换算后的倍数 M</p>
+</li>
 </ol>
-<p><strong>容器图</strong></p>
-<p>容器图中是否容器的判断标准是：程序是否是单独进程运作。比如Web服务器和数据库服务器就是<br>单独的容器。容器也就是逻辑上可执行的文件或过程。</p>
-<p>容器图主要回答以下问题：</p>
-<ol>
-<li>软件系统的整体形态是什么样</li>
-<li>采用的技术决策是什么</li>
-<li>职责是如何分布的</li>
-<li>容器之间如何交流</li>
-<li>开发者在哪里写代码</li>
+<p>通过上面步骤, $ A = [1, 3, 5, 6, 10] $ 计算结果为 $ M = [1.0, 1.2, 1.4, 1.8, 2.1, 3.0] $</p>
+<p>有了M 在前端展示的时候就可以设置style时使用 <code>font-size: M em;</code> 来设置字体大小了</p>
+<h2 id="示例代码">示例代码</h2><p>我的Python实现如下：</p>
+<pre><code><span class="comment"># coding=utf-8</span>
+<span class="keyword">from</span> tumblelog.tumbleutils <span class="keyword">import</span> TumbleLogUtils
+
+<span class="class"><span class="keyword">class</span> <span class="title">TagCloud</span><span class="params">(object)</span>:</span>
+<span class="string">''' 根据标签被引用次数计算标签最终的显示的字号'''</span>
+<span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, tag_list)</span>:</span>
+    self.tag_list = tag_list
+    self.MAX_FONT_RATE = <span class="number">3.0</span>
+    self.MIN_FONT_RATE = <span class="number">1.0</span>
+
+<span class="function"><span class="keyword">def</span> <span class="title">calculateTagFont</span><span class="params">(self)</span>:</span>
+    maxE = self.maxElement()
+    minE = self.minElement()
+    normalizegList = self.normalize(maxE)
+    targetList = []
+    x = self.getBootFactor(maxE, minE)
+    y = self.getOffset(maxE, minE)
+
+    colorUtil = TumbleLogUtils() <span class="comment">#一个工具类, 主要用于生成随机颜色</span>
+    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, len(normalizegList)):
+        normalizegList[i].num_post  = normalizegList[i].num_post * x + y
+        normalizegList[i].color = colorUtil.getRandomColor()
+        targetList.append(normalizegList[i])
+    <span class="keyword">return</span> targetList
+
+
+<span class="function"><span class="keyword">def</span> <span class="title">normalize</span><span class="params">(self, maxE)</span>:</span>
+    <span class="string">''' 预处理标签引用次数, 将标签次数的值域缩小到[0,1]'''</span>
+    <span class="comment"># 只有最大值非零时才进行此操作</span>
+    <span class="keyword">if</span> maxE:
+        <span class="keyword">for</span> i <span class="keyword">in</span> xrange(<span class="number">0</span>, len(self.tag_list)):
+            self.tag_list[i].num_post = self.tag_list[i].num_post / maxE
+    <span class="keyword">return</span> self.tag_list
+
+<span class="function"><span class="keyword">def</span> <span class="title">getBootFactor</span><span class="params">(self, maxE, minE)</span>:</span>
+    <span class="string">''' 计算公式中的系数 x, 如果最大最小值相等, 就返回0, 否则返回按公式的计算结果'''</span>
+    <span class="keyword">if</span> <span class="keyword">not</span> maxE - minE:
+        <span class="keyword">return</span> <span class="number">0</span>
+    <span class="keyword">return</span> (self.MAX_FONT_RATE - self.MIN_FONT_RATE) / (maxE - minE) * maxE
+
+<span class="function"><span class="keyword">def</span> <span class="title">getOffset</span><span class="params">(self, maxE, minE)</span>:</span>
+    <span class="string">''' 计算公式中的系数 y, 如果最大最小值相等, 就返回1, 否则返回按公式的计算结果'''</span>
+    <span class="keyword">if</span> <span class="keyword">not</span> maxE - minE:
+        <span class="keyword">return</span> <span class="number">1</span>
+    <span class="keyword">return</span> self.MAX_FONT_RATE - self.getBootFactor(maxE, minE)
+
+<span class="function"><span class="keyword">def</span> <span class="title">maxElement</span><span class="params">(self)</span>:</span>
+    tmpTags = self.tag_list.order_by(<span class="string">'-num_post'</span>)
+    <span class="keyword">return</span> float(tmpTags[<span class="number">0</span>].num_post)
+
+<span class="function"><span class="keyword">def</span> <span class="title">minElement</span><span class="params">(self)</span>:</span>
+    tmpTags = self.tag_list.order_by(<span class="string">'-num_post'</span>)
+    <span class="keyword">return</span> float(tmpTags[len(tmpTags) - <span class="number">1</span>].num_post)
+</code></pre><p>效果图</p>
+<p><img src="/img/20151227-tagcloud-diy/tagcloud.png" alt="简易标签云"></p>
+<h2 id="拓展思考">拓展思考</h2><ol>
+<li><p>除了用标签的引用次数来计算，还可以自己给标签一些权重，这样的话需要对公式进行调整。</p>
+</li>
+<li><p>复杂的标签云，类似下面这样的还不知道怎么弄。</p>
+</li>
 </ol>
-<p><strong>组件图</strong></p>
-<p>组件图是对容器的剖析，帮助了解容器内部</p>
-<p>主要回答以下问题：</p>
-<ol>
-<li>系统由哪些组件/服务组成</li>
-<li>在高层次上，系统如何工作是否清晰</li>
-<li>所有组件/服务都驻留在一个容器吗</li>
-</ol>
-<p>上面的图但凡包含各组成部分之间交互的，都需要规范化交互的类型的表示方法，比如数据流<br>怎么表示，模块依赖怎么表示，重要和非重要怎么表示等。</p>
-<p>因此在绘图时，着重从下面几个属性出发来区分元素</p>
-<ul>
-<li>形状（方形、菱形….）</li>
-<li>线条（直线、虚线….，包括箭头）</li>
-<li>颜色</li>
-<li>边框（虚线、实线、双实线…）</li>
-<li>缩略语（元素简单的描述）</li>
-</ul>
-<p>另外，最后讲到架构师除了关注功能需求外，还要思考一些非公能性需求：</p>
-<ul>
-<li>性能</li>
-<li>可伸缩性，主要从业务增长上衡量</li>
-<li>可用性，可接受的故障时间</li>
-<li>故障转移</li>
-<li>安全性，诸如权限</li>
-<li>审计，考虑记录一些关键用户操作的审计日志</li>
-<li>容错和恢复</li>
-<li>国际化和本地化</li>
-<li>监测和管理</li>
-<li>数据保存和归档</li>
-<li>互操作性，主要是和其他系统的交互</li>
-</ul>
-<h3 id="结语">结语</h3><p>了解一个系统应该怎么思考设计，让自己的设计能力提升一些</p>
+<p><img src="/img/20151227-tagcloud-diy/complex_tagcloud.png" alt="complecated_tag"></p>
 </span>
       
     </div>
@@ -384,9 +417,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/架构/" rel="tag">#架构</a>
+            <a href="/tags/Django/" rel="tag">#Django</a>
           
-            <a href="/tags/读书笔记/" rel="tag">#读书笔记</a>
+            <a href="/tags/Python/" rel="tag">#Python</a>
+          
+            <a href="/tags/标签云/" rel="tag">#标签云</a>
           
         </div>
       
@@ -395,17 +430,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/05/29/20150529_javascript-start/" rel="next" title="Javascript 学习书单">
-                <i class="fa fa-chevron-left"></i> Javascript 学习书单
+              <a href="/2015/12/25/20151225-how-to-get-douban-info/" rel="next" title="如何获取用户自己的豆瓣信息">
+                <i class="fa fa-chevron-left"></i> 如何获取用户自己的豆瓣信息
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2015/07/25/20150718_数据可视化/" rel="prev" title="D3.js 数据可视化">
-                D3.js 数据可视化 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -432,8 +463,8 @@
         
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2015/06/10/20150610-programers-architect/"
-           data-title="读《程序员必读之软件架构》" data-url="http://typeorigin.com/2015/06/10/20150610-programers-architect/">
+      <div class="ds-thread" data-thread-key="2015/12/27/20151227-tagcloud-diy/"
+           data-title="简单标签云实现" data-url="http://typeorigin.com/2015/12/27/20151227-tagcloud-diy/">
       </div>
     
   </div>
@@ -549,7 +580,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#结语"><span class="nav-number">1.</span> <span class="nav-text">结语</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#实现标签云的思路"><span class="nav-number">1.</span> <span class="nav-text">实现标签云的思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#统计标签的引用次数"><span class="nav-number">2.</span> <span class="nav-text">统计标签的引用次数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#合理显示标签大小"><span class="nav-number">3.</span> <span class="nav-text">合理显示标签大小</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#示例代码"><span class="nav-number">4.</span> <span class="nav-text">示例代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#拓展思考"><span class="nav-number">5.</span> <span class="nav-text">拓展思考</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
