@@ -1,0 +1,27 @@
+@startuml
+
+rectangle server {
+    [Server Program]
+    [Skeleton]
+    [Remote Reference Layer: Server]
+}
+
+rectangle client {
+    [Client Program]
+    [Stub]
+    [Remote Reference Layer: Client]
+}
+
+[Client Program] -down-> [Stub]         : <font color=red>Request</font>
+[Stub] -up-> [Client Program]           : <font color=blue>Response</font>
+[Server Program] -down-> [Skeleton]     : <font color=blue>Response</font>
+[Skeleton] -up-> [Server Program]       : <font color=red>Request</font>
+[Skeleton] -down-> [Remote Reference Layer: Server] : <font color=blue>Response</font>
+[Remote Reference Layer: Server] -up-> [Skeleton]   : <font color=red>Request</font>
+[Stub] -down-> [Remote Reference Layer: Client]     : <font color=red>Request</font>
+[Remote Reference Layer: Client] -up-> [Stub]       : <font color=blue>Response</font>
+[Remote Reference Layer: Server] -down-> [Transport Layer]  : <font color=blue>Response</font>
+[Transport Layer] -up-> [Remote Reference Layer: Server]    : <font color=red>Request</font>
+[Remote Reference Layer: Client] -down-> [Transport Layer]  : <font color=red>Request</font>
+[Transport Layer] -up-> [Remote Reference Layer: Client]    : <font color=blue>Response</font>
+@enduml

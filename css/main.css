@@ -961,7 +961,7 @@ body {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #7f9f49;
+  background: #ffe041;
 }
 .sidebar-nav {
   margin: 0 0 20px;
@@ -2001,6 +2001,7 @@ body {
 }
 .posts-expand .post-meta {
   text-align: left;
+  margin: 3px 0 30px 0;
 }
 .posts-expand .post-title-link:hover {
   color: #669994;
